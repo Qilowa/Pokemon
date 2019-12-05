@@ -12,7 +12,7 @@ public class Test {
 		System.out.println("Test");
 		System.out.println("Test1");
 		//test
-            	 try (BufferedReader bufferedreader = new BufferedReader(new FileReader("RessourcesPokémon-20191205/test.txt"))) {
+            	 try (BufferedReader bufferedreader = new BufferedReader(new FileReader("RessourcesPokï¿½mon-20191205/test.txt"))) {
             	      String strCurrentLine;
             	      while ((strCurrentLine = bufferedreader.readLine()) != null) {
             	    	  String[] splited = strCurrentLine.split("/");
