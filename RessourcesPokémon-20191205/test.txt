@@ -1,0 +1,2 @@
+Affutage/NORMAL/Status/NULL/NULL/30,
+Armure/NORMAL/Status/NULL/NULL/30,
