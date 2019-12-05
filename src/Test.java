@@ -11,6 +11,7 @@ public class Test {
 	public static void main(String[] args) {
 		System.out.println("Test");
 		System.out.println("Test1");
+		//test
             	 try (BufferedReader bufferedreader = new BufferedReader(new FileReader("RessourcesPokémon-20191205/test.txt"))) {
             	      String strCurrentLine;
             	      while ((strCurrentLine = bufferedreader.readLine()) != null) {
