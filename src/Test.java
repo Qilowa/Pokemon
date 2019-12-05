@@ -1,11 +1,27 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+import dut.fr.pokemon.Category;
 
 public class Test {
 
 	public static void main(String[] args) {
 		System.out.println("Test");
 		System.out.println("Test1");
-		int a=15;
-		System.out.println(a%5);
-	}
+            	 try (BufferedReader bufferedreader = new BufferedReader(new FileReader("RessourcesPokémon-20191205/test.txt"))) {
+            	      String strCurrentLine;
+            	      while ((strCurrentLine = bufferedreader.readLine()) != null) {
+            	    	  String[] splited = strCurrentLine.split("/");
+            	          for (String part : splited) {
+            	              System.out.println(part);
+            	          }
+            	      }
+            	    } catch (IOException ioe) {
+            	      ioe.printStackTrace();
+            	    }
+            	  }
 
-}
+	}
