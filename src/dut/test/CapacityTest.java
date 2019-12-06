@@ -30,9 +30,9 @@ public class CapacityTest {
 	    	Integer precision = Integer.parseInt(array[4]);
 	    	Integer pp = Integer.parseInt(array[5]);
 	    	
-	        Capacity p = new Capacity(name, type, category, power, precision, pp);        
+	        Capacity p = new Capacity(name, type, category, power, precision, pp);
 	        System.out.println(p);
-
+	        
 	    	}
 	}
 }

@@ -1,5 +1,5 @@
 NAME,TYPE,CATEGORY,POWER,PRECISION,PP
 Affutage,NORMAL,Status,0,0,30
-Armure1,NORMAL,Status,0,0,30
-Armure2,NORMAL,Status,0,0,30
-Armure3,NORMAL,Status,0,0,30
+Acide,POISON,Status,40,100,30
+Bec Vrille,VOL,Physique,80,100,20
+Berceuse,NORMAL,Status,0,55,15

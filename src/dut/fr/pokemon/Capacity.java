@@ -17,11 +17,11 @@ public class Capacity {
 		super();
 		this.name=Objects.requireNonNull(name);
 		this.type=Objects.requireNonNull(type);
-		if (power<15 && power>300 && power%5==1 ) {
+		if (type == "Physique" &&(power<15 || power>300 || power%5==1 )) {
 			throw new IllegalArgumentException("precision must be between 15 and 300 and also a multiple of 5");
 		}
 		this.power = power;
-		if (precision<0 && precision>100) {
+		if (precision<0 || precision>100) {
 			throw new IllegalArgumentException("precision must be between 0 and 100");
 		}
 		this.precision = precision;
