@@ -1,16 +1,43 @@
 package dut.fr.pokemon;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Capacity {
+	/* try (BufferedReader bufferedreader = new BufferedReader(new FileReader("RessourcesPokemon-20191205/test.txt"))) {
+            	      String strCurrentLine;
+            	      while ((strCurrentLine = bufferedreader.readLine()) != null) {
+            	    	  String[] splited = strCurrentLine.split("/");
+            	    	  int c=0;
+            	    	  ArrayList<String> skill1 =new ArrayList<>();
+            	          for (String part : splited) {
+            	        	  if (c==5) {
+            	        		  skill1.add(part);
+  								c=0;
+  								System.out.println(skill1);
+  								}
+								skill1.add(part);
+            	        	  c++;
+            	        	  new Capacity(skill1.get(0), skill1.get(1),skill1.get(2), Integer.parseInt( skill1.get(3)), Integer.parseInt( skill1.get(4)),Integer.parseInt( skill1.get(5)));
+            	          }
+            	      }
+            	    } catch (IOException ioe) {
+            	      ioe.printStackTrace();
+            	    }
+            	  }*/
 	private final String name;
 	private final int power;
 	private final int precision;
 	private final int pp;
-	private final Category category;
-	public Capacity(String name,Category category,int power, int precision,int pp) {
+	private final String category;
+	private final String type;
+	public Capacity(String name,String type,String category,int power, int precision,int pp) {
 		super();
 		this.name=Objects.requireNonNull(name);
+		this.type=Objects.requireNonNull(type);
 		if (power<15 && power>300 && power%5==1 ) {
 			throw new IllegalArgumentException("precision must be between 15 and 300 and also a multiple of 5");
 		}
@@ -29,7 +56,7 @@ public class Capacity {
 	public int getPrecision() {
 		return precision;
 	}
-	public Category getCategory() {
+	public String getCategory() {
 		return category;
 	}
 	@Override
