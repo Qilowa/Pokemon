@@ -1,0 +1,5 @@
+NAME,TYPE,CATEGORY,POWER,PRECISION,PP
+Affutage,NORMAL,Status,0,0,30
+Armure1,NORMAL,Status,0,0,30
+Armure2,NORMAL,Status,0,0,30
+Armure3,NORMAL,Status,0,0,30

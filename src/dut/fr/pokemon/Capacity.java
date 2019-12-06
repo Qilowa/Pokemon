@@ -7,27 +7,6 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class Capacity {
-	/* try (BufferedReader bufferedreader = new BufferedReader(new FileReader("RessourcesPokemon-20191205/test.txt"))) {
-            	      String strCurrentLine;
-            	      while ((strCurrentLine = bufferedreader.readLine()) != null) {
-            	    	  String[] splited = strCurrentLine.split("/");
-            	    	  int c=0;
-            	    	  ArrayList<String> skill1 =new ArrayList<>();
-            	          for (String part : splited) {
-            	        	  if (c==5) {
-            	        		  skill1.add(part);
-  								c=0;
-  								System.out.println(skill1);
-  								}
-								skill1.add(part);
-            	        	  c++;
-            	        	  new Capacity(skill1.get(0), skill1.get(1),skill1.get(2), Integer.parseInt( skill1.get(3)), Integer.parseInt( skill1.get(4)),Integer.parseInt( skill1.get(5)));
-            	          }
-            	      }
-            	    } catch (IOException ioe) {
-            	      ioe.printStackTrace();
-            	    }
-            	  }*/
 	private final String name;
 	private final int power;
 	private final int precision;
@@ -73,7 +52,7 @@ public class Capacity {
 
 	@Override
 	public String toString() {
-		return name+"[power=" + power + ", precision=" + precision + ", category=" + category +pp+ "]";
+		return name+"[type=" + type + ", category=" + category + ", power=" + power + ", precision=" + precision+ ", pp= "+pp+ "]";
 	}
 
 
