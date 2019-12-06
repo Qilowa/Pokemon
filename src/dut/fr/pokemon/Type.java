@@ -18,6 +18,8 @@ public enum Type {
 	GROUND,
 	GHOST,
 	DARK,
-	FLYING
+	FLYING;
+	
+	
 	
 }
