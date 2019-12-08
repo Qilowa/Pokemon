@@ -8,13 +8,14 @@ import dut.fr.pokemon.Pokemon;
 
 public class PokedexTest {
 	public static void main(String[] args) {
-		Pokedex p = new Pokedex();
+		/*Pokedex p = new Pokedex();
 		try {
 			p.createPokedex();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
-		Pokemon a =new Pokemon(2, "pikachu", "img.png",10,130, null, null);
+		}*/
+		Pokemon a =new Pokemon(2, "pikachu", "img/025.png",10,130, null, null);
+		a.showPicture();
 		System.out.println(a);
 		a.rename("pierre");
 		System.out.println(a);
