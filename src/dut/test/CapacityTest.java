@@ -11,9 +11,9 @@ import dut.fr.pokemon.Pokemon;
 public class CapacityTest {
 
 	public static void main(String[] args) throws IOException{
-		String CSV ="./RessourcesPokemon-20191205/Capacity.txt";
+		String TXT ="./RessourcesPokemon-20191205/Capacity.txt";
 		Capacity[] capacity = new Capacity[6];
-		BufferedReader reader = new BufferedReader(new FileReader(CSV));
+		BufferedReader reader = new BufferedReader(new FileReader(TXT));
 		String line;
 		int c=0;
 		boolean nameField = false;
@@ -41,5 +41,6 @@ public class CapacityTest {
 	    {
 	      System.out.println("À l'emplacement " + i +" du tableau nous avons = " + capacity[i]);
 	    }
+	    System.out.println(capacity[1].getName());
 	}
 }

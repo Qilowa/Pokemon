@@ -14,7 +14,6 @@ public class Capacity {
 	private final String category;
 	private final String type;
 	public Capacity(String name,String type,String category,int power, int precision,int pp) {
-		super();
 		this.name=Objects.requireNonNull(name);
 		this.type=Objects.requireNonNull(type);
 		if (type == "Physique" &&(power<15 || power>300 || power%5==1 )) {
@@ -29,30 +28,45 @@ public class Capacity {
 		this.category = category;
 	}
 	
-	public int getPower() {
-		return power;
-	}
-	public int getPrecision() {
-		return precision;
-	}
-	public String getCategory() {
-		return category;
-	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(name,power,precision,pp,category);
+		return Objects.hash(name,type,category,power,precision,pp);
 	}
 
 	@Override
 	public boolean equals(Object o) {
 		if(!(o instanceof Capacity)) {return false;};
 		Capacity a= (Capacity)o;
-		return power==a.power && precision==a.precision && category==a.category  && name==a.name  && pp==a.pp;
+		return name==a.name && type==a.type && category==a.category && power==a.power && precision==a.precision && pp==a.pp;
 	}
 
 	@Override
 	public String toString() {
 		return name+"[type=" + type + ", category=" + category + ", power=" + power + ", precision=" + precision+ ", pp= "+pp+ "]";
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public int getPower() {
+		return power;
+	}
+
+	public int getPrecision() {
+		return precision;
+	}
+
+	public int getPp() {
+		return pp;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public String getType() {
+		return type;
 	}
 
 
