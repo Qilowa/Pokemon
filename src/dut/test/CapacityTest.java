@@ -12,9 +12,10 @@ public class CapacityTest {
 
 	public static void main(String[] args) throws IOException{
 		String CSV ="./RessourcesPokemon-20191205/Capacity.txt";
-		ArrayList<String> capacity;
+		Capacity[] capacity = new Capacity[6];
 		BufferedReader reader = new BufferedReader(new FileReader(CSV));
 		String line;
+		int c=0;
 		boolean nameField = false;
 	     
 	    while ((line = reader.readLine()) != null) {
@@ -31,8 +32,14 @@ public class CapacityTest {
 	    	Integer pp = Integer.parseInt(array[5]);
 	    	
 	        Capacity p = new Capacity(name, type, category, power, precision, pp);
-	        System.out.println(p);
+	        capacity[c]=p;
+	        //System.out.println(p);
+	        c++;
 	        
 	    	}
+	    for(int i = 0; i < capacity.length; i++)
+	    {
+	      System.out.println("À l'emplacement " + i +" du tableau nous avons = " + capacity[i]);
+	    }
 	}
 }
