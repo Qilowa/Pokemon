@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import dut.fr.pokemon.Capacity;
 import dut.fr.pokemon.Pokemon;
@@ -42,5 +43,12 @@ public class CapacityTest {
 	      System.out.println("À l'emplacement " + i +" du tableau nous avons = " + capacity[i]);
 	    }
 	    System.out.println(capacity[1].getName());
+	    Scanner sc = new Scanner(System.in);
+	    System.out.println("Choissisez un Pokémon (id) : ");
+	    int str = sc.nextInt();
+	    System.out.println("Vous avez saisi le Pokémon : " + str);
+	    System.out.println("Votre capacité : ");
+	    int str1 = sc.nextInt();
+	    System.out.println("Vous avez saisi le Pokémon : " + str1);
 	}
 }
