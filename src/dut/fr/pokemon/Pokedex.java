@@ -29,10 +29,18 @@ public class Pokedex {
 	    	String picture = array[2];
 	    	Integer height = Integer.parseInt(array[3]);
 	    	Integer weight = Integer.parseInt(array[4]);
-	    	String type1 = array[5];
-	    	String type2 = array[6];
+	    	Type type1 = Type.valueOf(array[5].toUpperCase());
 	    	
-	        Pokemon p = new Pokemon(id, name, picture, height, weight, null, null);
+	    	String s = array[6].toUpperCase();
+	    	Type type2;
+	    	if (s.isEmpty()) {
+	    		type2 = null;
+	    	} else {
+	    		type2 = Type.valueOf(s);
+	    	}
+	    	
+	        Pokemon p = new Pokemon(id, name, picture, height, weight, type1, type2);
+	        pokedex.add(p);
 	        System.out.println(p);
 	        
 	    }

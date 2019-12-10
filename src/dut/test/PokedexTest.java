@@ -37,20 +37,19 @@ public class PokedexTest {
 	        c++;
 	        
 	    	}
-		/*Pokedex p = new Pokedex();
+		Pokedex p = new Pokedex();
 		try {
 			p.createPokedex();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}*/
+		}
 		Pokemon a =new Pokemon(2, "pikachu", "img/025.png",10,130, null, null);
 		a.showPicture();
 		System.out.println(a);
-		a.rename("pierre");
+
 		System.out.println(a);
 		Capacity p1 = new Capacity("Affutage", "NORMAL", "Status", 0, 0, 30);
-		a.addcapacity(capacity[0]);
-		System.out.println(a.showcapacity());
+
 		
 	}
 	
