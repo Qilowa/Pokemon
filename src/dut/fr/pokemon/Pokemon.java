@@ -37,6 +37,10 @@ public class Pokemon {
 		return String.format("id: %d, nom: %s, taille: %d, poids: %d", numPokedex, name, height, weight);
 	}
 	
+	public String getName() {
+		return name;
+	}
+	
 
 	public void showPicture() {
 		JLabel label = new JLabel(new ImageIcon(picture));

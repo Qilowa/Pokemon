@@ -1,19 +1,21 @@
 package dut.test;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
 
-import dut.fr.pokemon.Capacity;
-import dut.fr.pokemon.Category;
+import java.io.IOException;
+
+import dut.fr.pokemon.FightingPokemon;
+import dut.fr.pokemon.Pokedex;
 
 public class Test {
 
 	public static void main(String[] args) {
-		System.out.println("Test");
-		System.out.println("Test1");
-            	
+		try {
+			Pokedex pokedex = new Pokedex();
+			pokedex.createPokedex();
+			FightingPokemon p = FightingPokemon.createFightinPokemong(1);
+			System.out.println(p);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 	}
 }

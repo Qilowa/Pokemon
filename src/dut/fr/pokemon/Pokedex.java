@@ -7,13 +7,13 @@ import java.util.ArrayList;
 
 public class Pokedex {
 	private static final String CSV ="./RessourcesPokemon-20191205/pokedex.csv";
-	private final ArrayList<Pokemon> pokedex;
+	private static ArrayList<Pokemon> pokedex;
 	
 	public Pokedex() {
 		this.pokedex = new ArrayList<Pokemon>();
 	}
 	
-	public void createPokedex() throws IOException {
+	public static void createPokedex() throws IOException {
 		BufferedReader reader = new BufferedReader(new FileReader(CSV));
 		String line;
 		boolean nameField = false;
@@ -41,10 +41,15 @@ public class Pokedex {
 	    	
 	        Pokemon p = new Pokemon(id, name, picture, height, weight, type1, type2);
 	        pokedex.add(p);
-	        System.out.println(p);
+	        // System.out.println(p);
 	        
 	    }
 		
+	}
+	
+	public static Pokemon getPokemon(int numPokedex) {
+		Pokemon p = pokedex.get(numPokedex);
+		return p;
 	}
 	
 }
