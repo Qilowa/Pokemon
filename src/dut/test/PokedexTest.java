@@ -51,6 +51,7 @@ public class PokedexTest {
 		Capacity p1 = new Capacity("Affutage", "NORMAL", "Status", 0, 0, 30);
 		a.addcapacity(capacity[0]);
 		System.out.println(a.showcapacity());
+		//test
 		
 	}
 	
