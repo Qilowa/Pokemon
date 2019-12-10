@@ -60,4 +60,15 @@ public class Pokemon {
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if (!(o instanceof Pokemon)) {
+			return false;
+		}
+		Pokemon p = (Pokemon) o;
+		return p.numPokedex == this.numPokedex && this.name == p.name && this.height == p.height 
+				&& this.picture == p.picture && this.weight == p.weight && this.types == p.types;
+	
+	}
 }
