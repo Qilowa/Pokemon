@@ -54,17 +54,17 @@ public class CapacityTest {
 		    System.out.println("Choissisez un Pokémon (id) : ");
 		    int pk1 = sc.nextInt();
 		    System.out.println("Vous avez saisi le Pokémon : " + pk1);
-		    //newpokemon
-		    //pokemon.addlist
+		    //new Pokémon
+		    //Pokémon.addlist
 		    System.out.println("Choissisez une capacités (id) : ");
 		    int cp1 = sc.nextInt();
-		    System.out.println("Vous avez saisi la Capacité : " + cp1);
+		    System.out.println("Vous avez saisi la Capacité 1 : " + cp1);
 		    int cp2 = sc.nextInt();
-		    System.out.println("Vous avez saisi la Capacité : " + cp2);
+		    System.out.println("Vous avez saisi la Capacité 2 : " + cp2);
 		    int cp3 = sc.nextInt();
-		    System.out.println("Vous avez saisi la Capacité : " + cp3);
+		    System.out.println("Vous avez saisi la Capacité 3 : " + cp3);
 		    int cp4 = sc.nextInt();
-		    System.out.println("Vous avez saisi la Capacité : " + cp4);
+		    System.out.println("Vous avez saisi la Capacité 4 : " + cp4);
 	    }
 	}
 }
