@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Pokedex {
-	private static final String CSV ="./RessourcesPokemon-20191205/pokedex.csv";
+	private static final String CSV ="./RessourcesPokemon-20191205/pokedex.txt";
 	private static ArrayList<Pokemon> pokedex;
 	
 	public Pokedex() {
