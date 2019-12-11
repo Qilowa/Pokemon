@@ -1,8 +1,5 @@
 package dut.test;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 
 import dut.fr.pokemon.Capacity;
@@ -11,12 +8,7 @@ import dut.fr.pokemon.Pokemon;
 
 public class PokedexTest {
 	public static void main(String[] args) throws IOException {
-		Pokedex p = new Pokedex();
-		try {
-			p.createPokedex();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		Pokedex p = Pokedex.getInstance();
 		Pokemon a =new Pokemon(2, "pikachu", "img/025.png",10,130, null, null);
 		a.showPicture();
 		System.out.println(a);
