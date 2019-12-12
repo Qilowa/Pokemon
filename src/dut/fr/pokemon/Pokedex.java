@@ -3,15 +3,21 @@ package dut.fr.pokemon;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Pokedex {
+public class Pokedex implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 414282765508690974L;
+	
 	private static final String CSV ="RessourcesPokemon-20191205/pokedex.csv";
 	private static ArrayList<Pokemon> pokedex;
 	private static Pokedex onlyInstance;
 	
 	private Pokedex() {
-		this.pokedex = new ArrayList<Pokemon>();
+		Pokedex.pokedex = new ArrayList<Pokemon>();
 		BufferedReader reader;
 		String line;
 		boolean nameField = false;
@@ -60,6 +66,10 @@ public class Pokedex {
 	public static Pokemon getPokemon(int numPokedex) {
 		Pokemon p = pokedex.get(numPokedex);
 		return p;
+	}
+	
+	public String printPokedex() {
+		return pokedex.toString();
 	}
 	
 }

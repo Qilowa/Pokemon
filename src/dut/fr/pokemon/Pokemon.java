@@ -4,6 +4,7 @@ import java.awt.FlowLayout;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.Objects;
 
 import javax.imageio.ImageIO;
@@ -11,7 +12,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class Pokemon {
+public class Pokemon implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2272093327434807717L;
+	
 	private final int numPokedex;
 	private final Image picture;
 	private final String name;
@@ -66,5 +73,5 @@ public class Pokemon {
 	public int hashCode() {
 		return Objects.hash(numPokedex, picture, name, height, weight, types);
 	}
-
+	
 }
