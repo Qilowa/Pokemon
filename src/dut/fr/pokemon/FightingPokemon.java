@@ -3,9 +3,15 @@ package dut.fr.pokemon;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.Objects;
 
-public class FightingPokemon {
+public class FightingPokemon implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7943795484011533552L;
+
 	private static final String path = "RessourcesPokemon-20191205/stats.csv";
 	
 	private final Pokemon pokemon;
@@ -92,6 +98,23 @@ public class FightingPokemon {
 	
 	public void rename(String newname) {
 		this.name = Objects.requireNonNull(newname);
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if (!(o instanceof FightingPokemon)) {
+			return false;
+		}
+		FightingPokemon p = (FightingPokemon) o;
+		return p.pokemon.equals(this.pokemon) && this.name.equals(p.name) && this.capacities.equals(p.capacities)
+				&& p.experience == this.experience && p.health == this.health && p.numberCapacity == this.numberCapacity 
+				&& p.phyAttack == this.phyAttack && p.phyDefense == this.phyDefense && p.speAttack == this.speAttack &&
+				p.speDefense == this.speDefense && p.speed == this.speed;
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(pokemon, experience, capacities, health, numberCapacity, phyAttack, phyDefense, speAttack, speDefense, speed);
 	}
 	
 	

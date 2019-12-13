@@ -32,7 +32,7 @@ public class Pokedex implements Serializable{
 				}
 				String[] array = line.split(",", 7);
 				Integer id = Integer.parseInt(array[0]);
-				String name = array[1];
+				String name = array[1].toUpperCase();
 				String picture = array[2];
 				Integer height = Integer.parseInt(array[3]);
 				Integer weight = Integer.parseInt(array[4]);
@@ -68,7 +68,8 @@ public class Pokedex implements Serializable{
 		return p;
 	}
 	
-	public String printPokedex() {
+	@Override
+	public String toString() {
 		return pokedex.toString();
 	}
 	
