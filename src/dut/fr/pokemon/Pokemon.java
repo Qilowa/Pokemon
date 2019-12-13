@@ -4,6 +4,7 @@ import java.awt.FlowLayout;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -20,7 +21,7 @@ public class Pokemon implements Serializable{
 	private static final long serialVersionUID = -2272093327434807717L;
 	
 	private final int numPokedex;
-	private final Image picture;
+	private final transient Image picture;
 	private final String name;
 	private final int height;
 	private final int weight;
@@ -77,5 +78,8 @@ public class Pokemon implements Serializable{
 	public Type[] getTypes() {
 		return types;
 	}
+	
+	
+	
 	
 }

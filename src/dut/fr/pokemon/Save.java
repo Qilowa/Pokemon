@@ -1,31 +1,41 @@
 package dut.fr.pokemon;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 public class Save {
 	
-	public static void savePokedex(String path, Pokedex p) {
+	public static void save(String path, Object o) {
 		try {
 			File f = new File(path);
 			ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(f));
-			oos.writeObject(p);
+			oos.writeObject(o);
 		}
 		catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public static void savePokemonTeam(String path, PokemonTeam team) {
+	public static PokemonTeam read(String path) {
 		try {
 			File f = new File(path);
-			ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(f));
-			oos.writeObject(team);
+			ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
+			PokemonTeam p;
+			try {
+				p = (PokemonTeam) ois.readObject();
+				return p;
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
 		}
 		catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		return null;
 	}
 }

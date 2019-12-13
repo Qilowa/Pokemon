@@ -18,7 +18,7 @@ public class PokedexTest {
 		System.out.println(a);
 		Capacity p1 = new Capacity("Affutage", Type.NORMAL, 0, 30, 0, "Status");
 
-		System.out.println(p.printPokedex());
+		System.out.println(p);
 		
 	}
 	
