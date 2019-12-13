@@ -19,30 +19,36 @@ public class CapacityTest {
 		Pokedex p = Pokedex.getInstance();
 	    for (int i = 0; i < 6; i++) {
 	    	Scanner sc = new Scanner(System.in);
-			System.out.println(p.printPokedex());
+			System.out.println(p);
 		    System.out.println("Choissisez un Pokémon (id) : ");
 		    int pk = sc.nextInt();
-		    System.out.println("Vous avez saisi le Pokémon : " + pk);
+		    System.out.println("Vous avez saisi le Pokémon : " + p.getPokemon(pk-1));
 		    FightingPokemon pokemon = FightingPokemon.createFightingPokemon(pk);
-		    System.out.println(p.getPokemon(pk-1));
-		    Capacity[] capacity=c.capacitychoice(p.getPokemon(pk).getTypes());//pk.gettype()
-			/*System.out.println(capacity);
-			for(int y = 1; y < capacity.length; y++)
+		    System.out.println(pokemon);
+		    Capacity[] capacitylist=c.capacitychoice(p.getPokemon(pk).getTypes());//pk.gettype()
+			for(int y = 1; y < capacitylist.length; y++)
 		    {
-		      System.out.println("id: " + y +" " + capacity[y]);
-		    }*/
-		    System.out.println("Choissisez une capacités (id) : ");
+		      System.out.println("id: " + y +" " + capacitylist[y]);
+		    }
+		    System.out.println("Choissisez votre 1ère capacité (id) : ");
 		    int cp1 = sc.nextInt();
-		    System.out.println("Vous avez saisi la Capacité : " + cp1);
+		    System.out.println("Vous avez saisi la Capacité : " + capacitylist[cp1]);
+		    pokemon.addCapacity(capacitylist[cp1]);
 		    //pokemon.addpacity(capacity[cp1]);
+		    System.out.println("Choissisez votre 2ème capacité (id) : ");
 		    int cp2 = sc.nextInt();
-		    System.out.println("Vous avez saisi la Capacité : " + cp2);
+		    System.out.println("Vous avez saisi la Capacité : " + capacitylist[cp2]);
+		    pokemon.addCapacity(capacitylist[cp2]);
 		    //pokemon.addpacity(capacity[cp2]);
+		    System.out.println("Choissisez votre 3ème capacité (id) : ");
 		    int cp3 = sc.nextInt();
-		    System.out.println("Vous avez saisi la Capacité : " + cp3);
+		    System.out.println("Vous avez saisi la Capacité : " + capacitylist[cp3]);
+		    pokemon.addCapacity(capacitylist[cp3]);
 		    //pokemon.addpacity(capacity[cp3]);
+		    System.out.println("Choissisez votre 4ème capacité (id) : ");
 		    int cp4 = sc.nextInt();
-		    System.out.println("Vous avez saisi la Capacité : " + cp4);
+		    System.out.println("Vous avez saisi la Capacité : " + capacitylist[cp4]);
+		    pokemon.addCapacity(capacitylist[cp4]);
 		    //pokemon.addpacity(capacity[cp4]);
 		    //Pokémon.addlist
 	    }

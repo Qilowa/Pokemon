@@ -43,7 +43,7 @@ public class Capacity {
 
 	@Override
 	public String toString() {
-		return name+"[type=" + type + ", power=" + power +", pp= "+pp+ ", accuracy=" + accuracy+ ", category=" + category+"]";
+		return name+"[type=" + type[0] + ", power=" + power +", pp= "+pp+ ", accuracy=" + accuracy+ ", category=" + category+"]";
 	}
 
 	public String getName() {

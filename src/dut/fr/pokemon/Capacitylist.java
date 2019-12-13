@@ -59,22 +59,15 @@ public class Capacitylist {
 		}
 	}
 	public static Capacity[] capacitychoice(Type[] types) {
-		Capacity[] capacityfinal = new Capacity[50];
+		Capacity[] capacityfinal = new Capacity[100];
 		int c=1;
-		if ((capacity[1].getType()[0])== types[0] || (capacity[1].getType()[0])==types[1] ) {
-			System.out.println("ouii");
-		}
-		System.out.println(capacity[1].getType()[0]);
-		System.out.println(types[0]);
-		/*for(int i = 1; i < capacity.length; i++){
+		for(int i = 1; i < capacity.length; i++){
 	      if (capacity[i].getType()[0]==types[0]  || capacity[i].getType()[0]==types[1]) {
-	    	  System.out.println("test");
-	    	  System.out.println(capacity[i]);
-	    	 capacityfinal[c]=capacity[i];
-	    	 System.out.println(capacityfinal[i]);
+	    	 Capacity cap=capacity[i];
+	    	 capacityfinal[c]=cap;
 	    	 c++;
 	      }
-	    }*/
+	    }
 		return capacityfinal;
 		
 	}
