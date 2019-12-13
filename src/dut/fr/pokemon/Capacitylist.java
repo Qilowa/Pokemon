@@ -6,14 +6,14 @@ import java.io.IOException;
 import java.util.Arrays;
 
 public class Capacitylist {
-	private final String TXT ="./RessourcesPokemon-20191205/Capacity.csv";
-	private Capacity[] capacity = new Capacity[729];
+	private static final String CSV ="./RessourcesPokemon-20191205/Capacity.csv";
+	private static Capacity[] capacity = new Capacity[729];
 	private static Capacitylist onlyInstance;
 	public Capacitylist() throws IOException {
 		String line;
 		boolean nameField = false;
 		try {
-		BufferedReader reader = new BufferedReader(new FileReader(TXT));
+		BufferedReader reader = new BufferedReader(new FileReader(CSV));
 	    while ((line = reader.readLine()) != null) {
 	    	if (nameField == false) {
 	    		nameField = true;
@@ -23,7 +23,7 @@ public class Capacitylist {
 	    	if (array.length==7) {
 	    		Integer id = Integer.parseInt(array[0]);
 		    	String name = array[1];
-		    	String type = array[2];
+		    	Type type = Type.valueOf(array[2].toUpperCase());
 		    	Integer power = Integer.parseInt(array[3]);
 		    	Integer pp = Integer.parseInt(array[4]);
 		    	Integer precision = Integer.parseInt(array[5]);
@@ -34,7 +34,7 @@ public class Capacitylist {
 	    	if (array.length==6) {
 	    		Integer id = Integer.parseInt(array[0]);
 		    	String name = array[1];
-		    	String type = array[2];
+		    	Type type = Type.valueOf(array[2].toUpperCase());
 		    	Integer power = 0;
 		    	Integer pp = Integer.parseInt(array[3]);
 		    	Integer precision = Integer.parseInt(array[4]);
@@ -45,7 +45,7 @@ public class Capacitylist {
 	    	if (array.length==5) {
 	    		Integer id = Integer.parseInt(array[0]);
 		    	String name = array[1];
-		    	String type = array[2];
+		    	Type type = Type.valueOf(array[2].toUpperCase());
 		    	Integer power = 0;
 		    	Integer pp = Integer.parseInt(array[3]);
 		    	Integer precision = 0;
@@ -58,23 +58,23 @@ public class Capacitylist {
 			e.printStackTrace();
 		}
 	}
-	public Capacity[] capacitychoice(String typechoice) {
+	public static Capacity[] capacitychoice(Type[] types) {
 		Capacity[] capacityfinal = new Capacity[50];
 		int c=1;
-		if ((capacity[1].getType())==typechoice) {
+		if ((capacity[1].getType()[0])== types[0] || (capacity[1].getType()[0])==types[1] ) {
 			System.out.println("ouii");
 		}
-		System.out.println(capacity[1].getType());
-		System.out.println(typechoice);
-		for(int i = 1; i < capacity.length; i++){
-	      if (capacity[i].getType()==typechoice || capacity[i].getType()=="normal") {
+		System.out.println(capacity[1].getType()[0]);
+		System.out.println(types[0]);
+		/*for(int i = 1; i < capacity.length; i++){
+	      if (capacity[i].getType()[0]==types[0]  || capacity[i].getType()[0]==types[1]) {
 	    	  System.out.println("test");
 	    	  System.out.println(capacity[i]);
 	    	 capacityfinal[c]=capacity[i];
 	    	 System.out.println(capacityfinal[i]);
 	    	 c++;
 	      }
-	    }
+	    }*/
 		return capacityfinal;
 		
 	}
@@ -87,6 +87,9 @@ public class Capacitylist {
 	public Capacity getCapacity(int id) {
 		Capacity c = capacity[id];
 		return c;
+	}
+	public String printCapacitylist() {
+		return capacity.toString();
 	}
 	
 

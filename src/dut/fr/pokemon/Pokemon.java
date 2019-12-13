@@ -73,5 +73,9 @@ public class Pokemon implements Serializable{
 	public int hashCode() {
 		return Objects.hash(numPokedex, picture, name, height, weight, types);
 	}
+
+	public Type[] getTypes() {
+		return types;
+	}
 	
 }

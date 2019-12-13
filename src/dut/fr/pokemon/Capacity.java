@@ -13,13 +13,13 @@ public class Capacity {
 	private final int accuracy;
 	private final int pp;
 	private final String category;
-	private final String type;
-	public Capacity(String name,String type,int power,int pp, int accuracy,String category) {
+	private final Type[] type;
+	public Capacity(String name,Type type,int power,int pp, int accuracy,String category) {
 		this.name=Objects.requireNonNull(name);
-		this.type=Objects.requireNonNull(type);
-		if (type == "Physique" &&(power<15 || power>300 || power%5==1 )) {
+		this.type=new Type[] {type};;
+		/*if (type == type.FIGHTING &&(power<15 || power>300 || power%5==1 )) {
 			throw new IllegalArgumentException("precision must be between 15 and 300 and also a multiple of 5");
-		}
+		}*/
 		this.power = power;
 		if (accuracy<0 || accuracy>100) {
 			throw new IllegalArgumentException("precision must be between 0 and 100");
@@ -66,7 +66,7 @@ public class Capacity {
 		return category;
 	}
 
-	public String getType() {
+	public Type[] getType() {
 		return type;
 	}
 

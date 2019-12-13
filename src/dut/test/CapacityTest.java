@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 import dut.fr.pokemon.Capacity;
 import dut.fr.pokemon.Capacitylist;
+import dut.fr.pokemon.FightingPokemon;
 import dut.fr.pokemon.Pokedex;
 import dut.fr.pokemon.Pokemon;
 
@@ -18,15 +19,18 @@ public class CapacityTest {
 		Pokedex p = Pokedex.getInstance();
 	    for (int i = 0; i < 6; i++) {
 	    	Scanner sc = new Scanner(System.in);
+			System.out.println(p.printPokedex());
 		    System.out.println("Choissisez un Pokémon (id) : ");
 		    int pk = sc.nextInt();
 		    System.out.println("Vous avez saisi le Pokémon : " + pk);
-		    Capacity[] capacity=c.capacitychoice("normal");//pk.gettype()
-			System.out.println(capacity);
+		    FightingPokemon pokemon = FightingPokemon.createFightingPokemon(pk);
+		    System.out.println(p.getPokemon(pk-1));
+		    Capacity[] capacity=c.capacitychoice(p.getPokemon(pk).getTypes());//pk.gettype()
+			/*System.out.println(capacity);
 			for(int y = 1; y < capacity.length; y++)
 		    {
 		      System.out.println("id: " + y +" " + capacity[y]);
-		    }
+		    }*/
 		    System.out.println("Choissisez une capacités (id) : ");
 		    int cp1 = sc.nextInt();
 		    System.out.println("Vous avez saisi la Capacité : " + cp1);

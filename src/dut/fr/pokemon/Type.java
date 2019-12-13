@@ -19,7 +19,4 @@ public enum Type {
 	GHOST,
 	DARK,
 	FLYING;
-	
-	
-	
 }
