@@ -11,12 +11,14 @@ import dut.fr.pokemon.Capacitylist;
 import dut.fr.pokemon.FightingPokemon;
 import dut.fr.pokemon.Pokedex;
 import dut.fr.pokemon.Pokemon;
+import dut.fr.pokemon.PokemonTeam;
 
 public class CapacityTest {
 
 	public static void main(String[] args) throws IOException{
 		Capacitylist c = Capacitylist.getInstance();
 		Pokedex p = Pokedex.getInstance();
+		PokemonTeam team= new PokemonTeam();
 	    for (int i = 0; i < 6; i++) {
 	    	Scanner sc = new Scanner(System.in);
 			System.out.println(p);
@@ -35,22 +37,33 @@ public class CapacityTest {
 		    System.out.println("Vous avez saisi la Capacité : " + capacitylist[cp1]);
 		    pokemon.addCapacity(capacitylist[cp1]);
 		    //pokemon.addpacity(capacity[cp1]);
+		    
+		    
 		    System.out.println("Choissisez votre 2ème capacité (id) : ");
 		    int cp2 = sc.nextInt();
 		    System.out.println("Vous avez saisi la Capacité : " + capacitylist[cp2]);
 		    pokemon.addCapacity(capacitylist[cp2]);
 		    //pokemon.addpacity(capacity[cp2]);
+		    
+		    
 		    System.out.println("Choissisez votre 3ème capacité (id) : ");
 		    int cp3 = sc.nextInt();
 		    System.out.println("Vous avez saisi la Capacité : " + capacitylist[cp3]);
 		    pokemon.addCapacity(capacitylist[cp3]);
 		    //pokemon.addpacity(capacity[cp3]);
+		    
+		    
 		    System.out.println("Choissisez votre 4ème capacité (id) : ");
 		    int cp4 = sc.nextInt();
 		    System.out.println("Vous avez saisi la Capacité : " + capacitylist[cp4]);
 		    pokemon.addCapacity(capacitylist[cp4]);
 		    //pokemon.addpacity(capacity[cp4]);
-		    //Pokémon.addlist
+		    
+		    
+		    team.add(pokemon);
+		    
 	    }
+	    System.out.println("Voici vos pokémons : ");
+	    System.out.println(team);
 	}
 }
