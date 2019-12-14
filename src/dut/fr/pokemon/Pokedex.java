@@ -63,8 +63,8 @@ public class Pokedex implements Serializable{
 		return onlyInstance;
 	}
 	
-	public static Pokemon getPokemon(int numPokedex) {
-		Pokemon p = pokedex.get(numPokedex);
+	public Pokemon getPokemon(int numPokedex) {
+		Pokemon p = pokedex.get(numPokedex-1);
 		return p;
 	}
 	

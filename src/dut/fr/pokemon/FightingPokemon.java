@@ -6,15 +6,14 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class FightingPokemon implements Serializable {
+public class FightingPokemon extends Pokemon implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 7943795484011533552L;
 
 	private static final String path = "RessourcesPokemon-20191205/stats.csv";
-	
-	private final Pokemon pokemon;
+
 	private String name;
 	private int experience;
 	private int health;
@@ -28,7 +27,7 @@ public class FightingPokemon implements Serializable {
 	
 	private FightingPokemon(Pokemon pokemon, String name, int experience, int health, int phyAttack, int speAttack, int phyDefense, int speDefense,
 			int speed) {
-		this.pokemon = pokemon;
+		super(pokemon.getNumPokedex(), pokemon.getName(), pokemon.getImgPath(), pokemon.getHeight(), pokemon.getWeight(), pokemon.getTypes() );
 		this.name = name;
 		this.experience = experience;
 		this.health = health;
@@ -55,8 +54,8 @@ public class FightingPokemon implements Serializable {
 	}
 	
 	
-	public static FightingPokemon createFightingPokemon(int numPokedex) {
-		Pokemon pokemon = Pokedex.getPokemon(numPokedex);
+	public static FightingPokemon createFightingPokemon(int numPokedex, Pokedex pokedex) {
+		Pokemon pokemon = pokedex.getPokemon(numPokedex);
 		
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(path));
@@ -88,6 +87,7 @@ public class FightingPokemon implements Serializable {
 		
 	}
 	
+	
 	public void addCapacity(Capacity c) {
 		if (numberCapacity >= 4) {
 			throw new IllegalStateException("cannot add another capacity");
@@ -106,7 +106,7 @@ public class FightingPokemon implements Serializable {
 			return false;
 		}
 		FightingPokemon p = (FightingPokemon) o;
-		return p.pokemon.equals(this.pokemon) && this.name.equals(p.name) && this.capacities.equals(p.capacities)
+		return super.equals(p) && this.name.equals(p.name) && this.capacities.equals(p.capacities)
 				&& p.experience == this.experience && p.health == this.health && p.numberCapacity == this.numberCapacity 
 				&& p.phyAttack == this.phyAttack && p.phyDefense == this.phyDefense && p.speAttack == this.speAttack &&
 				p.speDefense == this.speDefense && p.speed == this.speed;
@@ -114,7 +114,19 @@ public class FightingPokemon implements Serializable {
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(pokemon, experience, capacities, health, numberCapacity, phyAttack, phyDefense, speAttack, speDefense, speed);
+		return Objects.hash(super.hashCode(), experience, capacities, health, numberCapacity, phyAttack, phyDefense, speAttack, speDefense, speed);
+	}
+	
+	public boolean isKO() {
+		if (health <= 0) {
+			return true;
+		}
+		
+		return false;
+	}
+	
+	public Capacity[] getCapacities() {
+		return capacities;
 	}
 	
 	

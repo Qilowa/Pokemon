@@ -1,10 +1,5 @@
 package dut.fr.pokemon;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Objects;
 
 public class Capacity {
@@ -14,6 +9,7 @@ public class Capacity {
 	private final int pp;
 	private final String category;
 	private final Type[] type;
+	
 	public Capacity(String name,Type type,int power,int pp, int accuracy,String category) {
 		this.name=Objects.requireNonNull(name);
 		this.type=new Type[] {type};;

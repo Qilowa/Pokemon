@@ -11,7 +11,7 @@ public class PokedexTest {
 	public static void main(String[] args) throws IOException {
 		Pokedex p = Pokedex.getInstance();
 		Pokemon a =new Pokemon(2, "pikachu", "img/025.png",10,130, null, null);
-		System.out.println(Pokedex.getPokemon(15));
+		System.out.println(p.getPokemon(15));
 		a.showPicture();
 		System.out.println(a);
 

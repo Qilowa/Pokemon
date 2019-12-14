@@ -21,7 +21,7 @@ public class Pokemon implements Serializable{
 	private static final long serialVersionUID = -2272093327434807717L;
 	
 	private final int numPokedex;
-	private final transient Image picture;
+	private final String pathImage;
 	private final String name;
 	private final int height;
 	private final int weight;
@@ -29,15 +29,15 @@ public class Pokemon implements Serializable{
 	
 	public Pokemon(int numPokedex, String name, String img, int height, int weight, Type type1, Type type2) {
 		this.numPokedex = numPokedex;
-		try {
-			this.picture = ImageIO.read(new File("RessourcesPokemon-20191205/"+img));
-		} catch (IOException e) {
-			throw new IllegalArgumentException("Image cannot be loaded");
-		}
+		this.pathImage =img;
 		this.name = Objects.requireNonNull(name);
 		this.height = height;
 		this.weight = weight;
 		this.types = new Type[] {type1, type2};
+	}
+	
+	public Pokemon(int numPokedex, String name, String img, int height, int weight, Type[] types) {
+		this(numPokedex, name, img, height, weight, types[0], types[1]);
 	}
 	
 	@Override
@@ -49,15 +49,38 @@ public class Pokemon implements Serializable{
 		return name;
 	}
 	
+	public int getNumPokedex() {
+		return numPokedex;
+	}
+	
+	public String getImgPath() {
+		return pathImage;
+	}
+	
+	public int getHeight() {
+		return height;
+	}
+	
+	public int getWeight() {
+		return weight;
+	}
+	
 
 	public void showPicture() {
-		JLabel label = new JLabel(new ImageIcon(picture));
-		JFrame frame=new JFrame();
-        frame.setLayout(new FlowLayout());
-        frame.setSize(300,300);
-        frame.add(label);
-        frame.setVisible(true);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		Image picture;
+		try {
+			picture = ImageIO.read(new File("RessourcesPokemon-20191205/"+pathImage));
+			JLabel label = new JLabel(new ImageIcon(picture));
+			JFrame frame=new JFrame();
+	        frame.setLayout(new FlowLayout());
+	        frame.setSize(300,300);
+	        frame.add(label);
+	        frame.setVisible(true);
+	        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 	@Override
@@ -67,12 +90,12 @@ public class Pokemon implements Serializable{
 		}
 		Pokemon p = (Pokemon) o;
 		return p.numPokedex == this.numPokedex && this.name == p.name && this.height == p.height 
-				&& this.picture == p.picture && this.weight == p.weight && this.types == p.types;
+				&& this.pathImage == p.pathImage && this.weight == p.weight && this.types == p.types;
 	}
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(numPokedex, picture, name, height, weight, types);
+		return Objects.hash(numPokedex, pathImage, name, height, weight, types);
 	}
 
 	public Type[] getTypes() {

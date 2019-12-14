@@ -3,12 +3,14 @@ package dut.fr.pokemon;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Capacitylist {
 	private static final String CSV ="./RessourcesPokemon-20191205/Capacity.csv";
 	private static Capacity[] capacity = new Capacity[729];
 	private static Capacitylist onlyInstance;
+	
 	public Capacitylist() throws IOException {
 		String line;
 		boolean nameField = false;
@@ -58,17 +60,18 @@ public class Capacitylist {
 			e.printStackTrace();
 		}
 	}
-	public static Capacity[] capacitychoice(Type[] types) {
-		Capacity[] capacityfinal = new Capacity[100];
-		int c=1;
+	
+	
+	
+	public static ArrayList<Capacity> capacitychoice(Type[] types) {
+		ArrayList<Capacity> capacityFinal = new ArrayList<Capacity>();
 		for(int i = 1; i < capacity.length; i++){
 	      if (capacity[i].getType()[0]==types[0]  || capacity[i].getType()[0]==types[1]) {
 	    	 Capacity cap=capacity[i];
-	    	 capacityfinal[c]=cap;
-	    	 c++;
+	    	 capacityFinal.add(cap);
 	      }
 	    }
-		return capacityfinal;
+		return capacityFinal;
 		
 	}
 	public static Capacitylist getInstance() throws IOException {
@@ -77,11 +80,16 @@ public class Capacitylist {
 		}
 		return onlyInstance;
 	}
+	
+	
 	public Capacity getCapacity(int id) {
 		Capacity c = capacity[id];
 		return c;
 	}
-	public String printCapacitylist() {
+	
+	
+	@Override
+	public String toString() {
 		return capacity.toString();
 	}
 	

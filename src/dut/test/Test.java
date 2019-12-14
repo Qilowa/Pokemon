@@ -9,11 +9,11 @@ public class Test {
 
 	public static void main(String[] args) {
 		Pokedex pokedex = Pokedex.getInstance();
-		FightingPokemon p = FightingPokemon.createFightingPokemon(1);
+		System.out.println(pokedex.getPokemon(1));
+		FightingPokemon p = FightingPokemon.createFightingPokemon(1, pokedex);
 		System.out.println(p);
 		
 		PokemonTeam team = new PokemonTeam();
-		team.add(p);
 		System.out.println(team);
 		
 		Save.save("tmp/team.ser", team);
