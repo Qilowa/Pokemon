@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Capacitylist {
 	private static final String CSV ="./RessourcesPokemon-20191205/Capacity.csv";
