@@ -48,6 +48,10 @@ public class PokemonTeam implements Serializable{
 	}
 	
 	public void createTeam(Pokedex p) {
+		//reprendre ou continué
+		//combien de pokemon voulez?
+		//chouissisez vos capacité et -1 pour break
+		//condition scanner quand on rentre de la merde
 		for (int i = 0; i < 6; i++) {
 	    	Scanner sc = new Scanner(System.in);
 			System.out.println(p);
@@ -94,6 +98,7 @@ public class PokemonTeam implements Serializable{
 	    }
 	    System.out.println("Voici vos pokémons : ");
 	    System.out.println(this.toString());
+	    //sauvegarde automatique
 	}
 	
 	private boolean isEmpty() {
