@@ -17,7 +17,7 @@ public class Test {
 		System.out.println(team);
 		
 		Save.save("tmp/team.ser", team);
-		PokemonTeam s =Save.read("tmp/team.ser");
+		PokemonTeam s =Save.readPokemonTeam("tmp/team.ser");
 		System.out.println(s);
 		System.out.println(s.equals(p));
 		

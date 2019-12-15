@@ -126,5 +126,9 @@ public class PokemonTeam implements Serializable{
 	public FightingPokemon get(int index) {
 		return array.get(index);
 	}
+	
+	public int size() {
+		return array.size();
+	}
 
 }
