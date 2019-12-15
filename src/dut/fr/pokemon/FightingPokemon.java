@@ -15,15 +15,16 @@ public class FightingPokemon extends Pokemon implements Serializable {
 	private static final String path = "RessourcesPokemon-20191205/stats.csv";
 
 	private String name;
-	private int experience;
-	private int health;
-	private int phyAttack;
-	private int speAttack;
-	private int phyDefense;
-	private int speDefense;
-	private int speed;
-	private Capacity[] capacities;
+	private final int experience;
+	private final int health;
+	private final int phyAttack;
+	private final int speAttack;
+	private final int phyDefense;
+	private final int speDefense;
+	private final int speed;
+	private final Capacity[] capacities;
 	private int numberCapacity;
+	private int currentHealth;
 	
 	private FightingPokemon(Pokemon pokemon, String name, int experience, int health, int phyAttack, int speAttack, int phyDefense, int speDefense,
 			int speed) {
@@ -38,6 +39,7 @@ public class FightingPokemon extends Pokemon implements Serializable {
 		this.speed = speed;
 		this.capacities = new Capacity[4];
 		this.numberCapacity = 0;
+		this.currentHealth = health;
 	}
 	
 	private FightingPokemon(Pokemon pokemon, int health, int phyAttack, int speAttack, int phyDefense, int speDefense,
@@ -118,7 +120,7 @@ public class FightingPokemon extends Pokemon implements Serializable {
 	}
 	
 	public boolean isKO() {
-		if (health <= 0) {
+		if (currentHealth <= 0) {
 			return true;
 		}
 		
@@ -129,5 +131,42 @@ public class FightingPokemon extends Pokemon implements Serializable {
 		return capacities;
 	}
 	
+	public int getDefense() {
+		return phyDefense;
+	}
+	
+	public int getSpeDefense() {
+		return speDefense;
+	}
+	
+	@Override
+	public String getName() {
+		return name;
+	}
+	
+	public void attack(int capacityID, FightingPokemon pk) {
+		if (capacityID > 4 || capacityID < 0) {
+			throw new IllegalArgumentException("The pokemon has only 4 attacks");
+		}
+		int lostHealth = 0;
+		
+		Capacity cap = capacities[capacityID];
+		if (cap.getCategory() == Category.Physical  ) {
+			lostHealth = (int) (((50*0.4+2)*this.phyAttack*1*cap.getPower())/(pk.getDefense()*1*50))+2;
+		}
+		if (cap.getCategory() == Category.Special  ) {
+			lostHealth = (int) (((50*0.4+2)*this.speAttack*1*cap.getPower())/(pk.getSpeDefense()*1*50))+2;
+		}
+		pk.getDamaged(lostHealth);
+		
+		System.out.println(this.name+" lance " + cap.getName());
+		
+		System.out.println(pk.getName()+": -"+lostHealth+"PV");
+	}
+	
+	
+	private void getDamaged(int lostHP) {
+		this.currentHealth -= lostHP;
+	}
 	
 }

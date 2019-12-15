@@ -7,7 +7,7 @@ public class Capacity {
 	private final int power;
 	private final int accuracy;
 	private final int pp;
-	private final String category;
+	private final Category category;
 	private final Type[] type;
 	
 	public Capacity(String name,Type type,int power,int pp, int accuracy,String category) {
@@ -22,7 +22,7 @@ public class Capacity {
 		}
 		this.accuracy = accuracy;
 		this.pp=pp;
-		this.category = category;
+		this.category = Category.valueOf(category);
 	}
 	
 	@Override
@@ -58,7 +58,7 @@ public class Capacity {
 		return pp;
 	}
 
-	public String getCategory() {
+	public Category getCategory() {
 		return category;
 	}
 
