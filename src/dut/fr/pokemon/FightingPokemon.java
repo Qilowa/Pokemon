@@ -144,6 +144,10 @@ public class FightingPokemon extends Pokemon implements Serializable {
 		return name;
 	}
 	
+	public int getCurrentHealth() {
+		return currentHealth;
+	}
+	
 	public void attack(int capacityID, FightingPokemon pk) {
 		if (capacityID > 4 || capacityID < 0) {
 			throw new IllegalArgumentException("The pokemon has only 4 attacks");
@@ -151,10 +155,10 @@ public class FightingPokemon extends Pokemon implements Serializable {
 		int lostHealth = 0;
 		
 		Capacity cap = capacities[capacityID];
-		if (cap.getCategory() == Category.Physical  ) {
+		if (cap.getCategory() == Category.physical  ) {
 			lostHealth = (int) (((50*0.4+2)*this.phyAttack*1*cap.getPower())/(pk.getDefense()*1*50))+2;
 		}
-		if (cap.getCategory() == Category.Special  ) {
+		if (cap.getCategory() == Category.special  ) {
 			lostHealth = (int) (((50*0.4+2)*this.speAttack*1*cap.getPower())/(pk.getSpeDefense()*1*50))+2;
 		}
 		pk.getDamaged(lostHealth);

@@ -7,10 +7,11 @@ import java.util.ArrayList;
 
 public class Capacitylist {
 	private static final String CSV ="./RessourcesPokemon-20191205/Capacity.csv";
-	private static Capacity[] capacity = new Capacity[729];
+	private static ArrayList<Capacity> capacity;
 	private static Capacitylist onlyInstance;
 	
-	public Capacitylist() throws IOException {
+	private Capacitylist()  {
+		capacity = new ArrayList<Capacity>();
 		String line;
 		boolean nameField = false;
 		try {
@@ -30,7 +31,7 @@ public class Capacitylist {
 		    	Integer precision = Integer.parseInt(array[5]);
 		    	String category = array[6];
 		        Capacity p = new Capacity(name, type, power,pp, precision,category);
-		        capacity[id]=p;
+		        capacity.add(p);
 			}
 	    	if (array.length==6) {
 	    		Integer id = Integer.parseInt(array[0]);
@@ -41,7 +42,7 @@ public class Capacitylist {
 		    	Integer precision = Integer.parseInt(array[4]);
 		    	String category = array[5];
 		        Capacity p = new Capacity(name, type, power,pp, precision,category);
-		        capacity[id]=p;
+		        capacity.add(p);
 			}
 	    	if (array.length==5) {
 	    		Integer id = Integer.parseInt(array[0]);
@@ -52,7 +53,7 @@ public class Capacitylist {
 		    	Integer precision = 0;
 		    	String category = array[4];
 		        Capacity p = new Capacity(name, type, power,pp, precision,category);
-		        capacity[id]=p;
+		        capacity.add(p);
 			}
 	    }
 		}catch (IOException e) {
@@ -64,16 +65,16 @@ public class Capacitylist {
 	
 	public static ArrayList<Capacity> capacitychoice(Type[] types) {
 		ArrayList<Capacity> capacityFinal = new ArrayList<Capacity>();
-		for(int i = 1; i < capacity.length; i++){
-	      if (capacity[i].getType()[0]==types[0]  || capacity[i].getType()[0]==types[1]) {
-	    	 Capacity cap=capacity[i];
+		for(int i = 0; i < capacity.size(); i++){
+	      if (capacity.get(i).getType()[0]==types[0]  || capacity.get(i).getType()[0]==types[1]) {
+	    	 Capacity cap=capacity.get(i);
 	    	 capacityFinal.add(cap);
 	      }
 	    }
 		return capacityFinal;
 		
 	}
-	public static Capacitylist getInstance() throws IOException {
+	public static Capacitylist getInstance() {
 		if (onlyInstance == null) {
 			onlyInstance = new Capacitylist();
 		}
@@ -82,7 +83,7 @@ public class Capacitylist {
 	
 	
 	public Capacity getCapacity(int id) {
-		Capacity c = capacity[id];
+		Capacity c = capacity.get(id);
 		return c;
 	}
 	

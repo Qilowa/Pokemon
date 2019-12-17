@@ -1,5 +1,7 @@
 package dut.test;
 
+import dut.fr.pokemon.Capacity;
+import dut.fr.pokemon.Capacitylist;
 import dut.fr.pokemon.Fight;
 import dut.fr.pokemon.FightingPokemon;
 import dut.fr.pokemon.Pokedex;
@@ -9,7 +11,10 @@ public class Test2 {
 
 	public static void main(String[] args) {
 		Pokedex pokedex = Pokedex.getInstance();
+		Capacitylist list = Capacitylist.getInstance();
 		FightingPokemon pk1 = FightingPokemon.createFightingPokemon(1, pokedex);
+		Capacity p = list.getCapacity(0);
+		pk1.addCapacity(p);
 		FightingPokemon pk2 = FightingPokemon.createFightingPokemon(1, pokedex);
 		
 		PokemonTeam team1 = new PokemonTeam();
