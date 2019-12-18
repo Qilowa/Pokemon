@@ -10,7 +10,7 @@ public class Capacity {
 	private final Category category;
 	private final Type[] type;
 	
-	public Capacity(String name,Type type,int power,int pp, int accuracy,String category) {
+	Capacity(String name,Type type,int power,int pp, int accuracy,String category) {
 		this.name=Objects.requireNonNull(name);
 		this.type=new Type[] {type};;
 		/*if (type == type.FIGHTING &&(power<15 || power>300 || power%5==1 )) {

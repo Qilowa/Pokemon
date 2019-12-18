@@ -26,7 +26,7 @@ public class Pokemon implements Serializable{
 	private final int weight;
 	private Type[] types;
 	
-	public Pokemon(int numPokedex, String name, String img, int height, int weight, Type type1, Type type2) {
+	Pokemon(int numPokedex, String name, String img, int height, int weight, Type type1, Type type2) {
 		this.numPokedex = numPokedex;
 		this.pathImage =img;
 		this.name = Objects.requireNonNull(name);
