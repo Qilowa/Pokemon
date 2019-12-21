@@ -12,7 +12,7 @@ public class Test2 {
 	public static void main(String[] args) {
 		Pokedex pokedex = Pokedex.getInstance();
 		Capacitylist list = Capacitylist.getInstance();
-		FightingPokemon pk1 = FightingPokemon.createFightingPokemon(1, pokedex);
+		FightingPokemon pk1 = FightingPokemon.createFightingPokemon(25, pokedex);
 		Capacity p = list.getCapacity(0);
 		pk1.addCapacity(p);
 		FightingPokemon pk2 = FightingPokemon.createFightingPokemon(1, pokedex);
@@ -22,7 +22,8 @@ public class Test2 {
 		team1.add(pk1);
 		team2.add(pk2);
 		
-		Fight.fight(team1, team2);
+		Fight f = new Fight(team1, team2);
+		f.fight();
 	}
 
 }

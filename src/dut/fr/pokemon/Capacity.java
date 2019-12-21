@@ -9,6 +9,7 @@ public class Capacity {
 	private final int pp;
 	private final Category category;
 	private final Type[] type;
+	private int currentPP;
 	
 	Capacity(String name,Type type,int power,int pp, int accuracy,String category) {
 		this.name=Objects.requireNonNull(name);
@@ -23,6 +24,7 @@ public class Capacity {
 		this.accuracy = accuracy;
 		this.pp=pp;
 		this.category = Category.valueOf(category);
+		this.currentPP = pp;
 	}
 	
 	@Override
@@ -54,7 +56,11 @@ public class Capacity {
 		return accuracy;
 	}
 
-	public int getPp() {
+	public int getPP() {
+		return currentPP;
+	}
+	
+	public int getMaxPP() {
 		return pp;
 	}
 
@@ -64,6 +70,10 @@ public class Capacity {
 
 	public Type[] getType() {
 		return type;
+	}
+	
+	public void reducePP() {
+		currentPP--;
 	}
 
 

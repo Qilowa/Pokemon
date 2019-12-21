@@ -155,6 +155,7 @@ public class FightingPokemon extends Pokemon implements Serializable {
 		int lostHealth = 0;
 		
 		Capacity cap = capacities[capacityID];
+		System.out.println(cap);
 		if (cap.getCategory() == Category.physical  ) {
 			lostHealth = (int) (((50*0.4+2)*this.phyAttack*1*cap.getPower())/(pk.getDefense()*1*50))+2;
 		}
@@ -162,6 +163,7 @@ public class FightingPokemon extends Pokemon implements Serializable {
 			lostHealth = (int) (((50*0.4+2)*this.speAttack*1*cap.getPower())/(pk.getSpeDefense()*1*50))+2;
 		}
 		pk.getDamaged(lostHealth);
+		cap.reducePP();
 		
 		System.out.println(this.name+" lance " + cap.getName());
 		
@@ -171,6 +173,14 @@ public class FightingPokemon extends Pokemon implements Serializable {
 	
 	private void getDamaged(int lostHP) {
 		this.currentHealth -= lostHP;
+	}
+	
+	public int getSpeed() {
+		return speed;
+	}
+	
+	public int getMaxHealth() {
+		return health;
 	}
 	
 }
