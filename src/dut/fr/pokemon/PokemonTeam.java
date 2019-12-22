@@ -49,11 +49,16 @@ public class PokemonTeam implements Serializable{
 	
 	public void createTeam(Pokedex p) {
 		//reprendre ou continué
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Combien de Pokémon voulez-vous ? (max 6) ");
+	    int nb = sc.nextInt();
+	    if (nb > 6 || nb < 1) {
+			System.out.println("incorrect");
+		}
 		//combien de pokemon voulez?
 		//chouissisez vos capacité et -1 pour break 
 		//condition scanner quand on rentre de la merde
-		for (int i = 0; i < 6; i++) {
-	    	Scanner sc = new Scanner(System.in);
+		for (int i = 0; i < nb; i++) {
 			System.out.println(p);
 		    System.out.println("Choissisez un Pokémon (id) : ");
 		    int pk = sc.nextInt();
