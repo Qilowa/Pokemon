@@ -50,57 +50,131 @@ public class PokemonTeam implements Serializable{
 	public void createTeam(Pokedex p) {
 		//reprendre ou continué
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Combien de Pokémon voulez-vous ? (max 6) ");
+		System.out.println("Voulez-vous reprendre votre partie ou recommencer une nouvelle ? (0 for resume and 1 for load) :");
+	    int game = sc.nextInt();
+		System.out.println("Combien de Pokémon voulez-vous ? (max : 6) ");
 	    int nb = sc.nextInt();
-	    if (nb > 6 || nb < 1) {
-			System.out.println("incorrect");
+	    while(nb > 6 || nb < 1) {
+			System.out.println("incorrect réassayez");
+			System.out.println("Combien de Pokémon voulez-vous ? (max 6) ");
+		    int nb1 = sc.nextInt();
+		    if (nb1<=6 && nb1>=1) {
+				nb=nb1;
+				break;
+			}
 		}
+	    System.out.println(nb);
 		//combien de pokemon voulez?
 		//chouissisez vos capacité et -1 pour break 
 		//condition scanner quand on rentre de la merde
-		for (int i = 0; i < nb; i++) {
+		for (int i = 0; i <nb; i++) {
+			System.out.println(i);
+			while (true) {
 			System.out.println(p);
 		    System.out.println("Choissisez un Pokémon (id) : ");
 		    int pk = sc.nextInt();
+		  //condition scanner quand on rentre de la merde
+		    
 		    System.out.println("Vous avez saisi le Pokémon : " + p.getPokemon(pk));
 		    FightingPokemon pokemon = FightingPokemon.createFightingPokemon(pk, p);
 		    System.out.println(pokemon);
 		    ArrayList<Capacity> capacitylist=Capacitylist.capacitychoice(p.getPokemon(pk).getTypes());//pk.gettype()
-			for(int y = 0; y < capacitylist.size(); y++)
-		    {
+			for(int y = 0; y < capacitylist.size(); y++){
 		      System.out.println("id: " + y +" " + capacitylist.get(y));
 		    }
 		    System.out.println("Choissisez votre 1ère capacité (id) : ");
 		    int cp1 = sc.nextInt();
+		    while(cp1 > (capacitylist.size()-1) || cp1 < -1) {
+				System.out.println("incorrect réassayez");
+				System.out.println("Choissisez votre 1ère capacité (id) : ");
+			    int cptest = sc.nextInt();
+			    if (cptest < capacitylist.size() && cptest > -1) {
+			    	cp1=cptest;
+					break;
+				}
+		    }
 		    System.out.println("Vous avez saisi la Capacité : " + capacitylist.get(cp1));
 		    pokemon.addCapacity(capacitylist.get(cp1));
 		    //pokemon.addpacity(capacity[cp1]);
 		    
-		    
-		    System.out.println("Choissisez votre 2ème capacité (id) : ");
+		    System.out.println("Choissisez votre 2ème capacité (id) (-1 pour ne plus en choisir) : ");
 		    int cp2 = sc.nextInt();
+		    while(cp2 > (capacitylist.size()-1) || cp2 < -1) {
+				System.out.println("incorrect réassayez");
+				System.out.println("Choissisez votre 2ème capacité (id) (-1 pour ne plus en choisir) : ");
+			    int cptest = sc.nextInt();
+			    if (cptest < capacitylist.size() && cptest > -1) {
+			    	cp2=cptest;
+					break;
+				}
+			    if (cptest==-1) {
+			    	cp2=cptest;
+			    	break;
+				}
+			}
+		    if (cp2==-1) {
+		    	this.add(pokemon);
+		    	break;
+			}
+		    
 		    System.out.println("Vous avez saisi la Capacité : " + capacitylist.get(cp2));
 		    pokemon.addCapacity(capacitylist.get(cp2));
 		    //pokemon.addpacity(capacity[cp2]);
 		    
-		    
-		    System.out.println("Choissisez votre 3ème capacité (id) : ");
+		    System.out.println("Choissisez votre 3ème capacité (id) (-1 pour ne plus en choisir) : ");
 		    int cp3 = sc.nextInt();
+		    while(cp3 > (capacitylist.size()-1) || cp3 < -1) {
+				System.out.println("incorrect réassayez");
+				System.out.println("Choissisez votre 3ème capacité (id) (-1 pour ne plus en choisir) : ");
+			    int cptest = sc.nextInt();
+			    if (cptest < capacitylist.size() && cptest > -1) {
+			    	cp3=cptest;
+					break;
+				}
+			    if (cptest==-1) {
+			    	cp3=cptest;
+			    	break;
+				}
+			}
+		    if (cp3==-1) {
+		    	this.add(pokemon);
+		    	break;
+			}
 		    System.out.println("Vous avez saisi la Capacité : " + capacitylist.get(cp3));
 		    pokemon.addCapacity(capacitylist.get(cp3));
 		    //pokemon.addpacity(capacity[cp3]);
 		    
 		    
-		    System.out.println("Choissisez votre 4ème capacité (id) : ");
+		    System.out.println("Choissisez votre 4ème capacité (id) (-1 pour ne plus en choisir) : ");
 		    int cp4 = sc.nextInt();
+		    while(cp4 > (capacitylist.size()-1) || cp4 < -1) {
+				System.out.println("incorrect réassayez");
+				System.out.println("Choissisez votre 4ème capacité (id) (-1 pour ne plus en choisir) : ");
+			    int cptest = sc.nextInt();
+			    if (cptest < capacitylist.size() && cptest > -1) {
+			    	cp4=cptest;
+					break;
+				}
+			    if (cptest==-1) {
+			    	cp4=cptest;
+			    	break;
+				}
+			}
+		    if (cp4==-1) {
+		    	this.add(pokemon);
+		    	break;
+			}
 		    System.out.println("Vous avez saisi la Capacité : " + capacitylist.get(cp4));
 		    pokemon.addCapacity(capacitylist.get(cp4));
 		    //pokemon.addpacity(capacity[cp4]);
 		    
 		    
 		    this.add(pokemon);
+		    break;
+			}
 		    
 	    }
+		
 	    System.out.println("Voici vos pokémons : ");
 	    System.out.println(this.toString());
 	    //sauvegarde automatique
