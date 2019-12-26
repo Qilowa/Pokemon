@@ -15,7 +15,7 @@ public class Fight {
 	private static void printPanel() {
 		
 		System.out.println("1 : attaquer");
-		System.out.println("2 : Changer de pokémon");
+		System.out.println("2 : Changer de pokï¿½mon");
 		System.out.println("3 : Fuir");
 		System.out.println("Que voulez vous faire ?");
 	}
@@ -25,7 +25,7 @@ public class Fight {
 			System.out.println((i)+": "+c[i]);
 		}
 		System.out.println("Que voulez vous faire ?");
-		System.out.println("-1 pour retourner en arrière");
+		System.out.println("-1 pour retourner en arriï¿½re");
 	}
 	
 	public static void printTeam(PokemonTeam t) {
@@ -54,7 +54,7 @@ public class Fight {
 		int choice2=0;
 		
 		Fight.printTeam(team);
-		System.out.println("Choisissez un pokémon (-1 pour retourner en arrière)");
+		System.out.println("Choisissez un pokï¿½mon (-1 pour retourner en arriï¿½re)");
 		if (sc.hasNext()) {
 			choice2 = sc.nextInt();
 		}
@@ -63,7 +63,7 @@ public class Fight {
 	
 
 	public void fight() {
-		System.out.println("Début du COMBAT\n");
+		System.out.println("Dï¿½but du COMBAT\n");
 		
 		FightingPokemon pk1 = team1.get(0); // Pokemon sur le board
 		FightingPokemon pk2 = team2.get(0); // Pokemon sur le board
@@ -90,12 +90,12 @@ public class Fight {
 				//Attaque
 				attackChoice1 = getAttackChoice(sc, pk1);
 				if (attackChoice1 == -1) {
-					// -1 pour retourner en arrière
+					// -1 pour retourner en arriï¿½re
 					continue;
 				}
 				break;
 			case 2:
-				//Changer de pokémon
+				//Changer de pokï¿½mon
 				
 				int choice2 = Fight.getPokemonChoice(sc, team1);
 				if (choice2 == -1) {
@@ -118,12 +118,12 @@ public class Fight {
 				//Attaque
 				attackChoice2 = getAttackChoice(sc, pk1);
 				if (attackChoice2 == -1) {
-					// -1 pour retourner en arrière
+					// -1 pour retourner en arriï¿½re
 					continue;
 				}
 				break;
 			case 2:
-				//Changer de pokémon
+				//Changer de pokï¿½mon
 				
 				int choice2 = Fight.getPokemonChoice(sc, team1);
 				if (choice2 == -1) {
@@ -139,13 +139,39 @@ public class Fight {
 				
 			}
 			
-			// Si pokémon KO
+			if (pk1.isKO()) {
+				System.out.println(pk1.getName()+" est KO");
+				System.out.println("2 : Envoyer un pokï¿½mon");
+				System.out.println("3 : Fuir");
+				System.out.println("Que voulez vous faire ?");
+				int change;
+				if (sc.hasNext()) {
+					change = sc.nextInt();
+					pk1 = team1.get(change);
+					continue;
+				}
+			}
+			
+			if (pk2.isKO()) {
+				System.out.println(pk2.getName()+" est KO");
+				System.out.println("2 : Envoyer un pokï¿½mon");
+				System.out.println("3 : Fuir");
+				System.out.println("Que voulez vous faire ?");
+				int change;
+				if (sc.hasNext()) {
+					change = sc.nextInt();
+					pk2 = team1.get(change);
+					continue;
+				}
+			}
+			
+			// Si pokï¿½mon KO
 			/* int choice3 = 0;
 			choice = sc.nextInt();
 			
 			while (!pk1.isKO() || choice3 == 3) {
 				System.out.println(pk1.getName()+" est KO");
-				System.out.println("2 : Envoyer un pokémon");
+				System.out.println("2 : Envoyer un pokï¿½mon");
 				System.out.println("3 : Fuir");
 				System.out.println("Que voulez vous faire ?");
 				if (sc.hasNext()) {
