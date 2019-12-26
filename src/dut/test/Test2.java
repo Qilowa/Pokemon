@@ -16,7 +16,7 @@ public class Test2 {
 		Capacity p = list.getCapacity(0);
 		pk1.addCapacity(p);
 		FightingPokemon pk2 = FightingPokemon.createFightingPokemon(1, pokedex);
-		
+		pk2.addCapacity(p);
 		PokemonTeam team1 = new PokemonTeam();
 		PokemonTeam team2 = new PokemonTeam();
 		team1.add(pk1);

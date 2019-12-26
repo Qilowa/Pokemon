@@ -8,9 +8,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 public class Save {
-	private static String pathPokemonTeam;
-	private static String pathPokedex;
-	private static String pathCapacityList;
 	
 	public static void save(String path, Object o) {
 		try {
@@ -68,6 +65,25 @@ public class Save {
 			Capacitylist p;
 			try {
 				p = (Capacitylist) ois.readObject();
+				return p;
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
+	public static Fight readFight(String path) {
+		try {
+			File f = new File(path);
+			ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
+			Fight p;
+			try {
+				p = (Fight) ois.readObject();
 				return p;
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();

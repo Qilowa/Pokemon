@@ -73,4 +73,8 @@ public class Pokedex implements Serializable{
 		return pokedex.toString();
 	}
 	
+	public int getSize() {
+		return pokedex.size();
+	}
+	
 }
