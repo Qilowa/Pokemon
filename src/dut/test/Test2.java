@@ -23,7 +23,8 @@ public class Test2 {
 		team2.add(pk2);
 		
 		Fight f = new Fight(team1, team2);
-		f.fight();
+		f.fightRandom();
+		System.out.println(team1);
 	}
 
 }

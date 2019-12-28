@@ -3,6 +3,7 @@ package dut.fr.pokemon;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.Random;
 import java.util.Scanner;
 
 public class PokemonTeam implements Serializable{

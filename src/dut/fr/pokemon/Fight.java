@@ -9,6 +9,7 @@ public class Fight implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -2618372557634190434L;
+	
 	private final PokemonTeam team1;
 	private final PokemonTeam team2;
 	
@@ -26,7 +27,7 @@ public class Fight implements Serializable {
 		System.out.println("Que voulez vous faire ?");
 	}
 	
-	public static void printCapacities(Capacity[] c) {
+	private static void printCapacities(Capacity[] c) {
 		for (int i=0; i<c.length; i++) {
 			System.out.println((i)+": "+c[i]);
 		}
@@ -34,7 +35,7 @@ public class Fight implements Serializable {
 		System.out.println("-1 pour retourner en arri�re");
 	}
 	
-	public static void printTeam(PokemonTeam t) {
+	private static void printTeam(PokemonTeam t) {
 		for(int i=0; i<t.size(); i++) {
 			FightingPokemon tmp = t.get(i);
 			System.out.println((i+1)+" : "+tmp);
@@ -68,8 +69,9 @@ public class Fight implements Serializable {
 	}
 	
 
-	public void fight() {
-		System.out.println("D�but du COMBAT\n");
+	public int fight() {
+		// Renvoie 1 ou 2 si respectivement le joueur 1 gagne ou le joueur 2 gagne
+		System.out.println("Debut du COMBAT\n");
 		
 		FightingPokemon pk1 = team1.get(0); // Pokemon sur le board
 		FightingPokemon pk2 = team2.get(0); // Pokemon sur le board
@@ -97,12 +99,12 @@ public class Fight implements Serializable {
 				attackChoice1 = getAttackChoice(sc, pk1);
 				
 				if (attackChoice1 == -1) {
-					// -1 pour retourner en arri�re
+					// -1 pour retourner en arriere
 					continue;
 				}
 				break;
 			case 2:
-				//Changer de pok�mon
+				//Changer de pokemon
 				
 				int choice2 = Fight.getPokemonChoice(sc, team1);
 				if (choice2 == -1) {
@@ -114,7 +116,7 @@ public class Fight implements Serializable {
 			case 3:
 				// Abandonner
 				System.out.println("Joueur 1 a perdu !");
-				return;
+				return 2;
 			}
 			
 			System.out.println("\nJoueur 2");
@@ -130,7 +132,7 @@ public class Fight implements Serializable {
 				}
 				break;
 			case 2:
-				//Changer de pok�mon
+				//Changer de pokemon
 				
 				int choice2 = Fight.getPokemonChoice(sc, team1);
 				if (choice2 == -1) {
@@ -142,14 +144,14 @@ public class Fight implements Serializable {
 			case 3:
 				// Abandonner
 				System.out.println("Joueur 2 a perdu !");
-				return;
+				return 1;
 				
 			}
 			
 			
 			if (pk1.isKO()) {
 				System.out.println(pk1.getName()+" est KO");
-				System.out.println("2 : Envoyer un pok�mon");
+				System.out.println("2 : Envoyer un pokemon");
 				System.out.println("3 : Fuir");
 				System.out.println("Que voulez vous faire ?");
 				int change;
@@ -162,7 +164,7 @@ public class Fight implements Serializable {
 			
 			if (pk2.isKO()) {
 				System.out.println(pk2.getName()+" est KO");
-				System.out.println("2 : Envoyer un pok�mon");
+				System.out.println("2 : Envoyer un pokemon");
 				System.out.println("3 : Fuir");
 				System.out.println("Que voulez vous faire ?");
 				int change;
@@ -172,25 +174,6 @@ public class Fight implements Serializable {
 					continue;
 				}
 			}
-			
-			// Si pok�mon KO
-			/* int choice3 = 0;
-			choice = sc.nextInt();
-			
-			while (!pk1.isKO() || choice3 == 3) {
-				System.out.println(pk1.getName()+" est KO");
-				System.out.println("2 : Envoyer un pok�mon");
-				System.out.println("3 : Fuir");
-				System.out.println("Que voulez vous faire ?");
-				if (sc.hasNext()) {
-					choice = sc.nextInt();
-					pk1 = team1.get(choice3);
-				}
-			}
-			
-			if (choice3 == 0) {
-				System.out.println("Joueur 1 envoie "+ pk1.getName());
-			} */
 			
 			if (choice == 1 && choicet2 == 1) {
 				if (pk1.getSpeed() >= pk2.getSpeed()) {
@@ -207,24 +190,30 @@ public class Fight implements Serializable {
 			}
 			
 			
-			
-			/* if (choice==1) {
+			if (choice==1 && choicet2 != 1) {
 				pk1.attack(attackChoice1, pk2);
 			}
-			if (choicet2 == 2) {
+			if (choicet2 == 2 && choice!=1) {
 				pk2.attack(attackChoice2, pk1);
-			} */
+			} 
 			
 			System.out.println(pk1.getName()+" a "+pk1.getCurrentHealth()+"/"+pk1.getMaxHealth()+" PV");
 			System.out.println(pk2.getName()+" a "+pk2.getCurrentHealth()+"/"+pk2.getMaxHealth()+" PV");
 			
 		}
+		if (team1.haveLost()) {
+			return 2;
+		}
+		return 1;
+		
 	}
 	
-	public void fightRandom() {
+	
+	public boolean fightRandom() {
+		// Renvoie true si le joueur 1 gagne et false sinon
 		Random r = new Random();
 		
-		System.out.println("D�but du COMBAT\n");
+		System.out.println("Debut du COMBAT\n");
 		
 		FightingPokemon pk1 = team1.get(0); // Pokemon sur le board
 		FightingPokemon pk2 = team2.get(0); // Pokemon sur le board
@@ -252,7 +241,7 @@ public class Fight implements Serializable {
 				attackChoice1 = getAttackChoice(sc, pk1);
 				
 				if (attackChoice1 == -1) {
-					// -1 pour retourner en arri�re
+					// -1 pour retourner en arriere
 					continue;
 				}
 				break;
@@ -269,10 +258,11 @@ public class Fight implements Serializable {
 			case 3:
 				// Abandonner
 				System.out.println("Joueur 1 a perdu !");
-				return;
+				return false;
 			}
-			
-			attackChoice2 = r.nextInt(pk2.getCapacities().length-1);
+			int v = r.nextInt(pk2.getNumCapacity());
+			System.out.println(v);
+			attackChoice2 = v;
 			
 			if (pk1.isKO()) {
 				System.out.println(pk1.getName()+" est KO");
@@ -320,5 +310,11 @@ public class Fight implements Serializable {
 			System.out.println(pk2.getName()+" a "+pk2.getCurrentHealth()+"/"+pk2.getMaxHealth()+" PV");
 			
 		}
+		
+		if (team1.haveLost()) {
+			return false;
+		}
+		
+		return true;
 	}
 }
