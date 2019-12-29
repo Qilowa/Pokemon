@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import dut.fr.type.Type;
+
 public class Pokedex implements Serializable{
 	/**
 	 * 

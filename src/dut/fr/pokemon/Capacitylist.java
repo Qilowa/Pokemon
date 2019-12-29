@@ -5,6 +5,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import dut.fr.type.Type;
+
 public class Capacitylist {
 	private static final String CSV ="./RessourcesPokemon-20191205/Capacity.csv";
 	private static ArrayList<Capacity> capacity;
@@ -66,7 +68,7 @@ public class Capacitylist {
 	public static ArrayList<Capacity> capacitychoice(Type[] types) {
 		ArrayList<Capacity> capacityFinal = new ArrayList<Capacity>();
 		for(int i = 0; i < capacity.size(); i++){
-	      if (capacity.get(i).getType()[0]==types[0]  || capacity.get(i).getType()[0]==types[1]) {
+	      if (capacity.get(i).getType()==types[0]  || capacity.get(i).getType()==types[1]) {
 	    	 Capacity cap=capacity.get(i);
 	    	 capacityFinal.add(cap);
 	      }

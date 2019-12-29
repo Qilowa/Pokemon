@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Objects;
+import dut.fr.type.Type;
+
+import dut.fr.type.TypeAffinity;
 
 public class FightingPokemon extends Pokemon implements Serializable {
 	/**
@@ -149,19 +152,23 @@ public class FightingPokemon extends Pokemon implements Serializable {
 		return currentHealth;
 	}
 	
-	public void attack(int capacityID, FightingPokemon pk) {
+	public void attack(int capacityID, FightingPokemon pk, TypeAffinity table) {
 		if (capacityID > 4 || capacityID < 0) {
 			throw new IllegalArgumentException("The pokemon has only 4 attacks");
 		}
 		int lostHealth = 0;
 		
 		Capacity cap = capacities[capacityID];
-		System.out.println(Arrays.deepToString(capacities));
-		if (cap.getCategory() == Category.physical  ) {
-			lostHealth = (int) (((50*0.4+2)*this.phyAttack*1*cap.getPower())/(pk.getDefense()*1*50))+2;
+		
+		Type[] types = pk.getTypes();
+		
+		double aff = table.getAffinity(cap.getType()).get(types[0]);
+		
+		if (cap.getCategory() == Category.physical) {
+			lostHealth = (int) (((((50*0.4+2)*this.phyAttack*1*cap.getPower())/(pk.getDefense()*1*50))+2)*aff);
 		}
-		if (cap.getCategory() == Category.special  ) {
-			lostHealth = (int) (((50*0.4+2)*this.speAttack*1*cap.getPower())/(pk.getSpeDefense()*1*50))+2;
+		if (cap.getCategory() == Category.special) {
+			lostHealth = (int) (((((50*0.4+2)*this.speAttack*1*cap.getPower())/(pk.getSpeDefense()*1*50))+2)*aff);
 		}
 		pk.getDamaged(lostHealth);
 		cap.reducePP();
