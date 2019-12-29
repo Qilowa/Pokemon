@@ -14,6 +14,8 @@ public class Test {
 		System.out.println(p);
 		
 		PokemonTeam team = new PokemonTeam();
+		team.add(p);
+		team.add(p);
 		System.out.println(team);
 		
 		Save.save("tmp/team.ser", team);
