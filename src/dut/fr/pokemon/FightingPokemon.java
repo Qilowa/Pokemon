@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Objects;
 
 public class FightingPokemon extends Pokemon implements Serializable {
@@ -51,8 +52,8 @@ public class FightingPokemon extends Pokemon implements Serializable {
 	
 	@Override
 	public String toString() {
-		return String.format("%s, EXP:%d, HP:%d, ATT:%d, DEF:%d, SP.ATT:%d, SP.DEF:%d, SPEED:%d", 
-				name, experience, health, phyAttack, phyDefense, speAttack, speDefense, speed);
+		return String.format("%s, EXP:%d, HP:%d/%d, ATT:%d, DEF:%d, SP.ATT:%d, SP.DEF:%d, SPEED:%d", 
+				name, experience, currentHealth, health, phyAttack, phyDefense, speAttack, speDefense, speed);
 	}
 	
 	
@@ -91,7 +92,7 @@ public class FightingPokemon extends Pokemon implements Serializable {
 	
 	
 	public void addCapacity(Capacity c) {
-		if (numberCapacity >= 4) {
+		if (numberCapacity > 4) {
 			throw new IllegalStateException("cannot add another capacity");
 		}
 		capacities[numberCapacity] = Objects.requireNonNull(c);
@@ -155,6 +156,7 @@ public class FightingPokemon extends Pokemon implements Serializable {
 		int lostHealth = 0;
 		
 		Capacity cap = capacities[capacityID];
+		System.out.println(Arrays.deepToString(capacities));
 		if (cap.getCategory() == Category.physical  ) {
 			lostHealth = (int) (((50*0.4+2)*this.phyAttack*1*cap.getPower())/(pk.getDefense()*1*50))+2;
 		}
@@ -180,6 +182,10 @@ public class FightingPokemon extends Pokemon implements Serializable {
 	
 	public int getMaxHealth() {
 		return health;
+	}
+	
+	public int getNumCapacity() {
+		return numberCapacity;
 	}
 	
 }
