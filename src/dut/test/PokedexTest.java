@@ -5,7 +5,7 @@ import java.io.IOException;
 import dut.fr.pokemon.Capacity;
 import dut.fr.pokemon.Pokedex;
 import dut.fr.pokemon.Pokemon;
-import dut.fr.pokemon.Type;
+import dut.fr.type.Type;
 
 public class PokedexTest {
 	public static void main(String[] args) throws IOException {

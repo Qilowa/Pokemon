@@ -2,18 +2,20 @@ package dut.fr.pokemon;
 
 import java.util.Objects;
 
+import dut.fr.type.Type;
+
 public class Capacity {
 	private final String name;
 	private final int power;
 	private final int accuracy;
 	private final int pp;
 	private final Category category;
-	private final Type[] type;
+	private final Type type;
 	private int currentPP;
 	
 	Capacity(String name,Type type,int power,int pp, int accuracy,String category) {
 		this.name=Objects.requireNonNull(name);
-		this.type=new Type[] {type};;
+		this.type=type;
 		/*if (type == type.FIGHTING &&(power<15 || power>300 || power%5==1 )) {
 			throw new IllegalArgumentException("precision must be between 15 and 300 and also a multiple of 5");
 		}*/
@@ -41,7 +43,7 @@ public class Capacity {
 
 	@Override
 	public String toString() {
-		return name+"[type=" + type[0] + ", power=" + power +", pp= "+pp+ ", accuracy=" + accuracy+ ", category=" + category+"]";
+		return name+"[type=" + type + ", power=" + power +", pp= "+pp+ ", accuracy=" + accuracy+ ", category=" + category+"]";
 	}
 
 	public String getName() {
@@ -68,7 +70,7 @@ public class Capacity {
 		return category;
 	}
 
-	public Type[] getType() {
+	public Type getType() {
 		return type;
 	}
 	

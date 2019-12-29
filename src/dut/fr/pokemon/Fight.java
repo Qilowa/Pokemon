@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Random;
 import java.util.Scanner;
 
+import dut.fr.type.TypeAffinity;
+
 public class Fight implements Serializable {
 	/**
 	 * 
@@ -12,6 +14,7 @@ public class Fight implements Serializable {
 	
 	private final PokemonTeam team1;
 	private final PokemonTeam team2;
+	private static TypeAffinity table = new TypeAffinity();
 	
 	public Fight(PokemonTeam team1, PokemonTeam team2) {
 		this.team1 = team1;
@@ -177,24 +180,24 @@ public class Fight implements Serializable {
 			
 			if (choice == 1 && choicet2 == 1) {
 				if (pk1.getSpeed() >= pk2.getSpeed()) {
-					pk1.attack(attackChoice1, pk2);
+					pk1.attack(attackChoice1, pk2, table);
 					if (!pk2.isKO()) {
-						pk2.attack(attackChoice2, pk1);
+						pk2.attack(attackChoice2, pk1, table);
 					}
 				} else {
-					pk2.attack(attackChoice2, pk1);
+					pk2.attack(attackChoice2, pk1, table);
 					if (!pk1.isKO()) {
-						pk1.attack(attackChoice1, pk2);
+						pk1.attack(attackChoice1, pk2, table);
 					}
 				}
 			}
 			
 			
 			if (choice==1 && choicet2 != 1) {
-				pk1.attack(attackChoice1, pk2);
+				pk1.attack(attackChoice1, pk2, table);
 			}
 			if (choicet2 == 2 && choice!=1) {
-				pk2.attack(attackChoice2, pk1);
+				pk2.attack(attackChoice2, pk1, table);
 			} 
 			
 			System.out.println(pk1.getName()+" a "+pk1.getCurrentHealth()+"/"+pk1.getMaxHealth()+" PV");
@@ -293,14 +296,14 @@ public class Fight implements Serializable {
 			
 			if (choice == 1) {
 				if (pk1.getSpeed() >= pk2.getSpeed()) {
-					pk1.attack(attackChoice1, pk2);
+					pk1.attack(attackChoice1, pk2, table);
 					if (!pk2.isKO()) {
-						pk2.attack(attackChoice2, pk1);
+						pk2.attack(attackChoice2, pk1, table);
 					}
 				} else {
-					pk2.attack(attackChoice2, pk1);
+					pk2.attack(attackChoice2, pk1, table);
 					if (!pk1.isKO()) {
-						pk1.attack(attackChoice1, pk2);
+						pk1.attack(attackChoice1, pk2, table);
 					}
 				}
 			}
