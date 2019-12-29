@@ -5,6 +5,7 @@ import java.io.IOException;
 import dut.fr.pokemon.Capacitylist;
 import dut.fr.pokemon.Pokedex;
 import dut.fr.pokemon.PokemonTeam;
+import dut.fr.pokemon.Save;
 
 public class CapacityTest {
 
@@ -13,5 +14,7 @@ public class CapacityTest {
 		Pokedex p = Pokedex.getInstance();
 		PokemonTeam team= new PokemonTeam();
 	    team.createTeam(p);
+	    Save.save("tmp/team.ser", team);
+		PokemonTeam s =Save.readPokemonTeam("tmp/team.ser");
 	}
 }

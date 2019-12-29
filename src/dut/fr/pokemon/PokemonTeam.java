@@ -53,6 +53,10 @@ public class PokemonTeam implements Serializable{
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Voulez-vous reprendre votre partie ou recommencer une nouvelle ? (0 for resume and 1 for load) :");
 	    int game = sc.nextInt();
+	    if (game==1) {
+			System.out.println("load");
+		}
+	    else {
 		System.out.println("Combien de Pokémon voulez-vous ? (max : 6) ");
 	    int nb = sc.nextInt();
 	    while(nb > 6 || nb < 1) {
@@ -177,8 +181,8 @@ public class PokemonTeam implements Serializable{
 	    }
 		
 	    System.out.println("Voici vos pokémons : ");
-	    System.out.println(this.toString());
-	    //sauvegarde automatique
+	    System.out.println(array);
+	    }
 	}
 	
 	private boolean isEmpty() {
