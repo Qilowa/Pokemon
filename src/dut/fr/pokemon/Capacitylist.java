@@ -68,7 +68,7 @@ public class Capacitylist {
 	public static ArrayList<Capacity> capacitychoice(Type[] types) {
 		ArrayList<Capacity> capacityFinal = new ArrayList<Capacity>();
 		for(int i = 0; i < capacity.size(); i++){
-	      if (capacity.get(i).getType()==types[0]  || capacity.get(i).getType()==types[1]) {
+	      if (capacity.get(i).getType()==types[0]  || capacity.get(i).getType()==types[1] || capacity.get(i).getType()==Type.NORMAL) {
 	    	 Capacity cap=capacity.get(i);
 	    	 capacityFinal.add(cap);
 	      }

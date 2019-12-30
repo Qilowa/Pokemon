@@ -13,8 +13,14 @@ public class CapacityTest {
 		Capacitylist c = Capacitylist.getInstance();
 		Pokedex p = Pokedex.getInstance();
 		PokemonTeam team= new PokemonTeam();
-	    team.createTeam(p);
-	    Save.save("tmp/team.ser", team);
-		PokemonTeam s =Save.readPokemonTeam("tmp/team.ser");
+	    if (team.createTeam(p)==1) {
+	    	PokemonTeam team1 =Save.readPokemonTeam("tmp/team.ser");
+	    	Save.save("tmp/team.ser", team1);
+	    	System.out.println(team1);
+		}
+	    else {
+	    	Save.save("tmp/team.ser", team);
+	    	System.out.println("Team sauvegardé");
+	    }
 	}
 }

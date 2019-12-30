@@ -48,13 +48,14 @@ public class PokemonTeam implements Serializable{
 		return Objects.hash(array, size);
 	}
 	
-	public void createTeam(Pokedex p) {
+	public int createTeam(Pokedex p) {
 		//reprendre ou continué
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Voulez-vous reprendre votre partie ou recommencer une nouvelle ? (0 for resume and 1 for load) :");
 	    int game = sc.nextInt();
 	    if (game==1) {
 			System.out.println("load");
+			return 1;
 		}
 	    else {
 		System.out.println("Combien de Pokémon voulez-vous ? (max : 6) ");
@@ -182,6 +183,7 @@ public class PokemonTeam implements Serializable{
 		
 	    System.out.println("Voici vos pokémons : ");
 	    System.out.println(array);
+	    return 0;
 	    }
 	}
 	
