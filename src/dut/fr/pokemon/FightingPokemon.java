@@ -162,7 +162,7 @@ public class FightingPokemon extends Pokemon implements Serializable {
 		
 		Type[] types = pk.getTypes();
 		
-		double aff = table.getAffinity(cap.getType()).get(types[0]);
+		double aff = table.getAffinity(types).get(cap.getType());
 		
 		if (cap.getCategory() == Category.physical) {
 			lostHealth = (int) (((((50*0.4+2)*this.phyAttack*1*cap.getPower())/(pk.getDefense()*1*50))+2)*aff);
