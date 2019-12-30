@@ -1,10 +1,18 @@
 package dut.fr.pokemon;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import dut.fr.type.Type;
 
-public class Capacity {
+public class Capacity implements Serializable{
+	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4350881480069526109L;
+	
 	private final String name;
 	private final int power;
 	private final int accuracy;
