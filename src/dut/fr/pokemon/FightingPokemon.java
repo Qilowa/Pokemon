@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.Arrays;
 import java.util.Objects;
 import dut.fr.type.Type;
 
@@ -60,8 +59,8 @@ public class FightingPokemon extends Pokemon implements Serializable {
 	}
 	
 	
-	public static FightingPokemon createFightingPokemon(int numPokedex, Pokedex pokedex) {
-		Pokemon pokemon = pokedex.getPokemon(numPokedex);
+	public static FightingPokemon createFightingPokemon(int numPokedex) {
+		Pokemon pokemon = Pokedex.getPokemon(numPokedex);
 		
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(path));
@@ -125,6 +124,7 @@ public class FightingPokemon extends Pokemon implements Serializable {
 	
 	public boolean isKO() {
 		if (currentHealth <= 0) {
+			System.out.println(this.getName()+" est KO");
 			return true;
 		}
 		

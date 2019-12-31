@@ -2,7 +2,8 @@ package dut.fr.ligue;
 
 import java.util.Objects;
 
-import dut.fr.pokemon.Fight;
+import dut.fr.fight.AbstractFight;
+import dut.fr.fight.SoloFight;
 import dut.fr.pokemon.PokemonTeam;
 
 public class DUT2Ligue extends BasicLigue{
@@ -11,7 +12,7 @@ public class DUT2Ligue extends BasicLigue{
 	private final PokemonTeam team7;
 	private final PokemonTeam team8;
 
-	public DUT2Ligue(int identifier, PokemonTeam team1, PokemonTeam team2, PokemonTeam team3, PokemonTeam team4, PokemonTeam team5, PokemonTeam team6, PokemonTeam team7, PokemonTeam team8) {
+	DUT2Ligue(int identifier, PokemonTeam team1, PokemonTeam team2, PokemonTeam team3, PokemonTeam team4, PokemonTeam team5, PokemonTeam team6, PokemonTeam team7, PokemonTeam team8) {
 		super(identifier, team1, team2, team3, team4);
 		this.team5 = Objects.requireNonNull(team5);
 		this.team6 = Objects.requireNonNull(team6);
@@ -22,28 +23,28 @@ public class DUT2Ligue extends BasicLigue{
 	@Override
 	public void fightLigue(PokemonTeam t1) {
 		super.fightLigue(t1);
-		Fight f1 = new Fight(t1, team5);
-		if (!f1.fightRandom()) {
+		AbstractFight f1 = new SoloFight(t1, team5);
+		if (f1.fight() != 1) {
 			System.out.println("Vous avez perdu la ligue !");
 			addWins();
 			return;
 		}
-		Fight f2 = new Fight(t1, team6);
-		if (!f2.fightRandom()) {
-			System.out.println("Vous avez perdu la ligue !");
-			addWins();
-			return;
-		}
-		
-		Fight f3 = new Fight(t1, team7);
-		if (!f3.fightRandom()) {
+		AbstractFight f2 = new SoloFight(t1, team6);
+		if (f2.fight() != 1) {
 			System.out.println("Vous avez perdu la ligue !");
 			addWins();
 			return;
 		}
 		
-		Fight f4 = new Fight(t1, team8);
-		if (!f4.fightRandom()) {
+		AbstractFight f3 = new SoloFight(t1, team7);
+		if (f3.fight() != 1) {
+			System.out.println("Vous avez perdu la ligue !");
+			addWins();
+			return;
+		}
+		
+		AbstractFight f4 = new SoloFight(t1, team8);
+		if (f4.fight() != 1) {
 			System.out.println("Vous avez perdu la ligue !");
 			addWins();
 			return;

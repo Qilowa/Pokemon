@@ -9,8 +9,8 @@ public class Test {
 
 	public static void main(String[] args) {
 		Pokedex pokedex = Pokedex.getInstance();
-		System.out.println(pokedex.getPokemon(1));
-		FightingPokemon p = FightingPokemon.createFightingPokemon(1, pokedex);
+		System.out.println(Pokedex.getPokemon(1));
+		FightingPokemon p = FightingPokemon.createFightingPokemon(1);
 		System.out.println(p);
 		
 		PokemonTeam team = new PokemonTeam();
@@ -22,6 +22,8 @@ public class Test {
 		PokemonTeam s =Save.readPokemonTeam("tmp/team.ser");
 		System.out.println(s);
 		System.out.println(s.equals(p));
+		
+		System.out.println(pokedex.getPokemon(738));
 		
 	}
 }

@@ -84,7 +84,7 @@ public class Capacitylist {
 	}
 	
 	
-	public Capacity getCapacity(int id) {
+	public static Capacity getCapacity(int id) {
 		Capacity c = capacity.get(id);
 		return c;
 	}

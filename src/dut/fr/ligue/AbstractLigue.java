@@ -2,7 +2,8 @@ package dut.fr.ligue;
 
 import java.util.Objects;
 
-import dut.fr.pokemon.Fight;
+import dut.fr.fight.AbstractFight;
+import dut.fr.fight.SoloFight;
 import dut.fr.pokemon.PokemonTeam;
 
 public class AbstractLigue implements Ligue{
@@ -14,7 +15,7 @@ public class AbstractLigue implements Ligue{
 	private int nbWins;
 	private int nbFights;
 
-	public AbstractLigue(int identifier, PokemonTeam team1, PokemonTeam team2, PokemonTeam team3, PokemonTeam team4) {
+	AbstractLigue(int identifier, PokemonTeam team1, PokemonTeam team2, PokemonTeam team3, PokemonTeam team4) {
 		this.identifier = identifier;
 		this.team1 = Objects.requireNonNull(team1);
 		this.team2 = Objects.requireNonNull(team2);
@@ -28,34 +29,34 @@ public class AbstractLigue implements Ligue{
 	public void fightLigue(PokemonTeam t1) {
 		nbFights++;
 		
-		Fight f1 = new Fight(t1, team1);
-		if (!f1.fightRandom()) {
+		AbstractFight f1 = new SoloFight(t1, team1);
+		if (f1.fight() != 1) {
 			System.out.println("Vous avez perdu la ligue !");
 			nbWins++;
 			return;
 		}
-		Fight f2 = new Fight(t1, team2);
-		if (!f2.fightRandom()) {
-			System.out.println("Vous avez perdu la ligue !");
-			nbWins++;
-			return;
-		}
-		
-		Fight f3 = new Fight(t1, team3);
-		if (!f3.fightRandom()) {
+		AbstractFight f2 = new SoloFight(t1, team2);
+		if (f2.fight() != 1) {
 			System.out.println("Vous avez perdu la ligue !");
 			nbWins++;
 			return;
 		}
 		
-		Fight f4 = new Fight(t1, team4);
-		if (!f4.fightRandom()) {
+		AbstractFight f3 = new SoloFight(t1, team3);
+		if (f3.fight() != 1) {
 			System.out.println("Vous avez perdu la ligue !");
 			nbWins++;
 			return;
 		}
 		
-		System.out.println("Bravo, vous avez gagné la ligue Pokémon !");
+		AbstractFight f4 = new SoloFight(t1, team4);
+		if (f4.fight() != 1) {
+			System.out.println("Vous avez perdu la ligue !");
+			nbWins++;
+			return;
+		}
+		
+		System.out.println("Bravo, vous avez gagnï¿½ la ligue Pokï¿½mon !");
 	}
 
 	@Override
@@ -79,7 +80,7 @@ public class AbstractLigue implements Ligue{
 			return false;
 		}
 		AbstractLigue b = (BasicLigue) o;
-		return b.identifier==this.identifier && team1.equals(b.team1) && team2.equals(b.team2) && team3.equals(b.team3) && team4.equals(b.team4) && b.nbFights==this.nbFights && nbWins == this.nbWins;
+		return b.identifier==this.identifier && team1.equals(b.team1) && team2.equals(b.team2) && team3.equals(b.team3) && team4.equals(b.team4) && b.nbFights==this.nbFights && b.nbWins == this.nbWins;
 	}
 	
 	void addWins() {

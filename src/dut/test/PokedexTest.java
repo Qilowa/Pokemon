@@ -2,16 +2,14 @@ package dut.test;
 
 import java.io.IOException;
 
-import dut.fr.pokemon.Capacity;
 import dut.fr.pokemon.Pokedex;
 import dut.fr.pokemon.Pokemon;
-import dut.fr.type.Type;
 
 public class PokedexTest {
 	public static void main(String[] args) throws IOException {
 		Pokedex p = Pokedex.getInstance();
-		Pokemon a =p.getPokemon(3);
-		System.out.println(p.getPokemon(15));
+		Pokemon a =Pokedex.getPokemon(3);
+		System.out.println(Pokedex.getPokemon(15));
 		a.showPicture();
 		System.out.println(a);
 

@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import dut.fr.fight.AbstractFight;
+
 public class Save {
 	
 	public static void save(String path, Object o) {
@@ -77,13 +79,13 @@ public class Save {
 		return null;
 	}
 	
-	public static Fight readFight(String path) {
+	public static AbstractFight readFight(String path) {
 		try {
 			File f = new File(path);
 			ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
-			Fight p;
+			AbstractFight p;
 			try {
-				p = (Fight) ois.readObject();
+				p = (AbstractFight) ois.readObject();
 				return p;
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();

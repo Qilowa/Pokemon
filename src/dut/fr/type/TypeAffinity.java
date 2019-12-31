@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.List;
 
@@ -21,13 +20,6 @@ public class TypeAffinity {
 	
 	@Override
 	public String toString() {
-		/* StringBuilder s = new StringBuilder();
-		for (Type[] table : affinitymap.keySet()) {
-			s.append(table[0]);
-			s.append(table[1]);
-			s.append(" ");
-		}
-		return s.toString(); */
 		return affinitymap.toString();
 		
 	}

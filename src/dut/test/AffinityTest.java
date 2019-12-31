@@ -18,8 +18,8 @@ public class AffinityTest {
 		
 		HashMap<Type, Double> p =affinity.getAffinity(types);
 		
-		FightingPokemon pk1 = FightingPokemon.createFightingPokemon(305, pokedex);
-		FightingPokemon pk2 = FightingPokemon.createFightingPokemon(1, pokedex);
+		FightingPokemon pk1 = FightingPokemon.createFightingPokemon(305);
+		FightingPokemon pk2 = FightingPokemon.createFightingPokemon(1);
 		
 		// System.out.println(p);
 	}
