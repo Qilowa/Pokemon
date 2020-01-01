@@ -4,12 +4,12 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
 
-public class LabAction extends AbstractAction {
-	public LabAction(String texte){
+public class CombatAction extends AbstractAction {
+	public CombatAction(String texte){
 		super(texte);
 	}
  
 	public void actionPerformed(ActionEvent e) { 
-		System.out.println("Vobà");
+		System.out.println("Combat");
 	} 
 }

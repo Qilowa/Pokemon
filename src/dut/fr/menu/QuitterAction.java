@@ -4,12 +4,12 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
 
-public class LaaAction extends AbstractAction {
-	public LaaAction(String texte){
+public class QuitterAction extends AbstractAction {
+	public QuitterAction(String texte){
 		super(texte);
 	}
  
 	public void actionPerformed(ActionEvent e) { 
-		System.out.println("Voalà");
+		System.out.println("Quitter");
 	} 
 }
