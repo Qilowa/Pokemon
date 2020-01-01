@@ -4,14 +4,19 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import dut.fr.pokemon.Pokedex;
@@ -28,6 +33,7 @@ public class Menu extends JFrame implements ActionListener{
     JButton bouton4 = new JButton("Quitter");
     ArrayList<JButton> listBoutons = new ArrayList<JButton>();
     JPanel panel = new JPanel();
+    int c=1;
 	public Menu(){
 	    /*this.setTitle("Bouton");
 	    this.setSize(700, 700);
@@ -102,7 +108,11 @@ public class Menu extends JFrame implements ActionListener{
         bouton.addActionListener(this);
         bouton2.addActionListener(this);
         bouton3.addActionListener(this);
-        bouton4.addActionListener(this);
+        bouton4.addActionListener(new ActionListener(){  
+		      public void actionPerformed(ActionEvent ae){  
+		        System.exit(0);  
+		      }  
+		    });
         listBoutons.add(bouton);
         listBoutons.add(bouton2);
         listBoutons.add(bouton3);
@@ -124,21 +134,69 @@ public class Menu extends JFrame implements ActionListener{
                 listBoutons.remove(listBoutons.size()-1);
                 panel.repaint();
             }
+			System.out.println("Pokedex");
 			Pokedex p = Pokedex.getInstance();
-			Pokemon a =Pokedex.getPokemon(3);
+			Pokemon a =Pokedex.getPokemon(c);
+			
+			JPanel pokepanel = new JPanel();
+			
+			Image picture;
+			try {
+				picture = ImageIO.read(new File("RessourcesPokemon-20191205/"+a.getImgPath()));
+				JLabel labelpicture = new JLabel(new ImageIcon(picture));
+				pokepanel.add(labelpicture);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+			JButton precedent = new JButton("Précédent");
+			System.out.println(c);
+			precedent.addActionListener(new ActionListener(){  
+			      public void actionPerformed(ActionEvent ae){  
+			        c--; 
+			        System.out.println(c);
+			      }  
+			    });
+			JButton suivant = new JButton("Suivant");
+			suivant.addActionListener(new ActionListener(){  
+			      public void actionPerformed(ActionEvent ae){  
+			    	
+			        c++; 
+			        System.out.println(c);
+			        Pokemon a =Pokedex.getPokemon(c);
+			        Image picture;
+					try {
+						picture = ImageIO.read(new File("RessourcesPokemon-20191205/"+a.getImgPath()));
+						JLabel labelpicture = new JLabel(new ImageIcon(picture));
+						pokepanel.add(labelpicture);
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+					panel.revalidate();
+			      }  
+			    });
+			JButton retourmenu = new JButton("Retour Menu");
+			retourmenu.addActionListener(new ActionListener(){  
+			      public void actionPerformed(ActionEvent ae){  
+			        System.exit(0);  
+			      }  
+			    });
 			System.out.println(Pokedex.getPokemon(15));
-			a.showPicture();
-			System.out.println(a);
-            System.out.println("Pokedex");
+            
+            
+			pokepanel.add(precedent);
+			pokepanel.add(suivant);
+			pokepanel.add(retourmenu);
+			
+            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            setContentPane(pokepanel);
+            pack(); //permet de mettre une bonne dimension a la fenetre
+            setVisible(true);
         }
 		if (e.getSource().equals(bouton2)) {
 			System.out.println("Combat");
 		}
 		if (e.getSource().equals(bouton3)) {
 			System.out.println("Ligue");
-		}
-		if (e.getSource().equals(bouton4)) {
-			System.out.println("Quitter");
 		}
 		/*Object source = e.getSource();
 		if (e.getSource().equals(bouton)) {
@@ -159,7 +217,7 @@ public class Menu extends JFrame implements ActionListener{
 		}*/
     }
     
-    public  static  void    main(String args[])
+    public  static void main(String args[])
     {
         new Menu();
     }

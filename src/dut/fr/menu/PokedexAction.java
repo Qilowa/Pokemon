@@ -18,7 +18,6 @@ public class PokedexAction extends AbstractAction {
 	}
  
 	public void actionPerformed(ActionEvent e) { 
-		
 		JPanel panel = new JPanel();
 		panel.setPreferredSize(new Dimension(640, 480));
         panel.setLayout(new FlowLayout());
