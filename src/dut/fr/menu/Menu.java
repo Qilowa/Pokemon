@@ -196,7 +196,10 @@ public class Menu extends JFrame implements ActionListener{
 				        	
 				        	//textfield.setText("");
 				            if (c>=p.getSize()+1 || c<=0) {
-				            return;
+				            JLabel idwrong = new JLabel("Mauvais id");
+							listimg.add(idwrong);
+							pokepanel.add(idwrong);
+				            c=1;
 				            }
 				            Pokemon a =Pokedex.getPokemon(c);
 							System.out.println(a);
