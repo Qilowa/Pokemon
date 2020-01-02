@@ -8,6 +8,8 @@ import java.awt.Image;
 import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,93 +19,24 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import dut.fr.pokemon.Pokedex;
 import dut.fr.pokemon.Pokemon;
  
 public class Menu extends JFrame implements ActionListener{
-	/*private JButton bouton;
-	private JButton bouton2;
-	private JButton bouton3;
-	private JButton bouton4;*/
 	JButton bouton = new JButton("Pokedex");
 	JButton bouton2 = new JButton("Combat");
 	JButton bouton3 = new JButton("Ligue");
     JButton bouton4 = new JButton("Quitter");
     ArrayList<JButton> listBoutons = new ArrayList<JButton>();
+    ArrayList<JLabel> listimg = new ArrayList<JLabel>();
     JPanel panel = new JPanel();
     int c=1;
 	public Menu(){
-	    /*this.setTitle("Bouton");
-	    this.setSize(700, 700);
-	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    this.setLocationRelativeTo(null);
-	    //On définit le layout à utiliser sur le content pane
-	    //Trois lignes sur deux colonnes
-	    this.setLayout();
-	    //On ajoute le bouton au content pane de la JFrame
-	    this.getContentPane().add(new JButton("Pokédex"));
-	    this.getContentPane().add(new JButton("Combat"));
-	    this.getContentPane().add(new JButton("3"));
-	    this.getContentPane().add(new JButton("4"));
-	    this.setVisible(true);*/
-		//titre de la fenetre
-        
-        //panel
-        /*JPanel  pan=new JPanel();
-        pan.setPreferredSize(new Dimension(640, 480));
-        pan.setLayout(new GridLayout(2, 2));
-        
-        //bouton ici
-        JButton but1=new JButton("Pokédex");
-        JButton but2=new JButton("Combat");
-        JButton but3=new JButton("Ligue");
-        JButton but4=new JButton("4");
-        
-        //ajoute un listener : ici le listener est cette classe
-        but1.addActionListener(this);
-        but2.addActionListener(this);
-        but3.addActionListener(this);
-        but4.addActionListener(this);
-        
-        //ajoute le boutton dans le panel
-        pan.add(but1);
-        pan.add(but2);
-        pan.add(but3);
-        pan.add(but4);
-        
-        //
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setContentPane(pan);
-        pack(); //permet de mettre une bonne dimension a la fenetre
-        setVisible(true);*/
-		
-
-			/*JPanel panel = new JPanel();
-			panel.setPreferredSize(new Dimension(640, 480));
-	        panel.setLayout(new GridLayout(2, 2));
-	 
-			JButton bouton = new JButton("Pokedex");
-			bouton.addActionListener(this);
-			panel.add(bouton);
-	 
-			JButton bouton2 = new JButton(new CombatAction("Combat"));
-			panel.add(bouton2);
-			
-			JButton bouton3 = new JButton(new LigueAction("Ligue"));
-			panel.add(bouton3);
-			
-			JButton bouton4 = new JButton(new QuitterAction("Quitter"));
-			panel.add(bouton4);
-			
-			
-			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	        setContentPane(panel);
-	        pack(); //permet de mettre une bonne dimension a la fenetre
-	        setVisible(true);
-	        panel.repaint();*/
-		panel.setPreferredSize(new Dimension(640, 480));
+		panel.setPreferredSize(new Dimension(720, 480));
         panel.setLayout(new GridLayout(2, 2));
         bouton.addActionListener(this);
         bouton2.addActionListener(this);
@@ -134,44 +67,92 @@ public class Menu extends JFrame implements ActionListener{
                 listBoutons.remove(listBoutons.size()-1);
                 panel.repaint();
             }
+			
 			System.out.println("Pokedex");
 			Pokedex p = Pokedex.getInstance();
 			Pokemon a =Pokedex.getPokemon(c);
-			
 			JPanel pokepanel = new JPanel();
-			
-			Image picture;
-			try {
-				picture = ImageIO.read(new File("RessourcesPokemon-20191205/"+a.getImgPath()));
-				JLabel labelpicture = new JLabel(new ImageIcon(picture));
-				pokepanel.add(labelpicture);
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			}
+			pokepanel.setPreferredSize(new Dimension(300, 480));
+			pokepanel.setLayout(new FlowLayout());
+
 			JButton precedent = new JButton("Précédent");
 			System.out.println(c);
 			precedent.addActionListener(new ActionListener(){  
 			      public void actionPerformed(ActionEvent ae){  
+			    	  while(listimg.size()>0) {   // s'il y a des bouton on supprime
+			    		  	pokepanel.remove(listimg.get(listimg.size()-1));
+			                listimg.remove(listimg.size()-1);
+			                pokepanel.repaint();
+			           }
 			        c--; 
-			        System.out.println(c);
+			        if (c==0) {
+						c=p.getSize();
+					}
+					Pokemon a =Pokedex.getPokemon(c);
+					System.out.println(a);
+			        Image picture;
+					try {
+						picture = ImageIO.read(new File("RessourcesPokemon-20191205/"+a.getImgPath()));
+						JLabel labelpicture = new JLabel(new ImageIcon(picture));
+						listimg.add(labelpicture);
+						pokepanel.add(labelpicture);
+						pokepanel.revalidate();
+						pokepanel.repaint();
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+					JLabel idpoke = new JLabel("id: "+c);
+					listimg.add(idpoke);
+					pokepanel.add(idpoke);
+					JLabel namepoke = new JLabel("nom: "+a.getName());
+					listimg.add(namepoke);
+					pokepanel.add(namepoke);
+					JLabel heightpoke = new JLabel("taille: "+a.getHeight()+" cm");
+					listimg.add(heightpoke);
+					pokepanel.add(heightpoke);
+					JLabel weightpoke = new JLabel("poids: "+a.getWeight()+" kg");
+					listimg.add(weightpoke);
+					pokepanel.add(weightpoke);
 			      }  
 			    });
 			JButton suivant = new JButton("Suivant");
 			suivant.addActionListener(new ActionListener(){  
 			      public void actionPerformed(ActionEvent ae){  
-			    	
+			    	  while(listimg.size()>0) {   // s'il y a des bouton on supprime
+			    		  	pokepanel.remove(listimg.get(listimg.size()-1));
+			                listimg.remove(listimg.size()-1);
+			                pokepanel.repaint();
+			           }
 			        c++; 
-			        System.out.println(c);
-			        Pokemon a =Pokedex.getPokemon(c);
+			        if (c==p.getSize()+1) {
+						c=1;
+					}
+					Pokemon a =Pokedex.getPokemon(c);
+					System.out.println(a);
 			        Image picture;
 					try {
 						picture = ImageIO.read(new File("RessourcesPokemon-20191205/"+a.getImgPath()));
 						JLabel labelpicture = new JLabel(new ImageIcon(picture));
+						listimg.add(labelpicture);
 						pokepanel.add(labelpicture);
+						pokepanel.revalidate();
+						pokepanel.repaint();
 					} catch (IOException e1) {
 						e1.printStackTrace();
 					}
-					panel.revalidate();
+					JLabel idpoke = new JLabel("id: "+c);
+					listimg.add(idpoke);
+					pokepanel.add(idpoke);
+					JLabel namepoke = new JLabel("nom: "+a.getName());
+					listimg.add(namepoke);
+					pokepanel.add(namepoke);
+					JLabel heightpoke = new JLabel("taille: "+a.getHeight()+" cm");
+					listimg.add(heightpoke);
+					pokepanel.add(heightpoke);
+					JLabel weightpoke = new JLabel("poids: "+a.getWeight()+" kg");
+					listimg.add(weightpoke);
+					pokepanel.add(weightpoke);
+					
 			      }  
 			    });
 			JButton retourmenu = new JButton("Retour Menu");
@@ -180,12 +161,97 @@ public class Menu extends JFrame implements ActionListener{
 			        System.exit(0);  
 			      }  
 			    });
-			System.out.println(Pokedex.getPokemon(15));
-            
+			
             
 			pokepanel.add(precedent);
 			pokepanel.add(suivant);
 			pokepanel.add(retourmenu);
+			JLabel idsearch = new JLabel("id: ");
+			pokepanel.add(idsearch);
+			JTextField textfield = new JTextField();
+			textfield.setColumns(20); //On lui donne un nombre de colonnes à afficher
+			pokepanel.add(textfield);
+			textfield.addActionListener(new ActionListener(){
+				        public void actionPerformed(ActionEvent e){
+				            while(listimg.size()>0) {   // s'il y a des bouton on supprime
+				    		  	pokepanel.remove(listimg.get(listimg.size()-1));
+				                listimg.remove(listimg.size()-1);
+				                pokepanel.repaint();
+				           }
+				            String text = textfield.getText();
+				            try {
+				                c = Integer.parseInt(text);
+				                textfield.setText("");
+				            } catch (NumberFormatException nfe) {
+				            	textfield.setText("");
+				                JOptionPane.showMessageDialog(null,
+				                        "Valeur invalide , entrez un entier ", "Erreur",
+				                        JOptionPane.ERROR_MESSAGE);
+				            }
+				            //int key = e.getKeyCode();
+				            //System.out.println(key);
+				            /* Restrict input to only integers */
+				            //if (key < 96 && key > 105) e.consume(); 
+				            
+				        	
+				        	//textfield.setText("");
+				            if (c>=p.getSize()+1 || c<=0) {
+				            return;
+				            }
+				            Pokemon a =Pokedex.getPokemon(c);
+							System.out.println(a);
+					        Image picture;
+							try {
+								picture = ImageIO.read(new File("RessourcesPokemon-20191205/"+a.getImgPath()));
+								JLabel labelpicture = new JLabel(new ImageIcon(picture));
+								listimg.add(labelpicture);
+								pokepanel.add(labelpicture);
+								pokepanel.revalidate();
+								pokepanel.repaint();
+							} catch (IOException e1) {
+								e1.printStackTrace();
+							}
+							JLabel idpoke = new JLabel("id: "+c);
+							listimg.add(idpoke);
+							pokepanel.add(idpoke);
+							JLabel namepoke = new JLabel("nom: "+a.getName());
+							listimg.add(namepoke);
+							pokepanel.add(namepoke);
+							JLabel heightpoke = new JLabel("taille: "+a.getHeight()+" cm");
+							listimg.add(heightpoke);
+							pokepanel.add(heightpoke);
+							JLabel weightpoke = new JLabel("poids: "+a.getWeight()+" kg");
+							listimg.add(weightpoke);
+							pokepanel.add(weightpoke);
+				            pokepanel.revalidate();
+				            pokepanel.repaint();
+				        }
+				    }
+				);
+			
+			
+			Image picture;
+			try {
+				picture = ImageIO.read(new File("RessourcesPokemon-20191205/"+a.getImgPath()));
+				JLabel labelpicture = new JLabel(new ImageIcon(picture));
+				listimg.add(labelpicture);
+				pokepanel.add(labelpicture);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+			JLabel idpoke = new JLabel("id: "+c);
+			listimg.add(idpoke);
+			pokepanel.add(idpoke);
+			JLabel namepoke = new JLabel("nom: "+a.getName());
+			listimg.add(namepoke);
+			pokepanel.add(namepoke);
+			JLabel heightpoke = new JLabel("taille: "+a.getHeight()+" cm");
+			listimg.add(heightpoke);
+			pokepanel.add(heightpoke);
+			JLabel weightpoke = new JLabel("poids: "+a.getWeight()+" kg");
+			listimg.add(weightpoke);
+			pokepanel.add(weightpoke);
+			
 			
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             setContentPane(pokepanel);
@@ -198,23 +264,6 @@ public class Menu extends JFrame implements ActionListener{
 		if (e.getSource().equals(bouton3)) {
 			System.out.println("Ligue");
 		}
-		/*Object source = e.getSource();
-		if (e.getSource().equals(bouton)) {
-            System.out.println("test");
-        }
-		if(source == bouton){
-			new PokedexAction("Pokedex");
-			System.out.println("Pokedex");
-		}
-		if(source == bouton2){
-			System.out.println("Combat");	
-		}
-		if(source == bouton3){
-			System.out.println("Ligue");	
-		}
-		if(source == bouton4){
-			System.out.println("Quitter");	
-		}*/
     }
     
     public  static void main(String args[])
