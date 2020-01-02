@@ -65,7 +65,7 @@ public class SoloFight extends AbstractFight{
 					if (choice2 == -1) {
 						continue;
 					}
-					pk1 = team1.get(choice2);
+					pk1 = team1.get(choice2-1);
 				} while (pk1.isKO());
 				break;
 				
