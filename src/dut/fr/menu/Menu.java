@@ -71,18 +71,17 @@ public class Menu extends JFrame implements ActionListener{
 			System.out.println("Pokedex");
 			Pokedex p = Pokedex.getInstance();
 			Pokemon a =Pokedex.getPokemon(c);
-			JPanel pokepanel = new JPanel();
-			pokepanel.setPreferredSize(new Dimension(300, 480));
-			pokepanel.setLayout(new FlowLayout());
+			panel.setPreferredSize(new Dimension(275, 480));
+			panel.setLayout(new FlowLayout());
 
 			JButton precedent = new JButton("Précédent");
 			System.out.println(c);
 			precedent.addActionListener(new ActionListener(){  
 			      public void actionPerformed(ActionEvent ae){  
 			    	  while(listimg.size()>0) {   // s'il y a des bouton on supprime
-			    		  	pokepanel.remove(listimg.get(listimg.size()-1));
+			    		  	panel.remove(listimg.get(listimg.size()-1));
 			                listimg.remove(listimg.size()-1);
-			                pokepanel.repaint();
+			                panel.repaint();
 			           }
 			        c--; 
 			        if (c==0) {
@@ -95,33 +94,33 @@ public class Menu extends JFrame implements ActionListener{
 						picture = ImageIO.read(new File("RessourcesPokemon-20191205/"+a.getImgPath()));
 						JLabel labelpicture = new JLabel(new ImageIcon(picture));
 						listimg.add(labelpicture);
-						pokepanel.add(labelpicture);
-						pokepanel.revalidate();
-						pokepanel.repaint();
+						panel.add(labelpicture);
+						panel.revalidate();
+						panel.repaint();
 					} catch (IOException e1) {
 						e1.printStackTrace();
 					}
 					JLabel idpoke = new JLabel("id: "+c);
 					listimg.add(idpoke);
-					pokepanel.add(idpoke);
+					panel.add(idpoke);
 					JLabel namepoke = new JLabel("nom: "+a.getName());
 					listimg.add(namepoke);
-					pokepanel.add(namepoke);
+					panel.add(namepoke);
 					JLabel heightpoke = new JLabel("taille: "+a.getHeight()+" cm");
 					listimg.add(heightpoke);
-					pokepanel.add(heightpoke);
+					panel.add(heightpoke);
 					JLabel weightpoke = new JLabel("poids: "+a.getWeight()+" kg");
 					listimg.add(weightpoke);
-					pokepanel.add(weightpoke);
+					panel.add(weightpoke);
 			      }  
 			    });
 			JButton suivant = new JButton("Suivant");
 			suivant.addActionListener(new ActionListener(){  
 			      public void actionPerformed(ActionEvent ae){  
 			    	  while(listimg.size()>0) {   // s'il y a des bouton on supprime
-			    		  	pokepanel.remove(listimg.get(listimg.size()-1));
+			    		  	panel.remove(listimg.get(listimg.size()-1));
 			                listimg.remove(listimg.size()-1);
-			                pokepanel.repaint();
+			                panel.repaint();
 			           }
 			        c++; 
 			        if (c==p.getSize()+1) {
@@ -134,28 +133,28 @@ public class Menu extends JFrame implements ActionListener{
 						picture = ImageIO.read(new File("RessourcesPokemon-20191205/"+a.getImgPath()));
 						JLabel labelpicture = new JLabel(new ImageIcon(picture));
 						listimg.add(labelpicture);
-						pokepanel.add(labelpicture);
-						pokepanel.revalidate();
-						pokepanel.repaint();
+						panel.add(labelpicture);
+						panel.revalidate();
+						panel.repaint();
 					} catch (IOException e1) {
 						e1.printStackTrace();
 					}
 					JLabel idpoke = new JLabel("id: "+c);
 					listimg.add(idpoke);
-					pokepanel.add(idpoke);
+					panel.add(idpoke);
 					JLabel namepoke = new JLabel("nom: "+a.getName());
 					listimg.add(namepoke);
-					pokepanel.add(namepoke);
+					panel.add(namepoke);
 					JLabel heightpoke = new JLabel("taille: "+a.getHeight()+" cm");
 					listimg.add(heightpoke);
-					pokepanel.add(heightpoke);
+					panel.add(heightpoke);
 					JLabel weightpoke = new JLabel("poids: "+a.getWeight()+" kg");
 					listimg.add(weightpoke);
-					pokepanel.add(weightpoke);
+					panel.add(weightpoke);
 					
 			      }  
 			    });
-			JButton retourmenu = new JButton("Retour Menu");
+			JButton retourmenu = new JButton("Quitter");
 			retourmenu.addActionListener(new ActionListener(){  
 			      public void actionPerformed(ActionEvent ae){  
 			        System.exit(0);  
@@ -163,20 +162,20 @@ public class Menu extends JFrame implements ActionListener{
 			    });
 			
             
-			pokepanel.add(precedent);
-			pokepanel.add(suivant);
-			pokepanel.add(retourmenu);
+			panel.add(precedent);
+			panel.add(suivant);
+			panel.add(retourmenu);
 			JLabel idsearch = new JLabel("id: ");
-			pokepanel.add(idsearch);
+			panel.add(idsearch);
 			JTextField textfield = new JTextField();
 			textfield.setColumns(20); //On lui donne un nombre de colonnes à afficher
-			pokepanel.add(textfield);
+			panel.add(textfield);
 			textfield.addActionListener(new ActionListener(){
 				        public void actionPerformed(ActionEvent e){
 				            while(listimg.size()>0) {   // s'il y a des bouton on supprime
-				    		  	pokepanel.remove(listimg.get(listimg.size()-1));
+				    		  	panel.remove(listimg.get(listimg.size()-1));
 				                listimg.remove(listimg.size()-1);
-				                pokepanel.repaint();
+				                panel.repaint();
 				           }
 				            String text = textfield.getText();
 				            try {
@@ -198,7 +197,7 @@ public class Menu extends JFrame implements ActionListener{
 				            if (c>=p.getSize()+1 || c<=0) {
 				            JLabel idwrong = new JLabel("Mauvais id");
 							listimg.add(idwrong);
-							pokepanel.add(idwrong);
+							panel.add(idwrong);
 				            c=1;
 				            }
 				            Pokemon a =Pokedex.getPokemon(c);
@@ -208,26 +207,26 @@ public class Menu extends JFrame implements ActionListener{
 								picture = ImageIO.read(new File("RessourcesPokemon-20191205/"+a.getImgPath()));
 								JLabel labelpicture = new JLabel(new ImageIcon(picture));
 								listimg.add(labelpicture);
-								pokepanel.add(labelpicture);
-								pokepanel.revalidate();
-								pokepanel.repaint();
+								panel.add(labelpicture);
+								panel.revalidate();
+								panel.repaint();
 							} catch (IOException e1) {
 								e1.printStackTrace();
 							}
 							JLabel idpoke = new JLabel("id: "+c);
 							listimg.add(idpoke);
-							pokepanel.add(idpoke);
+							panel.add(idpoke);
 							JLabel namepoke = new JLabel("nom: "+a.getName());
 							listimg.add(namepoke);
-							pokepanel.add(namepoke);
+							panel.add(namepoke);
 							JLabel heightpoke = new JLabel("taille: "+a.getHeight()+" cm");
 							listimg.add(heightpoke);
-							pokepanel.add(heightpoke);
+							panel.add(heightpoke);
 							JLabel weightpoke = new JLabel("poids: "+a.getWeight()+" kg");
 							listimg.add(weightpoke);
-							pokepanel.add(weightpoke);
-				            pokepanel.revalidate();
-				            pokepanel.repaint();
+							panel.add(weightpoke);
+				            panel.revalidate();
+				            panel.repaint();
 				        }
 				    }
 				);
@@ -238,34 +237,86 @@ public class Menu extends JFrame implements ActionListener{
 				picture = ImageIO.read(new File("RessourcesPokemon-20191205/"+a.getImgPath()));
 				JLabel labelpicture = new JLabel(new ImageIcon(picture));
 				listimg.add(labelpicture);
-				pokepanel.add(labelpicture);
+				panel.add(labelpicture);
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
 			JLabel idpoke = new JLabel("id: "+c);
 			listimg.add(idpoke);
-			pokepanel.add(idpoke);
+			panel.add(idpoke);
 			JLabel namepoke = new JLabel("nom: "+a.getName());
 			listimg.add(namepoke);
-			pokepanel.add(namepoke);
+			panel.add(namepoke);
 			JLabel heightpoke = new JLabel("taille: "+a.getHeight()+" cm");
 			listimg.add(heightpoke);
-			pokepanel.add(heightpoke);
+			panel.add(heightpoke);
 			JLabel weightpoke = new JLabel("poids: "+a.getWeight()+" kg");
 			listimg.add(weightpoke);
-			pokepanel.add(weightpoke);
+			panel.add(weightpoke);
 			
 			
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            setContentPane(pokepanel);
+            setContentPane(panel);
             pack(); //permet de mettre une bonne dimension a la fenetre
             setVisible(true);
         }
 		if (e.getSource().equals(bouton2)) {
+			while(listBoutons.size()>0) {   // s'il y a des bouton on supprime
+                panel.remove(listBoutons.get(listBoutons.size()-1));
+                listBoutons.remove(listBoutons.size()-1);
+                panel.repaint();
+            }
+			panel.setPreferredSize(new Dimension(720, 480));
+			panel.setLayout(new FlowLayout());
+			JButton okay = new JButton("Okay");
+			okay.addActionListener(new ActionListener(){  
+			      public void actionPerformed(ActionEvent ae){  
+			        System.exit(0);  
+			        //mettre le programme
+			      }  
+			    });
 			System.out.println("Combat");
+			//mettre le programme
+			JLabel okaytext = new JLabel("Vous avez choisis le combat, veuillez regarder la console");
+			listimg.add(okaytext);
+			panel.add(okaytext);
+			
+			panel.add(okay);
+			
+			
+			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	        setContentPane(panel);
+	        pack(); //permet de mettre une bonne dimension a la fenetre
+	        setVisible(true);
 		}
 		if (e.getSource().equals(bouton3)) {
 			System.out.println("Ligue");
+			while(listBoutons.size()>0) {   // s'il y a des bouton on supprime
+                panel.remove(listBoutons.get(listBoutons.size()-1));
+                listBoutons.remove(listBoutons.size()-1);
+                panel.repaint();
+            }
+			panel.setPreferredSize(new Dimension(720, 480));
+			panel.setLayout(new FlowLayout());
+			JButton okay = new JButton("Okay");
+			okay.addActionListener(new ActionListener(){  
+			      public void actionPerformed(ActionEvent ae){  
+			        System.exit(0);  
+			        //mettre le programme
+			      }  
+			    });
+			//mettre le programme
+			JLabel okaytext = new JLabel("Vous avez choisis la ligue, veuillez regarder la console");
+			listimg.add(okaytext);
+			panel.add(okaytext);
+			
+			panel.add(okay);
+			
+			
+			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	        setContentPane(panel);
+	        pack(); //permet de mettre une bonne dimension a la fenetre
+	        setVisible(true);
 		}
     }
     
