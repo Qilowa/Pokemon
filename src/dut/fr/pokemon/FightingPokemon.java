@@ -15,7 +15,7 @@ public class FightingPokemon extends Pokemon implements Serializable {
 	 */
 	private static final long serialVersionUID = 7943795484011533552L;
 
-	private static final String path = "RessourcesPokemon-20191205/stats.csv";
+	private static final String path = "RessourcesPokemon-20191205/newstats.txt";
 
 	private String name;
 	private final int experience;
@@ -65,13 +65,8 @@ public class FightingPokemon extends Pokemon implements Serializable {
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(path));
 			String line;
-			boolean nameField = false;
 		     
 		    while ((line = reader.readLine()) != null) {
-		    	if (nameField == false) {
-		    		nameField = true;
-		    		continue;
-		    	}
 		    	String[] array = line.split(",", 13);
 		    	Integer id = Integer.parseInt(array[0]);
 		    	if (id == numPokedex) {

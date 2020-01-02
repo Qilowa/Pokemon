@@ -18,9 +18,10 @@ public class Test2 {
 		Pokedex pokedex = Pokedex.getInstance();
 		Capacitylist list = Capacitylist.getInstance();
 		FightingPokemon pk1 = FightingPokemon.createFightingPokemon(226);
-		Capacity p = list.getCapacity(0);
+		Capacity p = Capacitylist.getCapacity(0);
 		pk1.addCapacity(p);
 		FightingPokemon pk2 = FightingPokemon.createFightingPokemon(1);
+		System.out.println(pk2);
 		pk2.addCapacity(p);
 		PokemonTeam team1 = new PokemonTeam();
 		PokemonTeam team2 = new PokemonTeam();

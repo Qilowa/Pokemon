@@ -37,8 +37,6 @@ public class LigueFactory {
 					int id = rand.nextInt(available.size());
 					random.addCapacity(available.get(id));
 				}
-				System.out.println(random);
-				System.out.println(random.getCapacities()[0]);
 				t.add(random);
 				i++;
 			}
