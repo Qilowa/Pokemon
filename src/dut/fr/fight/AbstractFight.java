@@ -123,7 +123,7 @@ public abstract class AbstractFight implements Fight, Serializable {
 						if (choice2 == -1) {
 							continue;
 						}
-						pk1 = team1.get(choice2);
+						pk1 = team1.get(choice2-1);
 					} while (pk1.isKO());
 					System.out.println(pk1.getName()+" est envoyé au combat !");
 					break;
@@ -153,7 +153,7 @@ public abstract class AbstractFight implements Fight, Serializable {
 					if (choice2 == -1) {
 						continue;
 					}
-					pk2 = team1.get(choice2);
+					pk2 = team1.get(choice2-1);
 					} while (pk2.isKO());
 					System.out.println(pk2.getName()+" est envoyé au combat !");
 					break;
