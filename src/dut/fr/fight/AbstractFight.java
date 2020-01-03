@@ -65,11 +65,13 @@ public abstract class AbstractFight implements Fight, Serializable {
 		int attackChoice= -1 ;
 		
 		AbstractFight.printCapacities(pk.getCapacities());
-		if (sc.hasNext()) {
+		if (sc.hasNextInt()) {
 			attackChoice = sc.nextInt();
 			if (AbstractFight.getLength(pk.getCapacities()) <= attackChoice) {
 				return 5;
 			}
+		} else {
+			return 5;
 		}
 		
 		return attackChoice;

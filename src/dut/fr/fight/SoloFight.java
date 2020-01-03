@@ -1,5 +1,7 @@
 package dut.fr.fight;
 
+import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -46,9 +48,19 @@ public class SoloFight extends AbstractFight{
 			System.out.println("\nJoueur 1");
 			AbstractFight.printPanel();
 			
-			int choice = sc.nextInt();
-			
+			int choice = -1;
+				try {
+					
+					String s = sc.nextLine();
+					choice= Integer.parseInt(s);
+				} catch(Exception e ) {
+					choice = -1;
+				}
+				
 			switch(choice) {
+			default:
+				System.out.println("Choisir une option adequate");
+				continue;
 			case 1:
 				//Attaque
 					attackChoice1 = getAttackChoice(sc, pk1);
@@ -77,6 +89,7 @@ public class SoloFight extends AbstractFight{
 				// Abandonner
 				System.out.println("Joueur 1 a perdu !");
 				return 0;
+			
 			}
 			int v = r.nextInt(pk2.getNumCapacity());
 			attackChoice2 = v;
