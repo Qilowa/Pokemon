@@ -28,7 +28,8 @@ import dut.fr.pokemon.Pokedex;
 import dut.fr.pokemon.Pokemon;
 import dut.fr.pokemon.PokemonTeam;
 import dut.fr.pokemon.Save;
-import dut.test.CapacityTest;
+import dut.test.CombatTest;
+import dut.test.LigueTest;
  
 public class Menu extends JFrame implements ActionListener{
 	JButton bouton = new JButton("Pokedex");
@@ -288,7 +289,7 @@ public class Menu extends JFrame implements ActionListener{
 					if (c1) {
 						String[] args = new String[0];
 				        try {
-							CapacityTest.main(args);
+							CombatTest.main(args);
 						} catch (IOException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
@@ -317,19 +318,34 @@ public class Menu extends JFrame implements ActionListener{
             }
 			panel.setPreferredSize(new Dimension(720, 480));
 			panel.setLayout(new FlowLayout());
-			JButton okay = new JButton("Okay");
-			okay.addActionListener(new ActionListener(){  
-			      public void actionPerformed(ActionEvent e){  
-			        System.exit(0);  
-			        //mettre le programme
-			      }  
-			    });
-			//mettre le programme
-			JLabel okaytext = new JLabel("Vous avez choisis la ligue, veuillez regarder la console");
+			JLabel okaytext = new JLabel("Vous avez choisis la Ligue, veuillez regarder la console");
 			listimg.add(okaytext);
 			panel.add(okaytext);
-			
+			JButton okay = new JButton("Start");
+			listBoutons.add(okay);
 			panel.add(okay);
+			
+			okay.addActionListener(new ActionListener(){  
+			      public void actionPerformed(ActionEvent e){ 
+					c1=true; 
+					
+			    	System.out.println("Combat");
+					if (c1) {
+						String[] args = new String[0];
+				        try {
+							LigueTest.main(args);
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+				        System.exit(0);
+					}
+			      }  
+			    });
+			
+			
+			//mettre le programme
+			
 			
 			
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

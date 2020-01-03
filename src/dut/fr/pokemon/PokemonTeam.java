@@ -69,12 +69,10 @@ public class PokemonTeam implements Serializable{
 				break;
 			}
 		}
-	    System.out.println(nb);
 		//combien de pokemon voulez?
 		//chouissisez vos capacité et -1 pour break 
 		//condition scanner quand on rentre de la merde
 		for (int i = 0; i <nb; i++) {
-			System.out.println(i);
 			while (true) {
 			System.out.println(p);
 		    System.out.println("Choissisez un Pokémon (id) : ");
@@ -105,6 +103,21 @@ public class PokemonTeam implements Serializable{
 		    
 		    System.out.println("Choissisez votre 2éme capacité (id) (-1 pour ne plus en choisir) : ");
 		    int cp2 = sc.nextInt();
+		    //bug meme capacité
+		    /*if (capacitylist.contains(capacitylist.get(cp2))) {
+				System.out.println("error");
+				System.out.println("incorrect réassayez");
+				System.out.println("Choissisez votre 2éme capacité (id) (-1 pour ne plus en choisir) : ");
+			    int cptest = sc.nextInt();
+			    if (cptest < capacitylist.size() && cptest > -1) {
+			    	cp2=cptest;
+					break;
+				}
+			    if (cptest==-1) {
+			    	cp2=cptest;
+			    	break;
+				}
+			}*/
 		    while(cp2 > (capacitylist.size()-1) || cp2 < -1) {
 				System.out.println("incorrect réassayez");
 				System.out.println("Choissisez votre 2éme capacité (id) (-1 pour ne plus en choisir) : ");
