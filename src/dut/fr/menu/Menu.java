@@ -35,6 +35,7 @@ public class Menu extends JFrame implements ActionListener{
 	JButton bouton = new JButton("Pokedex");
 	JButton bouton2 = new JButton("Combat");
 	JButton bouton3 = new JButton("Ligue");
+	JButton bouton5 = new JButton("Multijoueur");
     JButton bouton4 = new JButton("Quitter");
     ArrayList<JButton> listBoutons = new ArrayList<JButton>();
     ArrayList<JLabel> listimg = new ArrayList<JLabel>();
@@ -43,10 +44,11 @@ public class Menu extends JFrame implements ActionListener{
     boolean c1=false;
 	public Menu(){
 		panel.setPreferredSize(new Dimension(720, 480));
-        panel.setLayout(new GridLayout(2, 2));
+        panel.setLayout(new GridLayout(3, 2));
         bouton.addActionListener(this);
         bouton2.addActionListener(this);
         bouton3.addActionListener(this);
+        bouton5.addActionListener(this);
         bouton4.addActionListener(new ActionListener(){  
 		      public void actionPerformed(ActionEvent ae){  
 		        System.exit(0);  
@@ -56,10 +58,13 @@ public class Menu extends JFrame implements ActionListener{
         listBoutons.add(bouton2);
         listBoutons.add(bouton3);
         listBoutons.add(bouton4);
+        listBoutons.add(bouton5);
         panel.add(bouton);
         panel.add(bouton2);
         panel.add(bouton3);
+        panel.add(bouton5);
         panel.add(bouton4);
+        
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setContentPane(panel);
         pack(); //permet de mettre une bonne dimension a la fenetre
@@ -334,6 +339,49 @@ public class Menu extends JFrame implements ActionListener{
 						String[] args = new String[0];
 				        try {
 							LigueTest.main(args);
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+				        System.exit(0);
+					}
+			      }  
+			    });
+			
+			
+			//mettre le programme
+			
+			
+			
+			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	        setContentPane(panel);
+	        pack(); //permet de mettre une bonne dimension a la fenetre
+	        setVisible(true);
+		}
+		if (e.getSource().equals(bouton5)) {
+			while(listBoutons.size()>0) {   // s'il y a des bouton on supprime
+                panel.remove(listBoutons.get(listBoutons.size()-1));
+                listBoutons.remove(listBoutons.size()-1);
+                panel.repaint();
+            }
+			panel.setPreferredSize(new Dimension(720, 480));
+			panel.setLayout(new FlowLayout());
+			JLabel okaytext = new JLabel("Vous avez choisis le Multijoueur, veuillez regarder la console");
+			listimg.add(okaytext);
+			panel.add(okaytext);
+			JButton okay = new JButton("Start");
+			listBoutons.add(okay);
+			panel.add(okay);
+			
+			okay.addActionListener(new ActionListener(){  
+			      public void actionPerformed(ActionEvent e){ 
+					c1=true; 
+					
+			    	System.out.println("Multijoueur");
+					if (c1) {
+						String[] args = new String[0];
+				        try {
+							CombatTest.main(args);
 						} catch (IOException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();

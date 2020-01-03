@@ -104,20 +104,13 @@ public class PokemonTeam implements Serializable{
 		    System.out.println("Choissisez votre 2éme capacité (id) (-1 pour ne plus en choisir) : ");
 		    int cp2 = sc.nextInt();
 		    //bug meme capacité
-		    /*if (capacitylist.contains(capacitylist.get(cp2))) {
-				System.out.println("error");
-				System.out.println("incorrect réassayez");
-				System.out.println("Choissisez votre 2éme capacité (id) (-1 pour ne plus en choisir) : ");
-			    int cptest = sc.nextInt();
-			    if (cptest < capacitylist.size() && cptest > -1) {
-			    	cp2=cptest;
-					break;
+		    /*System.out.println(capacitylist);
+			    if (pokemon.getCapacities().contains(capacitylist.get(cptest))) {
+					System.out.println("dedans");
 				}
-			    if (cptest==-1) {
-			    	cp2=cptest;
-			    	break;
-				}
-			}*/
+			    else {
+			    	System.out.println("pas dedans");
+				}*/
 		    while(cp2 > (capacitylist.size()-1) || cp2 < -1) {
 				System.out.println("incorrect réassayez");
 				System.out.println("Choissisez votre 2éme capacité (id) (-1 pour ne plus en choisir) : ");
