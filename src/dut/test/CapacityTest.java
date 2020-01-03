@@ -11,7 +11,6 @@ import dut.fr.pokemon.Save;
 public class CapacityTest {
 
 	public static void main(String[] args) throws IOException{
-		Menu m1=new Menu();
 		Capacitylist c = Capacitylist.getInstance();
 		Pokedex p = Pokedex.getInstance();
 		PokemonTeam team= new PokemonTeam();

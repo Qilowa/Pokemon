@@ -23,8 +23,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import dut.fr.pokemon.Capacitylist;
 import dut.fr.pokemon.Pokedex;
 import dut.fr.pokemon.Pokemon;
+import dut.fr.pokemon.PokemonTeam;
+import dut.fr.pokemon.Save;
+import dut.test.CapacityTest;
  
 public class Menu extends JFrame implements ActionListener{
 	JButton bouton = new JButton("Pokedex");
@@ -35,6 +39,7 @@ public class Menu extends JFrame implements ActionListener{
     ArrayList<JLabel> listimg = new ArrayList<JLabel>();
     JPanel panel = new JPanel();
     int c=1;
+    boolean c1=false;
 	public Menu(){
 		panel.setPreferredSize(new Dimension(720, 480));
         panel.setLayout(new GridLayout(2, 2));
@@ -268,20 +273,34 @@ public class Menu extends JFrame implements ActionListener{
             }
 			panel.setPreferredSize(new Dimension(720, 480));
 			panel.setLayout(new FlowLayout());
-			JButton okay = new JButton("Okay");
-			okay.addActionListener(new ActionListener(){  
-			      public void actionPerformed(ActionEvent ae){  
-			        System.exit(0);  
-			        //mettre le programme
-			      }  
-			    });
-			System.out.println("Combat");
-			//mettre le programme
 			JLabel okaytext = new JLabel("Vous avez choisis le combat, veuillez regarder la console");
 			listimg.add(okaytext);
 			panel.add(okaytext);
-			
+			JButton okay = new JButton("Start");
+			listBoutons.add(okay);
 			panel.add(okay);
+			
+			okay.addActionListener(new ActionListener(){  
+			      public void actionPerformed(ActionEvent e){ 
+					c1=true; 
+					
+			    	System.out.println("Combat");
+					if (c1) {
+						String[] args = new String[0];
+				        try {
+							CapacityTest.main(args);
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+				        System.exit(0);
+					}
+			      }  
+			    });
+			
+			
+			//mettre le programme
+			
 			
 			
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -300,7 +319,7 @@ public class Menu extends JFrame implements ActionListener{
 			panel.setLayout(new FlowLayout());
 			JButton okay = new JButton("Okay");
 			okay.addActionListener(new ActionListener(){  
-			      public void actionPerformed(ActionEvent ae){  
+			      public void actionPerformed(ActionEvent e){  
 			        System.exit(0);  
 			        //mettre le programme
 			      }  
