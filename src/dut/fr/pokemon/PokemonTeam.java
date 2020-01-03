@@ -104,18 +104,11 @@ public class PokemonTeam implements Serializable{
 		    System.out.println("Choissisez votre 2éme capacité (id) (-1 pour ne plus en choisir) : ");
 		    int cp2 = sc.nextInt();
 		    //bug meme capacité
-		    /*System.out.println(capacitylist);
-			    if (pokemon.getCapacities().contains(capacitylist.get(cptest))) {
-					System.out.println("dedans");
-				}
-			    else {
-			    	System.out.println("pas dedans");
-				}*/
-		    while(cp2 > (capacitylist.size()-1) || cp2 < -1) {
+		    while(cp2 > (capacitylist.size()-1) || cp2 < -1 || pokemon.getCapacities()[0]==capacitylist.get(cp2)) {
 				System.out.println("incorrect réassayez");
 				System.out.println("Choissisez votre 2éme capacité (id) (-1 pour ne plus en choisir) : ");
 			    int cptest = sc.nextInt();
-			    if (cptest < capacitylist.size() && cptest > -1) {
+			    if (cptest < capacitylist.size() && cptest > -1 && pokemon.getCapacities()[0]!=capacitylist.get(cptest)) {
 			    	cp2=cptest;
 					break;
 				}
@@ -135,11 +128,11 @@ public class PokemonTeam implements Serializable{
 		    
 		    System.out.println("Choissisez votre 3eme capacite (id) (-1 pour ne plus en choisir) : ");
 		    int cp3 = sc.nextInt();
-		    while(cp3 > (capacitylist.size()-1) || cp3 < -1) {
+		    while(cp3 > (capacitylist.size()-1) || cp3 < -1 || pokemon.getCapacities()[0]==capacitylist.get(cp3) || pokemon.getCapacities()[1]==capacitylist.get(cp3)) {
 				System.out.println("incorrect réassayez");
 				System.out.println("Choissisez votre 3éme capacité (id) (-1 pour ne plus en choisir) : ");
 			    int cptest = sc.nextInt();
-			    if (cptest < capacitylist.size() && cptest > -1) {
+			    if (cptest < capacitylist.size() && cptest > -1 && pokemon.getCapacities()[0]!=capacitylist.get(cptest) && pokemon.getCapacities()[1]!=capacitylist.get(cptest)) {
 			    	cp3=cptest;
 					break;
 				}
@@ -159,11 +152,11 @@ public class PokemonTeam implements Serializable{
 		    
 		    System.out.println("Choissisez votre 4éme capacité (id) (-1 pour ne plus en choisir) : ");
 		    int cp4 = sc.nextInt();
-		    while(cp4 > (capacitylist.size()-1) || cp4 < -1) {
+		    while(cp4 > (capacitylist.size()-1) || cp4 < -1 || pokemon.getCapacities()[0]==capacitylist.get(cp4) || pokemon.getCapacities()[1]==capacitylist.get(cp4) || pokemon.getCapacities()[2]==capacitylist.get(cp4)) {
 				System.out.println("incorrect réassayez");
 				System.out.println("Choissisez votre 4éme capacité (id) (-1 pour ne plus en choisir) : ");
 			    int cptest = sc.nextInt();
-			    if (cptest < capacitylist.size() && cptest > -1) {
+			    if (cptest < capacitylist.size() && cptest > -1 && pokemon.getCapacities()[0]!=capacitylist.get(cptest) && pokemon.getCapacities()[1]!=capacitylist.get(cptest) && pokemon.getCapacities()[2]!=capacitylist.get(cptest)) {
 			    	cp4=cptest;
 					break;
 				}

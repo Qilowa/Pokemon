@@ -30,6 +30,7 @@ import dut.fr.pokemon.PokemonTeam;
 import dut.fr.pokemon.Save;
 import dut.test.CombatTest;
 import dut.test.LigueTest;
+import dut.test.MultiTest;
  
 public class Menu extends JFrame implements ActionListener{
 	JButton bouton = new JButton("Pokedex");
@@ -381,7 +382,7 @@ public class Menu extends JFrame implements ActionListener{
 					if (c1) {
 						String[] args = new String[0];
 				        try {
-							CombatTest.main(args);
+							MultiTest.main(args);
 						} catch (IOException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
