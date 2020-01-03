@@ -51,12 +51,16 @@ public class SoloFight extends AbstractFight{
 			switch(choice) {
 			case 1:
 				//Attaque
-				attackChoice1 = getAttackChoice(sc, pk1);
-				
-				if (attackChoice1 == -1) {
-					// -1 pour retourner en arriere
+					attackChoice1 = getAttackChoice(sc, pk1);
+					if (attackChoice1 == -1) {
+						// -1 pour retourner en arriere
+						continue;
+					}
+				if (attackChoice1 != 1 && attackChoice1 != 2 && attackChoice2 != 3) {
+					System.out.println("Choisissez une attaque adéquate !");
 					continue;
 				}
+				
 				break;
 			case 2:
 				//Changer de pokemon
@@ -75,7 +79,6 @@ public class SoloFight extends AbstractFight{
 				return 0;
 			}
 			int v = r.nextInt(pk2.getNumCapacity());
-			System.out.println(v);
 			attackChoice2 = v;
 			
 			if (choice == 1) {

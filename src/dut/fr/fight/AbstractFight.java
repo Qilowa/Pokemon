@@ -53,13 +53,25 @@ public abstract class AbstractFight implements Fight, Serializable {
 		System.out.println("on Board : "+p.getName());
 	}
 	
+	private static <T> int getLength(T[] array) {
+		int count = 0;
+	    for(T el : array)
+	        if (el != null)
+	            ++count;
+	    return count;
+	}
+	
 	static int getAttackChoice(Scanner sc, FightingPokemon pk) {
-		int attackChoice= 0 ;
+		int attackChoice= -1 ;
 		
 		AbstractFight.printCapacities(pk.getCapacities());
 		if (sc.hasNext()) {
 			attackChoice = sc.nextInt();
+			if (AbstractFight.getLength(pk.getCapacities()) <= attackChoice) {
+				return 5;
+			}
 		}
+		
 		return attackChoice;
 	}
 	
@@ -109,12 +121,17 @@ public abstract class AbstractFight implements Fight, Serializable {
 			switch(choice) {
 				case 1:
 					//Attaque
-					attackChoice1 = getAttackChoice(sc, pk1);
-					
-					if (attackChoice1 == -1) {
-						// -1 pour retourner en arriere
-						continue;
-					}
+						attackChoice1 = getAttackChoice(sc, pk1);
+						
+						if (attackChoice1 == -1) {
+							// -1 pour retourner en arriere
+							continue;
+						}
+						
+						if (attackChoice1 != 1 && attackChoice1 != 2 && attackChoice2 != 3) {
+							System.out.println("Choisissez une attaque adéquate !");
+							continue;
+						}
 					break;
 				case 2:
 					//Changer de pokemon
@@ -140,11 +157,15 @@ public abstract class AbstractFight implements Fight, Serializable {
 			switch(choicet2) {
 				case 1:
 					//Attaque
-					attackChoice2 = getAttackChoice(sc, pk2);
-					if (attackChoice2 == -1) {
-						// -1 pour retourner en arriere
-						continue;
-					}
+						attackChoice2 = getAttackChoice(sc, pk2);
+						if (attackChoice2 == -1) {
+							// -1 pour retourner en arriere
+							continue;
+						}
+						if (attackChoice1 != 1 && attackChoice1 != 2 && attackChoice2 != 3) {
+							System.out.println("Choisissez une attaque adéquate !");
+							continue;
+						}
 					break;
 				case 2:
 					//Changer de pokemon

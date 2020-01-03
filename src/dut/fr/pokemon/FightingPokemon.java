@@ -148,9 +148,6 @@ public class FightingPokemon extends Pokemon implements Serializable {
 	}
 	
 	public void attack(int capacityID, FightingPokemon pk, TypeAffinity table) {
-		if (capacityID > 4 || capacityID < 0) {
-			throw new IllegalArgumentException("The pokemon has only 4 attacks");
-		}
 		int lostHealth = 0;
 		
 		Capacity cap = capacities[capacityID];
