@@ -34,7 +34,6 @@ public class TypeAffinity {
 	 * @return A hashmap
 	 */
 	public HashMap<Type, Double> getAffinity(Type[] types) {
-		System.out.println(types);
 		List<Type> l = Collections.unmodifiableList(Arrays.asList(types));
 		return affinitymap.get(l);
 	}
