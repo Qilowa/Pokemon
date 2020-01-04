@@ -6,6 +6,10 @@ import dut.fr.fight.AbstractFight;
 import dut.fr.fight.SoloFight;
 import dut.fr.pokemon.PokemonTeam;
 
+/**
+ * Class representing a basic League : 8 Pokemon's trainers with 6 pokemons each
+ *
+ */
 public class DUT2Ligue extends BasicLigue{
 	private final PokemonTeam team5;
 	private final PokemonTeam team6;

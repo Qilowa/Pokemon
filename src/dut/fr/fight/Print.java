@@ -7,11 +7,15 @@ import dut.fr.pokemon.FightingPokemon;
 import dut.fr.pokemon.Pokemon;
 import dut.fr.pokemon.PokemonTeam;
 
+/**
+ * A class that contains the view
+ */
 public class Print {
+	
 	/**
-	 * A class that contains the view
+	 * Print the menu of Fight
 	 */
-static void printPanel() {
+	static void printPanel() {
 		
 		System.out.println("1 : attaquer");
 		System.out.println("2 : Changer de pokemon");
@@ -19,6 +23,10 @@ static void printPanel() {
 		System.out.println("Que voulez vous faire ?");
 	}
 	
+	/**
+	 * Print the capacities in c
+	 * @param c An array containing capacities
+	 */
 	static void printCapacities(Capacity[] c) {
 		for (int i=0; i<c.length; i++) {
 			System.out.println((i)+": "+c[i]);
@@ -27,6 +35,10 @@ static void printPanel() {
 		System.out.println("-1 pour retourner en arriere");
 	}
 	
+	/**
+	 * Print a PokemonTeam
+	 * @param t A PokemonTeam + an index
+	 */
 	static void printTeam(PokemonTeam t) {
 		for(int i=0; i<t.size(); i++) {
 			FightingPokemon tmp = t.get(i);
@@ -34,6 +46,10 @@ static void printPanel() {
 		}
 	}
 	
+	/**
+	 * Print the Pokemon that is currently fighting
+	 * @param p The Pokemon that is currently fighting
+	 */
 	static void printOnBoard(FightingPokemon p) {
 		p.showPicture();
 		System.out.println("on Board : "+p.getName());
@@ -47,6 +63,12 @@ static void printPanel() {
 	    return count;
 	}
 	
+	/**
+	 * Return the choice of attack that the user made
+	 * @param sc Scanner 
+	 * @param pk FightingPokemon currently fighting
+	 * @return An Integer representing the index of the attack that the user chose
+	 */
 	static int getAttackChoice(Scanner sc, FightingPokemon pk) {
 		int attackChoice= -1 ;
 		
@@ -64,6 +86,12 @@ static void printPanel() {
 		return attackChoice;
 	}
 	
+	/**
+	 * Return the choice of pokemon that the user made
+	 * @param sc Scanner
+	 * @param team PokemonTeam 
+	 * @return An Integer representing the index of the Pokemon that the user chose
+	 */
 	static int getPokemonChoice(Scanner sc, PokemonTeam team) {
 		 int choice2=0;
 	        
@@ -77,6 +105,10 @@ static void printPanel() {
 	        return choice2;
 	}
 	
+	/**
+	 * Print the choices left when the pokemon is KO
+	 * @param pk the KO Pokemon
+	 */
 	static void printChoiceWhenKO(Pokemon pk) {
 		System.out.println(pk.getName()+" est KO");
 		System.out.println("1 : Envoyer un pokemon");
