@@ -8,6 +8,9 @@ import dut.fr.pokemon.Pokemon;
 import dut.fr.pokemon.PokemonTeam;
 
 public class Print {
+	/**
+	 * A class that contains the view
+	 */
 static void printPanel() {
 		
 		System.out.println("1 : attaquer");

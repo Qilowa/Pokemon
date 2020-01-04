@@ -22,6 +22,10 @@ public class PokemonTeam implements Serializable{
 	}
 	
 	public void add(FightingPokemon p) {
+		/**
+		 * Add a pokemon to the team
+		 * @param p FightingPokemon you want to add
+		 */
 		if (this.size >= MAX_SIZE) {
 			throw new IllegalStateException("Your team is already full");
 		}
@@ -49,6 +53,10 @@ public class PokemonTeam implements Serializable{
 	}
 	
 	public int createTeam(Pokedex p) {
+		/**
+		 * Creates a team
+		 * @param p Pokedex
+		 */
 		//reprendre ou continué
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Voulez-vous reprendre votre partie ou recommencer une nouvelle ? (0 for resume and 1 for load) :");
@@ -206,6 +214,10 @@ public class PokemonTeam implements Serializable{
 	}
 	
 	public boolean haveLost() {
+		/**
+		 * Return a boolean to specify if the pokemons' team are all KO
+		 * @return true if they are all ko, false otherwise
+		 */
 		if (this.isEmpty()) {
 			throw new IllegalStateException("Please add pokemon to your team");
 		}
