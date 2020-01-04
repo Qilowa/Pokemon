@@ -152,6 +152,11 @@ public class FightingPokemon extends Pokemon implements Serializable {
 		
 		Capacity cap = capacities[capacityID];
 		
+		if (cap.getPP() <= 0) {
+			System.out.println("Pas assez de pp");
+			return;
+		}
+		
 		Type[] types = pk.getTypes();
 		
 		double aff = table.getAffinity(types).get(cap.getType());

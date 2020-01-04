@@ -21,7 +21,7 @@ public class SoloFight extends AbstractFight{
 	
 	@Override
 	public int fight() {
-		// Renvoie true si le joueur 1 gagne et false sinon
+		// Renvoie true si le joueur 1 gagne et 0 sinon
 		Random r = new Random();
 		PokemonTeam team1 = super.getTeam1();
 		PokemonTeam team2 = super.getTeam2();
@@ -32,9 +32,9 @@ public class SoloFight extends AbstractFight{
 		FightingPokemon pk2 = team2.get(0); // Pokemon sur le board
 		
 		
-		AbstractFight.printOnBoard(pk1);
+		Print.printOnBoard(pk1);
 		
-		AbstractFight.printOnBoard(pk2);
+		Print.printOnBoard(pk2);
 				
 		Scanner sc = new Scanner(System.in);
 		
@@ -44,26 +44,24 @@ public class SoloFight extends AbstractFight{
 		
 		int i=1;
 		
+		int choice = -1;
+		
 		while (!team1.haveLost() || !team2.haveLost()) {
 			System.out.println("\nJoueur 1");
-			AbstractFight.printPanel();
+			Print.printPanel();
 			
-			int choice = -1;
 				try {
-					
-					String s = sc.nextLine();
-					choice= Integer.parseInt(s);
+					choice = Integer.parseInt(sc.nextLine());
 				} catch(Exception e ) {
 					choice = -1;
 				}
 				
+			
 			switch(choice) {
-			default:
-				System.out.println("Choisir une option adequate");
-				continue;
+			
 			case 1:
 				//Attaque
-					attackChoice1 = getAttackChoice(sc, pk1);
+					attackChoice1 = Print.getAttackChoice(sc, pk1);
 					if (attackChoice1 == -1) {
 						// -1 pour retourner en arriere
 						continue;
@@ -77,7 +75,7 @@ public class SoloFight extends AbstractFight{
 			case 2:
 				//Changer de pokemon
 				do {
-					int choice2 = AbstractFight.getPokemonChoice(sc, team1);
+					int choice2 = Print.getPokemonChoice(sc, team1);
 					if (choice2 == -1) {
 						continue;
 					}
@@ -89,6 +87,9 @@ public class SoloFight extends AbstractFight{
 				// Abandonner
 				System.out.println("Joueur 1 a perdu !");
 				return 0;
+			default:
+				System.out.println("\nChoisir une option adequate");
+				continue;
 			
 			}
 			int v = r.nextInt(pk2.getNumCapacity());
@@ -109,14 +110,14 @@ public class SoloFight extends AbstractFight{
 			}
 			
 			if (pk1.isKO()) {
-					AbstractFight.printChoiceWhenKO(pk1);
+				Print.printChoiceWhenKO(pk1);
 					int change;
 					if (sc.hasNext()) {
 						change = sc.nextInt();
 						if (change == 1) {
 							//Switch
 							do {
-								AbstractFight.printTeam(team1);
+								Print.printTeam(team1);
 								System.out.println("-1 pour abandonner");
 								int pokemonchoice = sc.nextInt();
 								if (pokemonchoice==-1) {
