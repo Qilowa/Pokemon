@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import dut.fr.pokemon.Capacity;
 import dut.fr.pokemon.FightingPokemon;
-import dut.fr.pokemon.Pokemon;
+import dut.fr.pokemon.PokedexPokemon;
 import dut.fr.pokemon.PokemonTeam;
 
 /**
@@ -109,7 +109,7 @@ public class Print {
 	 * Print the choices left when the pokemon is KO
 	 * @param pk the KO Pokemon
 	 */
-	static void printChoiceWhenKO(Pokemon pk) {
+	static void printChoiceWhenKO(PokedexPokemon pk) {
 		System.out.println(pk.getName()+" est KO");
 		System.out.println("1 : Envoyer un pokemon");
 		System.out.println("2 : Fuir");

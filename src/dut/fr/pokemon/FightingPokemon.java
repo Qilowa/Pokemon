@@ -13,7 +13,7 @@ import dut.fr.type.TypeAffinity;
  * A class representing a Pokemon with fighting statistics
  *
  */
-public class FightingPokemon extends Pokemon implements Serializable {
+public class FightingPokemon extends PokedexPokemon implements Serializable {
 	/**
 	 * 
 	 */
@@ -33,7 +33,7 @@ public class FightingPokemon extends Pokemon implements Serializable {
 	private int numberCapacity;
 	private int currentHealth;
 	
-	private FightingPokemon(Pokemon pokemon, String name, int experience, int health, int phyAttack, int speAttack, int phyDefense, int speDefense,
+	private FightingPokemon(PokedexPokemon pokemon, String name, int experience, int health, int phyAttack, int speAttack, int phyDefense, int speDefense,
 			int speed) {
 		super(pokemon.getNumPokedex(), pokemon.getName(), pokemon.getImgPath(), pokemon.getHeight(), pokemon.getWeight(), pokemon.getTypes() );
 		this.name = name;
@@ -49,7 +49,7 @@ public class FightingPokemon extends Pokemon implements Serializable {
 		this.currentHealth = health;
 	}
 	
-	private FightingPokemon(Pokemon pokemon, int health, int phyAttack, int speAttack, int phyDefense, int speDefense,
+	private FightingPokemon(PokedexPokemon pokemon, int health, int phyAttack, int speAttack, int phyDefense, int speDefense,
 			int speed, Capacity[] capacities) {
 		this(pokemon, pokemon.getName(), 0, health, phyAttack, speAttack, phyDefense, speDefense, speed);
 		
@@ -69,7 +69,7 @@ public class FightingPokemon extends Pokemon implements Serializable {
 	 * @return a new FightingPokemon
 	 */
 	public static FightingPokemon createFightingPokemon(int numPokedex) {
-		Pokemon pokemon = Pokedex.getPokemon(numPokedex);
+		PokedexPokemon pokemon = Pokedex.getPokemon(numPokedex);
 		
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(path));
@@ -158,6 +158,7 @@ public class FightingPokemon extends Pokemon implements Serializable {
 	
 	/**
 	 * Return the defense of the pokemon
+	 * @return int of the physique defense
 	 */
 	public int getDefense() {	
 		return phyDefense;
@@ -165,6 +166,7 @@ public class FightingPokemon extends Pokemon implements Serializable {
 	
 	/**
 	 * Return the special defense of the pokemon
+	 * @return int of the spe defense
 	 */
 	public int getSpeDefense() {
 		return speDefense;
@@ -182,6 +184,7 @@ public class FightingPokemon extends Pokemon implements Serializable {
 	
 	/**
 	 * Return the Current Health of the pokemon
+	 * @return int of the CurrentHealth
 	 */
 	public int getCurrentHealth() {
 		return currentHealth;

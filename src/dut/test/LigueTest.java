@@ -9,9 +9,9 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import dut.fr.ligue.BasicLigue;
-import dut.fr.ligue.DUT2Ligue;
-import dut.fr.ligue.LigueFactory;
+import dut.fr.league.BasicLeague;
+import dut.fr.league.DUT2League;
+import dut.fr.league.LeagueFactory;
 import dut.fr.pokemon.Capacitylist;
 import dut.fr.pokemon.Pokedex;
 import dut.fr.pokemon.PokemonTeam;
@@ -37,14 +37,14 @@ public class LigueTest {
 	    System.out.println("Choisir votre ligue('défaut'=0 , 'made in DUT 2'=1)");
 	    int choix = sc.nextInt();
 	    
-	    LigueFactory f = new LigueFactory(p);
+	    LeagueFactory f = new LeagueFactory(p);
 	    switch (choix) {
 		case 0:
-			BasicLigue basicligue = f.createBasicLigue();
+			BasicLeague basicligue = f.createBasicLigue();
 			basicligue.fightLigue(team);
 			break;
 		case 1:
-			DUT2Ligue dutligue = f.createDUT2Ligue();
+			DUT2League dutligue = f.createDUT2Ligue();
 			dutligue.fightLigue(team);
 			break;
 

@@ -71,7 +71,7 @@ public class Capacitylist {
 	/**
 	 * Return the capacities that has the same type as types
 	 * @param types Array of type
-	 * @return ArrayList<Capacity>
+	 * @return ArrayList
 	 */
 	public static ArrayList<Capacity> capacitychoice(Type[] types) {
 		ArrayList<Capacity> capacityFinal = new ArrayList<Capacity>();

@@ -20,11 +20,11 @@ public class Pokedex implements Serializable{
 	private static final long serialVersionUID = 414282765508690974L;
 	
 	private static final String CSV ="RessourcesPokemon-20191205/pokedex.csv";
-	private static ArrayList<Pokemon> pokedex;
+	private static ArrayList<PokedexPokemon> pokedex;
 	private static Pokedex onlyInstance;
 	
 	private Pokedex() {
-		Pokedex.pokedex = new ArrayList<Pokemon>();
+		Pokedex.pokedex = new ArrayList<PokedexPokemon>();
 		BufferedReader reader;
 		String line;
 		boolean nameField = false;
@@ -53,7 +53,7 @@ public class Pokedex implements Serializable{
 					type2 = Type.valueOf(s);
 				}
 				
-			    Pokemon p = new Pokemon(id, name, picture, height, weight, type1, type2);
+			    PokedexPokemon p = new PokedexPokemon(id, name, picture, height, weight, type1, type2);
 			    pokedex.add(p);
 			    // System.out.println(p);
 			    
@@ -75,8 +75,8 @@ public class Pokedex implements Serializable{
 	 * @param numPokedex the ID of the Pokedex you want
 	 * @return A Pokedex of the Pokedex
 	 */
-	public static Pokemon getPokemon(int numPokedex) {
-		Pokemon p = pokedex.get(numPokedex-1);
+	public static PokedexPokemon getPokemon(int numPokedex) {
+		PokedexPokemon p = pokedex.get(numPokedex-1);
 		return p;
 	}
 	

@@ -48,7 +48,9 @@ public class PokemonTeam implements Serializable{
 		PokemonTeam team = (PokemonTeam) o;
 		return team.size == this.size && this.array.equals(team.array);
 	}
-	
+	/**
+     * hashcode
+     */
 	@Override
 	public int hashCode() {
 		return Objects.hash(array, size);
@@ -56,7 +58,7 @@ public class PokemonTeam implements Serializable{
 	/**
      * createTeam of pokemon
      * @param p Pokedex the pokemon you can choose
-     * @return 
+     * @return int if the teal is create
      */
 	public int createTeam(Pokedex p) {
 		//reprendre ou continuer
@@ -239,7 +241,11 @@ public class PokemonTeam implements Serializable{
 		}
 		return array.get(index);
 	}
-	
+	/**
+     * Size this is to get the size of the pokemonTeam
+     * 
+     * @return int represent the size
+     */
 	public int size() {
 		return array.size();
 	}
