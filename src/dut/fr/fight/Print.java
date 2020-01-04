@@ -51,7 +51,7 @@ static void printPanel() {
 		if (sc.hasNextInt()) {
 			attackChoice = sc.nextInt();
 			String s = sc.nextLine(); // Consummer la ligne
-			if (Print.getLength(pk.getCapacities()) <= attackChoice) {
+			if (Print.getLength(pk.getCapacities()) <= attackChoice+1) {
 				return 5;
 			}
 		} else {
