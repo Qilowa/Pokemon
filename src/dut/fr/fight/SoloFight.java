@@ -1,5 +1,7 @@
 package dut.fr.fight;
 
+import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -88,7 +90,6 @@ public class SoloFight extends AbstractFight{
                 }
 
                 System.out.println(pk1.getName()+" est envoye au combat !");
-                pk1.showPicture();
                 break;
 			case 3:
 				// Abandonner
@@ -147,7 +148,6 @@ public class SoloFight extends AbstractFight{
                             } while (pk1 == null || pk1.isKO());
                             
                             System.out.println(pk1.getName()+" est envoyé au combat !");
-                            pk1.showPicture();
                             choice=-1;
                             continue;
                         } 
@@ -173,7 +173,6 @@ public class SoloFight extends AbstractFight{
 					return 1;
 				}
 				pk2 = team2.get(i);
-				pk2.showPicture();
 				System.out.println(pk2.getName()+" est envoyé au combat !");
 				i++;
 			}
