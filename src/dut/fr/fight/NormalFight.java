@@ -64,7 +64,7 @@ public class NormalFight extends AbstractFight{
 								// -1 pour retourner en arriere
 								continue;
 							}
-						if (attackChoice1 != 1 && attackChoice1 != 2 && attackChoice2 != 3) {
+						if (attackChoice1 != 0 && attackChoice1 != 1 && attackChoice1 != 2 && attackChoice2 != 3) {
 							System.out.println("Choisissez une attaque adéquate !");
 							continue;
 						}
@@ -78,7 +78,7 @@ public class NormalFight extends AbstractFight{
 								continue;
 							}
 							pk1 = team1.get(choice2-1);
-						} while (pk1.isKO());
+						} while (pk1 == null || pk1.isKO());
 						break;
 						
 					case 3:

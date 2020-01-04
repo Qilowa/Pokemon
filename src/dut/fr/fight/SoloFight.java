@@ -80,7 +80,7 @@ public class SoloFight extends AbstractFight{
 						continue;
 					}
 					pk1 = team1.get(choice2-1);
-				} while (pk1.isKO());
+				} while (pk1==null || pk1.isKO());
 				break;
 				
 			case 3:
