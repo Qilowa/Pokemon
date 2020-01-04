@@ -316,7 +316,6 @@ public class Menu extends JFrame implements ActionListener{
 	        setVisible(true);
 		}
 		if (e.getSource().equals(bouton3)) {
-			System.out.println("Ligue");
 			while(listBoutons.size()>0) {   // s'il y a des bouton on supprime
                 panel.remove(listBoutons.get(listBoutons.size()-1));
                 listBoutons.remove(listBoutons.size()-1);
@@ -335,7 +334,7 @@ public class Menu extends JFrame implements ActionListener{
 			      public void actionPerformed(ActionEvent e){ 
 					c1=true; 
 					
-			    	System.out.println("Combat");
+			    	System.out.println("Ligue");
 					if (c1) {
 						String[] args = new String[0];
 				        try {

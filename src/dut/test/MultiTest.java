@@ -2,7 +2,7 @@ package dut.test;
 
 import java.io.IOException;
 
-import dut.fr.fight.NormalFight;
+import dut.fr.fight.MultiFight;
 import dut.fr.pokemon.Capacitylist;
 import dut.fr.pokemon.Pokedex;
 import dut.fr.pokemon.PokemonTeam;
@@ -37,7 +37,7 @@ public class MultiTest {
 	    	Save.save("tmp/team2.ser", teambis);
 	    	System.out.println("Team sauvegardé");
 	    }
-	    NormalFight f1=new NormalFight(team, teambis);
+	    MultiFight f1=new MultiFight(team, teambis);
 	    f1.fight();
 	   
 	    

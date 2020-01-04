@@ -10,7 +10,7 @@ public class MultiFight extends AbstractFight{
 	 */
 	private static final long serialVersionUID = -1698786338164088890L;
 
-	MultiFight(PokemonTeam team1, PokemonTeam team2) {
+	public MultiFight(PokemonTeam team1, PokemonTeam team2) {
 		super(team1, team2);
 	}
 

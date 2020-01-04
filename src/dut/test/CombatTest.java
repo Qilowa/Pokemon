@@ -2,7 +2,8 @@ package dut.test;
 
 import java.io.IOException;
 
-import dut.fr.fight.NormalFight;
+
+import dut.fr.fight.SoloFight;
 import dut.fr.pokemon.Capacitylist;
 import dut.fr.pokemon.Pokedex;
 import dut.fr.pokemon.PokemonTeam;
@@ -38,7 +39,7 @@ public class CombatTest {
 	    	Save.save("tmp/team2.ser", teambis);
 	    	System.out.println("Team sauvegardé");
 	    }
-	    NormalFight f1=new NormalFight(team, teambis);
+	    SoloFight f1=new SoloFight(team, teambis);
 	    f1.fight();
 	   
 	    
