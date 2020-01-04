@@ -88,26 +88,7 @@ public class PokedexPokemon implements Serializable{
 	}
 	
 
-	/**
-	 * Return the image of the pokemon
-	 * 
-	 */
-	public void showPicture() {
-		Image picture;
-		try {
-			picture = ImageIO.read(new File("RessourcesPokemon-20191205/"+pathImage));
-			JLabel label = new JLabel(new ImageIcon(picture));
-			JFrame frame=new JFrame();
-	        frame.setLayout(new FlowLayout());
-	        frame.setSize(300,300);
-	        frame.add(label);
-	        frame.setVisible(true);
-	        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-	}
+	
 	
 	@Override
 	public boolean equals(Object o) {

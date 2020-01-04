@@ -51,7 +51,6 @@ public class Print {
 	 * @param p The Pokemon that is currently fighting
 	 */
 	static void printOnBoard(FightingPokemon p) {
-		p.showPicture();
 		System.out.println("on Board : "+p.getName());
 	}
 	

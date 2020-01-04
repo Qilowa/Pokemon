@@ -3,13 +3,11 @@ package dut.fr.fight;
 import java.io.Serializable;
 import java.util.Scanner;
 
+import dut.fr.pokemon.Capacity;
 import dut.fr.pokemon.FightingPokemon;
 import dut.fr.pokemon.PokemonTeam;
 import dut.fr.type.TypeAffinity;
 
-/**
- * Class that implements Fight 
- */
 public abstract class AbstractFight implements Fight, Serializable {
 	/**
 	 * 
@@ -25,7 +23,7 @@ public abstract class AbstractFight implements Fight, Serializable {
 		this.team2 = team2;
 	}
 	
-	@Override
+
 	public int fight() {
 		// Renvoie 1 ou 2 si respectivement le joueur 1 gagne ou le joueur 2 gagne
 				System.out.println("Debut du COMBAT\n");
@@ -76,7 +74,6 @@ public abstract class AbstractFight implements Fight, Serializable {
 			                } while (pk1==null || pk1.isKO());
 
 			                System.out.println(pk1.getName()+" est envoye au combat !");
-			                pk1.showPicture();
 			                break;
 								
 						case 3:
@@ -115,7 +112,6 @@ public abstract class AbstractFight implements Fight, Serializable {
 			                } while (pk1==null || pk1.isKO());
 
 			                System.out.println(pk1.getName()+" est envoye au combat !");
-			                pk1.showPicture();
 			                break;
 								
 						case 3:
@@ -171,7 +167,6 @@ public abstract class AbstractFight implements Fight, Serializable {
 									} while (pk1.isKO());
 									
 									System.out.println(pk1.getName()+" est envoyé au combat !");
-									pk1.showPicture();
 									continue;
 								} else {
 									// Abandon
@@ -207,7 +202,6 @@ public abstract class AbstractFight implements Fight, Serializable {
 								} while (pk2.isKO());
 								
 								System.out.println(pk2.getName()+" est envoyé au combat !");
-								pk2.showPicture();
 								continue;
 							} else {
 								// Abandon
@@ -233,18 +227,10 @@ public abstract class AbstractFight implements Fight, Serializable {
 			
 	}
 	
-	/**
-	 * Return the Team 1
-	 * @return PokemonTeam 
-	 */
 	PokemonTeam getTeam1() {
 		return team1;
 	}
 	
-	/**
-	 * Return the Team 2
-	 * @return PokemonTeam
-	 */
 	PokemonTeam getTeam2() {
 		return team2;
 	}

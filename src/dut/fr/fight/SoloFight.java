@@ -1,16 +1,13 @@
 package dut.fr.fight;
 
+import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
 import dut.fr.pokemon.FightingPokemon;
 import dut.fr.pokemon.PokemonTeam;
 
-/**
- * Class that represents a fight with a bot
- * 
- *
- */
 public class SoloFight extends AbstractFight{
 
 	/**
@@ -60,14 +57,13 @@ public class SoloFight extends AbstractFight{
 			}
 				
 			
-			// Choice of Player 1
 			switch(choice) {
 			
 			case 1:
-				//Attack
+				//Attaque
 					attackChoice1 = Print.getAttackChoice(sc, pk1);
 					if (attackChoice1 == -1) {
-						// -1 return back
+						// -1 pour retourner en arriere
 						continue;
 					}
 					
@@ -78,7 +74,6 @@ public class SoloFight extends AbstractFight{
 				
 				break;
 			case 2:
-				// Change pokemon
 				int choice2 = -1;
                 do {
                     choice2 = Print.getPokemonChoice(sc, team1);
@@ -95,10 +90,9 @@ public class SoloFight extends AbstractFight{
                 }
 
                 System.out.println(pk1.getName()+" est envoye au combat !");
-                pk1.showPicture();
                 break;
 			case 3:
-				// Give up
+				// Abandonner
 				System.out.println("Joueur 1 a perdu !");
 				return 0;
 			default:
@@ -106,8 +100,6 @@ public class SoloFight extends AbstractFight{
 				continue;
 			
 			}
-			
-			// Choice of BOT
 			int v = r.nextInt(pk2.getNumCapacity());
 			attackChoice2 = v;
 			
@@ -129,7 +121,6 @@ public class SoloFight extends AbstractFight{
 				}
 			}
 			
-			// User 1 : Pokemon is KO
 			if (pk1.isKO()) {
 				System.out.println(pk1.getName()+" est KO");
 				if (team1.haveLost()) {
@@ -157,7 +148,6 @@ public class SoloFight extends AbstractFight{
                             } while (pk1 == null || pk1.isKO());
                             
                             System.out.println(pk1.getName()+" est envoyé au combat !");
-                            pk1.showPicture();
                             choice=-1;
                             continue;
                         } 
@@ -183,7 +173,6 @@ public class SoloFight extends AbstractFight{
 					return 1;
 				}
 				pk2 = team2.get(i);
-				pk2.showPicture();
 				System.out.println(pk2.getName()+" est envoyé au combat !");
 				i++;
 			}
