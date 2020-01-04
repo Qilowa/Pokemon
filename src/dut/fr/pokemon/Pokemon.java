@@ -17,7 +17,7 @@ import dut.fr.type.Type;
 public class Pokemon implements Serializable{
 
 	/**
-	 * 
+	 * A class representing a Pokemon in the Pokedex
 	 */
 	private static final long serialVersionUID = -2272093327434807717L;
 	
@@ -47,27 +47,45 @@ public class Pokemon implements Serializable{
 	}
 	
 	public String getName() {
+		/**
+		 * Return the Original name of the pokemon
+		 */
 		return name;
 	}
 	
 	public int getNumPokedex() {
+		/**
+		 * Return the Index in the Pokedex of the pokemon
+		 */
 		return numPokedex;
 	}
 	
 	public String getImgPath() {
+		/**
+		 * Return the Path for the image of the pokemon
+		 */
 		return pathImage;
 	}
 	
 	public int getHeight() {
+		/**
+		 * Return the Height of the pokemon
+		 */
 		return height;
 	}
 	
 	public int getWeight() {
+		/**
+		 * Return the Weight of the pokemon
+		 */
 		return weight;
 	}
 	
 
 	public void showPicture() {
+		/**
+		 * Return the image of the pokemon
+		 */
 		Image picture;
 		try {
 			picture = ImageIO.read(new File("RessourcesPokemon-20191205/"+pathImage));
@@ -100,6 +118,9 @@ public class Pokemon implements Serializable{
 	}
 
 	public Type[] getTypes() {
+		/**
+		 * Return the types of the pokemon in an array
+		 */
 		return types;
 	}
 	

@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"dut.fr.fight"},{"l":"dut.fr.ligue"},{"l":"dut.fr.menu"},{"l":"dut.fr.pokemon"},{"l":"dut.fr.type"},{"l":"dut.test"}]

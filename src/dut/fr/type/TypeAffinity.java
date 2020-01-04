@@ -10,6 +10,9 @@ import java.util.HashMap;
 import java.util.List;
 
 public class TypeAffinity {
+	/**
+	 * A class that contains all the affinity of types
+	 */
 	private final HashMap<List<Type>, HashMap<Type, Double>> affinitymap;
 	private static final String path = "RessourcesPokemon-20191205/grid_types.csv";
 	
@@ -25,6 +28,11 @@ public class TypeAffinity {
 	}
 	
 	public HashMap<Type, Double> getAffinity(Type[] types) {
+		/**
+		 * Returns a map with the associated Type, Double that represents the coefficient according to a type
+		 * @param types array containing the types
+		 * 
+		 */
 		List<Type> l = Collections.unmodifiableList(Arrays.asList(types));
 		return affinitymap.get(l);
 	}
