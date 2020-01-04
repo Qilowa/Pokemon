@@ -1,16 +1,16 @@
 README
 
-Project Pokemon done by Théo and Quentin
+Projet Pokemon réalisé par Théo et Quentin
 
-Start the program
+Démarrer le programme
 
-To start the project, you need to start the Menu class.
-We did some parts of the project in a graphical way. For example, the Menu of selection and the Pokedex is in a graphic Layout.
+Pour démarrer le projet, vous devez démarrer la classe Menu.java.
+Nous avons réalisé certaines parties du projet de manière graphique. Par exemple, le menu de sélection et le Pokedex sont dans une mise en page graphique.
 
-Also, we are part of the intership group so we had to do the project until the steps V but we did the step VI and a we started step VII.
+De plus, nous faisons partie du groupe alternant, alors nous avons dû faire le projet jusqu’à l’étape V, mais nous avons fait l’étape VI et l’étape VII.
 
 
-Technical choices
+Choix techniques
 
-We used the files given to load the pokedex but we had to find another document with the statistics of each pokemon.
-Those stats are contained in the FightingPokemon class because we did not want to overcharge the Pokemon class.
+Nous avons utilisé les fichiers donnés pour charger le pokedex mais nous avons dû trouver un autre document avec les statistiques de chaque pokemon.
+Ces statistiques sont contenues dans la classe Fightingpokemon parce que nous ne voulions pas surcharger la classe Pokemon.

@@ -3,29 +3,31 @@ package dut.fr.pokemon;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
-import java.util.Random;
 import java.util.Scanner;
 
+/**
+ * PokemonTeam this is a container of pokemon
+ * 
+ */
 public class PokemonTeam implements Serializable{
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1698139518706136991L;
 	
 	private final ArrayList<FightingPokemon> array;
 	private static final int MAX_SIZE=6;
 	private int size;
 	
+	
 	public PokemonTeam() {
 		this.array = new ArrayList<FightingPokemon>();
 		size = 0;
 	}
 	
+	/**
+	 * Add a pokemon to the team
+	 * @param p FightingPokemon you want to add
+	 */
 	public void add(FightingPokemon p) {
-		/**
-		 * Add a pokemon to the team
-		 * @param p FightingPokemon you want to add
-		 */
+		
 		if (this.size >= MAX_SIZE) {
 			throw new IllegalStateException("Your team is already full");
 		}
@@ -51,13 +53,13 @@ public class PokemonTeam implements Serializable{
 	public int hashCode() {
 		return Objects.hash(array, size);
 	}
-	
+	/**
+     * createTeam of pokemon
+     * @param p Pokedex the pokemon you can choose
+     * @return 
+     */
 	public int createTeam(Pokedex p) {
-		/**
-		 * Creates a team
-		 * @param p Pokedex
-		 */
-		//reprendre ou continué
+		//reprendre ou continuer
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Voulez-vous reprendre votre partie ou recommencer une nouvelle ? (0 for resume and 1 for load) :");
 	    int game = sc.nextInt();
@@ -213,11 +215,11 @@ public class PokemonTeam implements Serializable{
 		return false;
 	}
 	
+	/**
+	 * Return a boolean to specify if the pokemons' team are all KO
+	 * @return true if they are all ko, false otherwise
+	 */
 	public boolean haveLost() {
-		/**
-		 * Return a boolean to specify if the pokemons' team are all KO
-		 * @return true if they are all ko, false otherwise
-		 */
 		if (this.isEmpty()) {
 			throw new IllegalStateException("Please add pokemon to your team");
 		}

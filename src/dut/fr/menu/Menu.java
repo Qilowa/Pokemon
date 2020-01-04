@@ -1,15 +1,11 @@
 package dut.fr.menu;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
-import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,16 +19,22 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import dut.fr.pokemon.Capacitylist;
+
 import dut.fr.pokemon.Pokedex;
 import dut.fr.pokemon.Pokemon;
-import dut.fr.pokemon.PokemonTeam;
-import dut.fr.pokemon.Save;
+
 import dut.test.CombatTest;
 import dut.test.LigueTest;
 import dut.test.MultiTest;
- 
+/**
+ * Menu this is the graphic part to choose between the different part
+ * 
+ */
 public class Menu extends JFrame implements ActionListener{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1748824283100882220L;
 	JButton bouton = new JButton("Pokedex");
 	JButton bouton2 = new JButton("Combat");
 	JButton bouton3 = new JButton("Ligue");
@@ -44,6 +46,7 @@ public class Menu extends JFrame implements ActionListener{
     int c=1;
     boolean c1=false;
 	public Menu(){
+		//création of the panel
 		panel.setPreferredSize(new Dimension(720, 480));
         panel.setLayout(new GridLayout(3, 2));
         bouton.addActionListener(this);
@@ -68,29 +71,30 @@ public class Menu extends JFrame implements ActionListener{
         
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setContentPane(panel);
-        pack(); //permet de mettre une bonne dimension a la fenetre
+        pack(); //allows to put a good dimension to the window
         setVisible(true);
 	}
 	public  void actionPerformed(ActionEvent e)
     {
 		if (e.getSource().equals(bouton)) {
-			while(listBoutons.size()>0) {   // s'il y a des bouton on supprime
+			while(listBoutons.size()>0) {   //if there are buttons delete
                 panel.remove(listBoutons.get(listBoutons.size()-1));
                 listBoutons.remove(listBoutons.size()-1);
                 panel.repaint();
             }
-			
+			//creation of the panel
 			System.out.println("Pokedex");
 			Pokedex p = Pokedex.getInstance();
 			Pokemon a =Pokedex.getPokemon(c);
 			panel.setPreferredSize(new Dimension(275, 480));
 			panel.setLayout(new FlowLayout());
-
+			
+			//action of the button previous
 			JButton precedent = new JButton("Précédent");
 			System.out.println(c);
 			precedent.addActionListener(new ActionListener(){  
 			      public void actionPerformed(ActionEvent ae){  
-			    	  while(listimg.size()>0) {   // s'il y a des bouton on supprime
+			    	  while(listimg.size()>0) {   //if there are images we delete
 			    		  	panel.remove(listimg.get(listimg.size()-1));
 			                listimg.remove(listimg.size()-1);
 			                panel.repaint();
@@ -101,6 +105,7 @@ public class Menu extends JFrame implements ActionListener{
 					}
 					Pokemon a =Pokedex.getPokemon(c);
 					System.out.println(a);
+					//view of the pokedex information
 			        Image picture;
 					try {
 						picture = ImageIO.read(new File("RessourcesPokemon-20191205/"+a.getImgPath()));
@@ -129,16 +134,17 @@ public class Menu extends JFrame implements ActionListener{
 			JButton suivant = new JButton("Suivant");
 			suivant.addActionListener(new ActionListener(){  
 			      public void actionPerformed(ActionEvent ae){  
-			    	  while(listimg.size()>0) {   // s'il y a des bouton on supprime
+			    	  while(listimg.size()>0) {   //if there are images we delete
 			    		  	panel.remove(listimg.get(listimg.size()-1));
 			                listimg.remove(listimg.size()-1);
 			                panel.repaint();
 			           }
 			        c++; 
-			        if (c==p.getSize()+1) {
+			        if (c==p.getSize()+1) { 
 						c=1;
 					}
 					Pokemon a =Pokedex.getPokemon(c);
+					//view of the pokedex information
 					System.out.println(a);
 			        Image picture;
 					try {
@@ -180,16 +186,17 @@ public class Menu extends JFrame implements ActionListener{
 			JLabel idsearch = new JLabel("id: ");
 			panel.add(idsearch);
 			JTextField textfield = new JTextField();
-			textfield.setColumns(20); //On lui donne un nombre de colonnes à afficher
+			textfield.setColumns(20); //It is given a number of columns to display
 			panel.add(textfield);
 			textfield.addActionListener(new ActionListener(){
 				        public void actionPerformed(ActionEvent e){
-				            while(listimg.size()>0) {   // s'il y a des bouton on supprime
+				            while(listimg.size()>0) {   //if there are images we delete
 				    		  	panel.remove(listimg.get(listimg.size()-1));
 				                listimg.remove(listimg.size()-1);
 				                panel.repaint();
 				           }
 				            String text = textfield.getText();
+				            //condition if a number is entered
 				            try {
 				                c = Integer.parseInt(text);
 				                textfield.setText("");
@@ -199,13 +206,8 @@ public class Menu extends JFrame implements ActionListener{
 				                        "Valeur invalide , entrez un entier ", "Erreur",
 				                        JOptionPane.ERROR_MESSAGE);
 				            }
-				            //int key = e.getKeyCode();
-				            //System.out.println(key);
-				            /* Restrict input to only integers */
-				            //if (key < 96 && key > 105) e.consume(); 
 				            
-				        	
-				        	//textfield.setText("");
+				            
 				            if (c>=p.getSize()+1 || c<=0) {
 				            JLabel idwrong = new JLabel("Mauvais id");
 							listimg.add(idwrong);
@@ -269,18 +271,18 @@ public class Menu extends JFrame implements ActionListener{
 			
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             setContentPane(panel);
-            pack(); //permet de mettre une bonne dimension a la fenetre
+            pack(); //Allow to put a good dimension to the window
             setVisible(true);
         }
 		if (e.getSource().equals(bouton2)) {
-			while(listBoutons.size()>0) {   // s'il y a des bouton on supprime
+			while(listBoutons.size()>0) {   // if there are buttons delete
                 panel.remove(listBoutons.get(listBoutons.size()-1));
                 listBoutons.remove(listBoutons.size()-1);
                 panel.repaint();
             }
 			panel.setPreferredSize(new Dimension(720, 480));
 			panel.setLayout(new FlowLayout());
-			JLabel okaytext = new JLabel("Vous avez choisis le combat, veuillez regarder la console");
+			JLabel okaytext = new JLabel("Vous avez choisi le combat, veuillez regarder la console");
 			listimg.add(okaytext);
 			panel.add(okaytext);
 			JButton okay = new JButton("Start");
@@ -297,7 +299,6 @@ public class Menu extends JFrame implements ActionListener{
 				        try {
 							CombatTest.main(args);
 						} catch (IOException e1) {
-							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
 				        System.exit(0);
@@ -305,25 +306,24 @@ public class Menu extends JFrame implements ActionListener{
 			      }  
 			    });
 			
-			
-			//mettre le programme
+
 			
 			
 			
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	        setContentPane(panel);
-	        pack(); //permet de mettre une bonne dimension a la fenetre
+	        pack();
 	        setVisible(true);
 		}
 		if (e.getSource().equals(bouton3)) {
-			while(listBoutons.size()>0) {   // s'il y a des bouton on supprime
+			while(listBoutons.size()>0) {
                 panel.remove(listBoutons.get(listBoutons.size()-1));
                 listBoutons.remove(listBoutons.size()-1);
                 panel.repaint();
             }
 			panel.setPreferredSize(new Dimension(720, 480));
 			panel.setLayout(new FlowLayout());
-			JLabel okaytext = new JLabel("Vous avez choisis la Ligue, veuillez regarder la console");
+			JLabel okaytext = new JLabel("Vous avez choisi la Ligue, veuillez regarder la console");
 			listimg.add(okaytext);
 			panel.add(okaytext);
 			JButton okay = new JButton("Start");
@@ -340,7 +340,6 @@ public class Menu extends JFrame implements ActionListener{
 				        try {
 							LigueTest.main(args);
 						} catch (IOException e1) {
-							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
 				        System.exit(0);
@@ -349,24 +348,22 @@ public class Menu extends JFrame implements ActionListener{
 			    });
 			
 			
-			//mettre le programme
-			
 			
 			
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	        setContentPane(panel);
-	        pack(); //permet de mettre une bonne dimension a la fenetre
+	        pack(); //allows to put a good dimension to the window
 	        setVisible(true);
 		}
 		if (e.getSource().equals(bouton5)) {
-			while(listBoutons.size()>0) {   // s'il y a des bouton on supprime
+			while(listBoutons.size()>0) {   //if there are buttons delete
                 panel.remove(listBoutons.get(listBoutons.size()-1));
                 listBoutons.remove(listBoutons.size()-1);
                 panel.repaint();
             }
 			panel.setPreferredSize(new Dimension(720, 480));
 			panel.setLayout(new FlowLayout());
-			JLabel okaytext = new JLabel("Vous avez choisis le Multijoueur, veuillez regarder la console");
+			JLabel okaytext = new JLabel("Vous avez choisi le Multijoueur, veuillez regarder la console");
 			listimg.add(okaytext);
 			panel.add(okaytext);
 			JButton okay = new JButton("Start");
@@ -383,7 +380,6 @@ public class Menu extends JFrame implements ActionListener{
 				        try {
 							MultiTest.main(args);
 						} catch (IOException e1) {
-							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
 				        System.exit(0);
@@ -392,13 +388,10 @@ public class Menu extends JFrame implements ActionListener{
 			    });
 			
 			
-			//mettre le programme
-			
-			
 			
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	        setContentPane(panel);
-	        pack(); //permet de mettre une bonne dimension a la fenetre
+	        pack(); //allows to put a good dimension to the window
 	        setVisible(true);
 		}
     }
