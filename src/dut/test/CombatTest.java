@@ -28,7 +28,7 @@ public class CombatTest {
 	    }
 	    
 	    PokemonTeam teambis= new PokemonTeam();
-	    System.out.println("Joueur 2");
+	    System.out.println("Joueur 2 (BOT)");
 	    if (teambis.createTeam(p)==1) {
 	    	PokemonTeam teambis1 =Save.readPokemonTeam("tmp/team2.ser");
 	    	Save.save("tmp/team2.ser", teambis1);

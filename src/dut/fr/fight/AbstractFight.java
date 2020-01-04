@@ -41,17 +41,24 @@ public abstract class AbstractFight implements Fight, Serializable {
 				int attackChoice1=-1;
 						
 				int attackChoice2=-1;
+				
+				int choice = -1;
 						
 				while (!team1.haveLost() || !team2.haveLost()) {
 					System.out.println("\nJoueur 1");
 					Print.printPanel();
 							
-					int choice = sc.nextInt();
+					try {
+						choice = Integer.parseInt(sc.nextLine());
+					} catch(Exception e) {
+						
+					}
 							
 					switch(choice) {
 						case 1:
 							//Attaque
 							attackChoice1 = Print.getAttackChoice(sc, pk1);
+							
 							if (attackChoice1 == -1) {
 								// -1 pour retourner en arriere
 								continue;
@@ -100,18 +107,24 @@ public abstract class AbstractFight implements Fight, Serializable {
 							System.out.println("Choisissez une attaque adéquate !");
 							continue;
 						}
+						break;
 						case 2:
 							int choice2 = -1;
 			                do {
 			                    choice2 = Print.getPokemonChoice(sc, team1);
 			                    if (choice2 == -1) {
-			                    	continue;
+			                    	break;
 			                    }
-			                    pk1 = team1.get(choice2-1);
+			                    pk2 = team1.get(choice2-1);
 			                    
-			                } while (pk1==null || pk1.isKO());
+			                } while (pk2==null || pk2.isKO());
+			                choice = 2;
+			                if (choice2 == -1) {
+			                	
+			                	continue;
+			                }
 
-			                System.out.println(pk1.getName()+" est envoye au combat !");
+			                System.out.println(pk2.getName()+" est envoye au combat !");
 			                break;
 								
 						case 3:
@@ -120,7 +133,8 @@ public abstract class AbstractFight implements Fight, Serializable {
 							return 1;
 								
 					}
-							
+					System.out.println(choice);
+					System.out.println(choicet2);
 					if (choice == 1 && choicet2 == 1) {
 						if (pk1.getSpeed() >= pk2.getSpeed()) {
 							pk1.attack(attackChoice1, pk2, table);
@@ -139,9 +153,9 @@ public abstract class AbstractFight implements Fight, Serializable {
 					if (choice==1 && choicet2 != 1) {
 						pk1.attack(attackChoice1, pk2, table);
 					}
-					if (choicet2 == 2 && choice!=1) {
+					if (choicet2 == 1 && choice!=1) {
 						pk2.attack(attackChoice2, pk1, table);
-					} 
+					}
 					
 					if (pk1.isKO()) {
 						System.out.println(pk1.getName()+" est KO");
