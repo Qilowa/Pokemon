@@ -46,7 +46,7 @@ public class Menu extends JFrame implements ActionListener{
     int c=1;
     boolean c1=false;
 	public Menu(){
-		//création of the panel
+		//creation of the panel
 		panel.setPreferredSize(new Dimension(720, 480));
         panel.setLayout(new GridLayout(3, 2));
         bouton.addActionListener(this);

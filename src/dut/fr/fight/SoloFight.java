@@ -21,15 +21,15 @@ public class SoloFight extends AbstractFight{
 	
 	@Override
 	public int fight() {
-		// Renvoie true si le joueur 1 gagne et 0 sinon
+		// Return 1 if player 1 wins and 0 if player 2 wins
 		Random r = new Random();
 		PokemonTeam team1 = super.getTeam1();
 		PokemonTeam team2 = super.getTeam2();
 		
 		System.out.println("Debut du COMBAT\n");
 		
-		FightingPokemon pk1 = team1.get(0); // Pokemon sur le board
-		FightingPokemon pk2 = team2.get(0); // Pokemon sur le board
+		FightingPokemon pk1 = team1.get(0); // Pokemon that is currently fighting
+		FightingPokemon pk2 = team2.get(0); // Pokemon that is currently fighting
 		
 		
 		Print.printOnBoard(pk1);
@@ -63,7 +63,7 @@ public class SoloFight extends AbstractFight{
 				//Attaque
 					attackChoice1 = Print.getAttackChoice(sc, pk1);
 					if (attackChoice1 == -1) {
-						// -1 pour retourner en arriere
+						// -1 to got back
 						continue;
 					}
 					
@@ -92,7 +92,7 @@ public class SoloFight extends AbstractFight{
                 System.out.println(pk1.getName()+" est envoye au combat !");
                 break;
 			case 3:
-				// Abandonner
+				// Give up
 				System.out.println("Joueur 1 a perdu !");
 				return 0;
 			default:
@@ -152,7 +152,7 @@ public class SoloFight extends AbstractFight{
                             continue;
                         } 
                         if (change == 2){
-                            // Abandon
+                            // Give up
                             System.out.println("Joueur 1 a perdu !");
                             return 2;
                         }

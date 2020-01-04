@@ -25,11 +25,11 @@ public abstract class AbstractFight implements Fight, Serializable {
 	
 
 	public int fight() {
-		// Renvoie 1 ou 2 si respectivement le joueur 1 gagne ou le joueur 2 gagne
+		// Return 1 if player1 wins and 2 if player2 wins
 				System.out.println("Debut du COMBAT\n");
 						
-				FightingPokemon pk1 = team1.get(0); // Pokemon sur le board
-				FightingPokemon pk2 = team2.get(0); // Pokemon sur le board
+				FightingPokemon pk1 = team1.get(0); // Pokemon on board
+				FightingPokemon pk2 = team2.get(0); // Pokemon on board
 						
 						
 				Print.printOnBoard(pk1);
@@ -56,11 +56,11 @@ public abstract class AbstractFight implements Fight, Serializable {
 							
 					switch(choice) {
 						case 1:
-							//Attaque
+							//Attack
 							attackChoice1 = Print.getAttackChoice(sc, pk1);
 							
 							if (attackChoice1 == -1) {
-								// -1 pour retourner en arriere
+								// -1 to go back
 								continue;
 							}
 						if (attackChoice1 != 0 && attackChoice1 != 1 && attackChoice1 != 2 && attackChoice1 != 3) {
@@ -84,7 +84,7 @@ public abstract class AbstractFight implements Fight, Serializable {
 			                break;
 								
 						case 3:
-							// Abandonner
+							// Give up
 							System.out.println("Joueur 1 a perdu !");
 							return 0;
 						default:
@@ -97,10 +97,10 @@ public abstract class AbstractFight implements Fight, Serializable {
 					int choicet2 = sc.nextInt();
 					switch(choicet2) {
 						case 1:
-							//Attaque
+							// Attack
 							attackChoice2 = Print.getAttackChoice(sc, pk2);
 							if (attackChoice2 == -1) {
-								// -1 pour retourner en arriere
+								// -1 to go back
 								continue;
 							}
 						if (attackChoice2 != 0 && attackChoice2 != 1 && attackChoice2 != 2 && attackChoice2 != 3) {
@@ -128,7 +128,7 @@ public abstract class AbstractFight implements Fight, Serializable {
 			                break;
 								
 						case 3:
-							// Abandonner
+							// Give up
 							System.out.println("Joueur 2 a perdu !");
 							return 1;
 								
@@ -183,7 +183,7 @@ public abstract class AbstractFight implements Fight, Serializable {
 									System.out.println(pk1.getName()+" est envoyé au combat !");
 									continue;
 								} else {
-									// Abandon
+									// Give up
 									System.out.println("Joueur 1 a perdu !");
 									return 2;
 									
