@@ -52,34 +52,39 @@ public abstract class AbstractFight implements Fight, Serializable {
 					switch(choice) {
 						case 1:
 							//Attaque
-								attackChoice1 = Print.getAttackChoice(sc, pk1);
-								
-								if (attackChoice1 == -1) {
-									// -1 pour retourner en arriere
-									continue;
-								}
-								
-								if (attackChoice1 != 1 && attackChoice1 != 2 && attackChoice2 != 3) {
-									System.out.println("Choisissez une attaque adéquate !");
-									continue;
-								}
-							break;
+							attackChoice1 = Print.getAttackChoice(sc, pk1);
+							if (attackChoice1 == -1) {
+								// -1 pour retourner en arriere
+								continue;
+							}
+						if (attackChoice1 != 0 && attackChoice1 != 1 && attackChoice1 != 2 && attackChoice1 != 3) {
+							System.out.println("Choisissez une attaque adéquate !");
+							continue;
+						}
+						
+						break;
 						case 2:
-							//Changer de pokemon
-							do {
-								int choice2 = Print.getPokemonChoice(sc, team1);
-								if (choice2 == -1) {
-									continue;
-								}
-								pk1 = team1.get(choice2-1);
-							} while (pk1.isKO());
-							System.out.println(pk1.getName()+" est envoyÃ© au combat !");
-							break;
+							int choice2 = -1;
+			                do {
+			                    choice2 = Print.getPokemonChoice(sc, team1);
+			                    if (choice2 == -1) {
+			                    	continue;
+			                    }
+			                    pk1 = team1.get(choice2-1);
+			                    
+			                } while (pk1==null || pk1.isKO());
+
+			                System.out.println(pk1.getName()+" est envoye au combat !");
+			                pk1.showPicture();
+			                break;
 								
 						case 3:
 							// Abandonner
 							System.out.println("Joueur 1 a perdu !");
-							return 2;
+							return 0;
+						default:
+							System.out.println("\nChoisir une option adequate");
+							continue;
 					}
 							
 					System.out.println("\nJoueur 2");
@@ -88,27 +93,29 @@ public abstract class AbstractFight implements Fight, Serializable {
 					switch(choicet2) {
 						case 1:
 							//Attaque
-								attackChoice2 = Print.getAttackChoice(sc, pk2);
-								if (attackChoice2 == -1) {
-									// -1 pour retourner en arriere
-									continue;
-								}
-								if (attackChoice1 != 1 && attackChoice1 != 2 && attackChoice2 != 3) {
-									System.out.println("Choisissez une attaque adéquate !");
-									continue;
-								}
-							break;
-						case 2:
-							//Changer de pokemon
-							
-							do {int choice2 = Print.getPokemonChoice(sc, team2);
-							if (choice2 == -1) {
+							attackChoice2 = Print.getAttackChoice(sc, pk2);
+							if (attackChoice2 == -1) {
+								// -1 pour retourner en arriere
 								continue;
 							}
-							pk2 = team1.get(choice2-1);
-							} while (pk2.isKO());
-							System.out.println(pk2.getName()+" est envoyÃ© au combat !");
-							break;
+						if (attackChoice2 != 0 && attackChoice2 != 1 && attackChoice2 != 2 && attackChoice2 != 3) {
+							System.out.println("Choisissez une attaque adéquate !");
+							continue;
+						}
+						case 2:
+							int choice2 = -1;
+			                do {
+			                    choice2 = Print.getPokemonChoice(sc, team1);
+			                    if (choice2 == -1) {
+			                    	continue;
+			                    }
+			                    pk1 = team1.get(choice2-1);
+			                    
+			                } while (pk1==null || pk1.isKO());
+
+			                System.out.println(pk1.getName()+" est envoye au combat !");
+			                pk1.showPicture();
+			                break;
 								
 						case 3:
 							// Abandonner
@@ -140,39 +147,48 @@ public abstract class AbstractFight implements Fight, Serializable {
 					} 
 					
 					if (pk1.isKO()) {
+						System.out.println(pk1.getName()+" est KO");
+						if (team1.haveLost()) {
+							System.out.println("Joueur 1 a perdu !");
+							return 0;
+						}
 						Print.printChoiceWhenKO(pk1);
-						int change;
-						if (sc.hasNext()) {
-							change = sc.nextInt();
-							if (change == 1) {
-								//Switch
-								do {
-									Print.printTeam(team1);
-									System.out.println("-1 pour abandonner");
-									int pokemonchoice = sc.nextInt();
-									if (pokemonchoice==-1) {
-										System.out.println("Joueur 1 a perdu !");
-										return 2;
-									}
-									pk1 = team1.get(pokemonchoice-1);
-								} while (pk1.isKO());
-								
-								System.out.println(pk1.getName()+" est envoyÃ© au combat !");
-								pk1.showPicture();
-								continue;
-							} else {
-								// Abandon
-								System.out.println("Joueur 1 a perdu !");
-								return 2;
+							int change;
+							if (sc.hasNext()) {
+								change = sc.nextInt();
+								if (change == 1) {
+									//Switch
+									do {
+										Print.printTeam(team1);
+										System.out.println("-1 pour abandonner");
+										int pokemonchoice = sc.nextInt();
+										if (pokemonchoice==-1) {
+											System.out.println("Joueur 1 a perdu !");
+											return 2;
+										}
+										pk1 = team1.get(pokemonchoice-1);
+									} while (pk1.isKO());
+									
+									System.out.println(pk1.getName()+" est envoyÃ© au combat !");
+									pk1.showPicture();
+									continue;
+								} else {
+									// Abandon
+									System.out.println("Joueur 1 a perdu !");
+									return 2;
+									
+								}
 								
 							}
-							
-						}
 					
 				}
 							
 					if (pk2.isKO()) {
-						Print.printChoiceWhenKO(pk2);
+						System.out.println(pk2.getName()+" est KO");
+						if (team2.haveLost()) {
+							System.out.println("Joueur 2 a perdu !");
+							return 0;
+						}
 						int change;
 						if (sc.hasNext()) {
 							change = sc.nextInt();

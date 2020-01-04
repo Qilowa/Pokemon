@@ -50,11 +50,11 @@ public class SoloFight extends AbstractFight{
 			System.out.println("\nJoueur 1");
 			Print.printPanel();
 			
-				try {
-					choice = Integer.parseInt(sc.nextLine());
-				} catch(Exception e ) {
-					choice = -1;
-				}
+			try {
+				choice = Integer.parseInt(sc.nextLine());
+			} catch(Exception e) {
+				
+			}
 				
 			
 			switch(choice) {
@@ -66,23 +66,32 @@ public class SoloFight extends AbstractFight{
 						// -1 pour retourner en arriere
 						continue;
 					}
-				if (attackChoice1 != 1 && attackChoice1 != 2 && attackChoice2 != 3) {
+					
+				if (attackChoice1 != 0 && attackChoice1 != 1 && attackChoice1 != 2 && attackChoice1 != 3) {
 					System.out.println("Choisissez une attaque adÈquate !");
 					continue;
 				}
 				
 				break;
 			case 2:
-				//Changer de pokemon
-				do {
-					int choice2 = Print.getPokemonChoice(sc, team1);
-					if (choice2 == -1) {
-						continue;
-					}
-					pk1 = team1.get(choice2-1);
-				} while (pk1==null || pk1.isKO());
-				break;
-				
+				int choice2 = -1;
+                do {
+                    choice2 = Print.getPokemonChoice(sc, team1);
+                    if (choice2 == -1) {
+                    	break;
+                    }
+                    pk1 = team1.get(choice2-1);
+                    
+                } while (pk1==null || pk1.isKO());
+                choice = 2;
+                if (choice2 == -1) {
+                	
+                	continue;
+                }
+
+                System.out.println(pk1.getName()+" est envoye au combat !");
+                pk1.showPicture();
+                break;
 			case 3:
 				// Abandonner
 				System.out.println("Joueur 1 a perdu !");
@@ -94,6 +103,10 @@ public class SoloFight extends AbstractFight{
 			}
 			int v = r.nextInt(pk2.getNumCapacity());
 			attackChoice2 = v;
+			
+			if (choice == 2 ) {
+				pk2.attack(attackChoice2, pk1, table);
+			}
 			
 			if (choice == 1) {
 				if (pk1.getSpeed() >= pk2.getSpeed()) {
@@ -110,38 +123,57 @@ public class SoloFight extends AbstractFight{
 			}
 			
 			if (pk1.isKO()) {
+				System.out.println(pk1.getName()+" est KO");
+				if (team1.haveLost()) {
+					System.out.println("Vous avez perdu !");
+					return 0;
+				}
 				Print.printChoiceWhenKO(pk1);
-					int change;
-					if (sc.hasNext()) {
-						change = sc.nextInt();
-						if (change == 1) {
-							//Switch
-							do {
-								Print.printTeam(team1);
-								System.out.println("-1 pour abandonner");
-								int pokemonchoice = sc.nextInt();
-								if (pokemonchoice==-1) {
-									System.out.println("Joueur 1 a perdu !");
-									return 2;
-								}
-								pk1 = team1.get(pokemonchoice-1);
-							} while (pk1.isKO());
-							
-							System.out.println(pk1.getName()+" est envoy√© au combat !");
-							pk1.showPicture();
-							continue;
-						} else {
-							// Abandon
-							System.out.println("Joueur 1 a perdu !");
-							return 2;
-							
-						}
-						
-					}
+				int change = -1;
+                do {
+                	if (sc.hasNextInt()) {
+                        change = sc.nextInt();
+                	}
+                	System.out.println(change);
+                        if (change == 1) {
+                            //Switch
+                            do {
+                                Print.printTeam(team1);
+                                System.out.println("-1 pour abandonner");
+                                int pokemonchoice = sc.nextInt();
+                                if (pokemonchoice==-1) {
+                                    System.out.println("Joueur 1 a perdu !");
+                                    return 2;
+                                }
+                                pk1 = team1.get(pokemonchoice-1);
+                            } while (pk1 == null || pk1.isKO());
+                            
+                            System.out.println(pk1.getName()+" est envoy√© au combat !");
+                            pk1.showPicture();
+                            choice=-1;
+                            continue;
+                        } 
+                        if (change == 2){
+                            // Abandon
+                            System.out.println("Joueur 1 a perdu !");
+                            return 2;
+                        }
+                        else {
+                        	System.out.println(change);
+                            System.out.println("Choisissez une option adÈquate");
+                        }
+                	
+                        
+                } while (change != 1 && change != 2);
 				
 			}
 			
 			if (pk2.isKO()) {
+				System.out.println(pk2.getName()+" est KO");
+				if (team2.haveLost()) {
+					System.out.println("Vous avez gagnÈ !");
+					return 1;
+				}
 				pk2 = team2.get(i);
 				pk2.showPicture();
 				System.out.println(pk2.getName()+" est envoy√© au combat !");

@@ -119,7 +119,6 @@ public class FightingPokemon extends Pokemon implements Serializable {
 	
 	public boolean isKO() {
 		if (currentHealth <= 0) {
-			System.out.println(this.getName()+" est KO");
 			return true;
 		}
 		

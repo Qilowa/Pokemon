@@ -51,9 +51,9 @@ static void printPanel() {
 		if (sc.hasNextInt()) {
 			attackChoice = sc.nextInt();
 			String s = sc.nextLine(); // Consummer la ligne
-			if (Print.getLength(pk.getCapacities()) <= attackChoice+1) {
-				return 5;
-			}
+			if (Print.getLength(pk.getCapacities()) <= attackChoice) {
+                return 5;
+            }
 		} else {
 			return 5;
 		}
@@ -62,14 +62,16 @@ static void printPanel() {
 	}
 	
 	static int getPokemonChoice(Scanner sc, PokemonTeam team) {
-		int choice2=0;
-		
-		Print.printTeam(team);
-		System.out.println("Choisissez un pokemon (-1 pour retourner en arriere)");
-		if (sc.hasNext()) {
-			choice2 = sc.nextInt();
-		}
-		return choice2;
+		 int choice2=0;
+	        
+	        Print.printTeam(team);
+	        System.out.println("Choisissez un pokemon (-1 pour retourner en arriere)");
+	        try {
+	            choice2 = Integer.parseInt(sc.nextLine());
+	        } catch (Exception e) {
+	            
+	        }
+	        return choice2;
 	}
 	
 	static void printChoiceWhenKO(Pokemon pk) {
