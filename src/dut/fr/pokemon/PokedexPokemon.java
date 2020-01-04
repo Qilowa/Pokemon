@@ -94,8 +94,8 @@ public class PokedexPokemon implements Serializable{
 	 */
 	public void showPicture() {
 		Image picture;
-		try {
-			picture = ImageIO.read(new File("RessourcesPokemon-20191205/"+pathImage));
+		/* try {
+			picture = ImageIO.read(new File("RessourcesPokemon-20191205/img/"+pathImage));
 			JLabel label = new JLabel(new ImageIcon(picture));
 			JFrame frame=new JFrame();
 	        frame.setLayout(new FlowLayout());
@@ -106,7 +106,7 @@ public class PokedexPokemon implements Serializable{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+		*/
 	}
 	
 	@Override

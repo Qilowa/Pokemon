@@ -207,7 +207,6 @@ public class FightingPokemon extends PokedexPokemon implements Serializable {
 		}
 		
 		Type[] types = pk.getTypes();
-		
 		double aff = table.getAffinity(types).get(cap.getType());
 		
 		if (cap.getCategory() == Category.physical) {
