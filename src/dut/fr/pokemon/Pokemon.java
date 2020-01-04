@@ -14,11 +14,12 @@ import javax.swing.JLabel;
 
 import dut.fr.type.Type;
 
+
+/**
+ * A class representing a Pokemon of the Pokedex
+ */
 public class Pokemon implements Serializable{
 
-	/**
-	 * A class representing a Pokemon in the Pokedex
-	 */
 	private static final long serialVersionUID = -2272093327434807717L;
 	
 	private final int numPokedex;
@@ -46,46 +47,52 @@ public class Pokemon implements Serializable{
 		return String.format("id: %d, nom: %s, taille: %d, poids: %d", numPokedex, name, height, weight);
 	}
 	
+	/**
+	 * Return the Original name of the pokemon
+	 * @return The name of the Pokemon
+	 */
 	public String getName() {
-		/**
-		 * Return the Original name of the pokemon
-		 */
 		return name;
 	}
 	
+	/**
+	 * Return the Index in the Pokedex of the pokemon
+	 * @return An Integer representing the index of the Pokedex in the Pokedex
+	 */
 	public int getNumPokedex() {
-		/**
-		 * Return the Index in the Pokedex of the pokemon
-		 */
 		return numPokedex;
 	}
 	
+	/**
+	 * Return the Path for the image of the pokemon
+	 * @return A String representing the pokemon image path
+	 */
 	public String getImgPath() {
-		/**
-		 * Return the Path for the image of the pokemon
-		 */
 		return pathImage;
 	}
 	
+	/**
+	 * Return the Height of the pokemon
+	 * @return An Integer representing the pokemon's height
+	 */
 	public int getHeight() {
-		/**
-		 * Return the Height of the pokemon
-		 */
 		return height;
 	}
 	
+	/**
+	 * Return the Weight of the pokemon
+	 * @return An Integer representing the pokemon's weight
+	 */
 	public int getWeight() {
-		/**
-		 * Return the Weight of the pokemon
-		 */
 		return weight;
 	}
 	
 
+	/**
+	 * Return the image of the pokemon
+	 * 
+	 */
 	public void showPicture() {
-		/**
-		 * Return the image of the pokemon
-		 */
 		Image picture;
 		try {
 			picture = ImageIO.read(new File("RessourcesPokemon-20191205/"+pathImage));
@@ -117,10 +124,11 @@ public class Pokemon implements Serializable{
 		return Objects.hash(numPokedex, pathImage, name, height, weight, types);
 	}
 
+	/**
+	 * Return the types of the pokemon in an array
+	 * @return An array of the type of the Pokemon
+	 */
 	public Type[] getTypes() {
-		/**
-		 * Return the types of the pokemon in an array
-		 */
 		return types;
 	}
 	

@@ -9,6 +9,10 @@ import dut.fr.type.Type;
 
 import dut.fr.type.TypeAffinity;
 
+/**
+ * A class representing a Pokemon with fighting statistics
+ *
+ */
 public class FightingPokemon extends Pokemon implements Serializable {
 	/**
 	 * 
@@ -59,12 +63,12 @@ public class FightingPokemon extends Pokemon implements Serializable {
 	}
 	
 	
+	/**
+	 * Creates a new FightingPokemon
+	 * @param numPokedex id of the pokemon in the pokedex
+	 * @return a new FightingPokemon
+	 */
 	public static FightingPokemon createFightingPokemon(int numPokedex) {
-		/**
-		 * Creates a new FightingPokemon
-		 * @param numPokedex id of the pokemon in the pokedex
-		 * @return a new FightingPokemon
-		 */
 		Pokemon pokemon = Pokedex.getPokemon(numPokedex);
 		
 		try {
@@ -93,11 +97,11 @@ public class FightingPokemon extends Pokemon implements Serializable {
 	}
 	
 	
+	/**
+	 * Add a capacity to the Pokemon
+	 * @param c the capacity added
+	 */
 	public void addCapacity(Capacity c) {
-		/**
-		 * Add a capacity to the Pokemon
-		 * @param c the capacity added
-		 */
 		if (numberCapacity > 4 || numberCapacity < 0) {
 			throw new IllegalStateException("cannot add another capacity");
 		}
@@ -105,11 +109,11 @@ public class FightingPokemon extends Pokemon implements Serializable {
 		numberCapacity++;
 	}
 	
+	/**
+	 * Rename the pokemon
+	 * @param newname The new name of the pokemon
+	 */
 	public void rename(String newname) {
-		/**
-		 * Rename the pokemon
-		 * @param newname The new name of the pokemon
-		 */
 		this.name = Objects.requireNonNull(newname);
 	}
 	
@@ -130,11 +134,12 @@ public class FightingPokemon extends Pokemon implements Serializable {
 		return Objects.hash(super.hashCode(), experience, capacities, health, numberCapacity, phyAttack, phyDefense, speAttack, speDefense, speed);
 	}
 	
+	
+	/**
+	 * Return if the pokemon is KO
+	 * @return true if the pokemon is KO, false otherwise
+	 */
 	public boolean isKO() {
-		/**
-		 * Return if the pokemon is KO
-		 * @return true if the pokemon is KO, false otherwise
-		 */
 		if (currentHealth <= 0) {
 			return true;
 		}
@@ -142,50 +147,53 @@ public class FightingPokemon extends Pokemon implements Serializable {
 		return false;
 	}
 	
+	
+	/**
+	 * Return the capacities of the Pokemon
+	 * @return An array containing the capacities
+	 */
 	public Capacity[] getCapacities() {
-		/**
-		 * Return the capacities of the Pokemon
-		 * @return An array containing the capacities
-		 */
 		return capacities;
 	}
 	
-	public int getDefense() {
-		/**
-		 * Return the defense of the pokemon
-		 */
+	/**
+	 * Return the defense of the pokemon
+	 */
+	public int getDefense() {	
 		return phyDefense;
 	}
 	
+	/**
+	 * Return the special defense of the pokemon
+	 */
 	public int getSpeDefense() {
-		/**
-		 * Return the special defense of the pokemon
-		 */
 		return speDefense;
 	}
 	
+	
+	/**
+	 * Return the name of the pokemon
+	 */
 	@Override
 	public String getName() {
-		/**
-		 * Return the name of the pokemon
-		 */
 		return name;
 	}
 	
+	
+	/**
+	 * Return the Current Health of the pokemon
+	 */
 	public int getCurrentHealth() {
-		/**
-		 * Return the Current Health of the pokemon
-		 */
 		return currentHealth;
 	}
 	
+	/**
+	 * Attack another pokemon
+	 * @param capacityID the ID of the capacity chosen
+	 * @param pk is the Pokemon you want to attack
+	 * @param table is the Affinity of type
+	 */
 	public void attack(int capacityID, FightingPokemon pk, TypeAffinity table) {
-		/**
-		 * Attack another pokemon
-		 * @param capacityID the ID of the capacity chosen
-		 * @param pk is the Pokemon you want to attack
-		 * @param table is the Affinity of type
-		 */
 		int lostHealth = 0;
 		
 		Capacity cap = capacities[capacityID];
@@ -226,18 +234,18 @@ public class FightingPokemon extends Pokemon implements Serializable {
 		return speed;
 	}
 	
+	/** Return the pokemon's Max Health
+	 * @return Pokemon's Max Health
+	 */
 	public int getMaxHealth() {
-		/** Return the pokemon's Max Health
-		 * @return Pokemon's Max Health
-		 */
 		return health;
 	}
 	
-	public int getNumCapacity() {
-		/**
-		 *  Return the number of capacity that the Pokemon has
-		 *  @return Number of capacity of the Pokemon
-		 */
+	/**
+	 *  Return the number of capacity that the Pokemon has
+	 *  @return Number of capacity of the Pokemon
+	 */
+	public int getNumCapacity() {	
 		return numberCapacity;
 	}
 	

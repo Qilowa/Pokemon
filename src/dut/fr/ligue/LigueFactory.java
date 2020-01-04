@@ -9,6 +9,9 @@ import dut.fr.pokemon.FightingPokemon;
 import dut.fr.pokemon.Pokedex;
 import dut.fr.pokemon.PokemonTeam;
 
+/**
+ *Class that represents a Factory of League
+ */
 public class LigueFactory {
 
 	private static Random rand;
@@ -45,11 +48,19 @@ public class LigueFactory {
 		
 	}
 	
+	/**
+	 * Create a BasicLigue
+	 * @return BasicLigue
+	 */
 	public BasicLigue createBasicLigue() {
 		int size = 5;
 		return new BasicLigue(rand.nextInt(), this.createRandTeam(size), this.createRandTeam(size), this.createRandTeam(size), this.createRandTeam(size));
 	}
 	
+	/**
+	 * Create a DUT2Ligue
+	 * @return DUT2Ligue
+	 */
 	public DUT2Ligue createDUT2Ligue() {
 		int size=6;
 		return new DUT2Ligue(rand.nextInt(), this.createRandTeam(size),this.createRandTeam(size), this.createRandTeam(size)

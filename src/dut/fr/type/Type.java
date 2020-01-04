@@ -1,9 +1,10 @@
 package dut.fr.type;
 
+/**
+ * Enum class that contains all the types
+ */
 public enum Type {
-	/**
-	 * Enum class that contains all the types
-	 */
+
 	STEEL,
 	FIGHTING,
 	DRAGON,

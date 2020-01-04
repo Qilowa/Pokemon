@@ -5,6 +5,10 @@ import java.util.Objects;
 
 import dut.fr.type.Type;
 
+/**
+ * Class that represents a Pokemon's Capacity
+ *
+ */
 public class Capacity implements Serializable{
 	
 	
@@ -54,34 +58,65 @@ public class Capacity implements Serializable{
 		return name+"[type=" + type + ", power=" + power +", pp= "+currentPP+"/"+pp+ ", accuracy=" + accuracy+ ", category=" + category+"]";
 	}
 
+	/**
+	 * Return the name of the capacity
+	 * @return String
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * Return the Power of the capacity
+	 * @return Integer
+	 */
 	public int getPower() {
 		return power;
 	}
 
+	/**
+	 * Return the Accuracy of the capacity
+	 * @return Integer
+	 */
 	public int getAccuracy() {
 		return accuracy;
 	}
 
+	/**
+	 * Return the Current PP of a Capacity
+	 * @return Integer
+	 */
 	public int getPP() {
 		return currentPP;
 	}
 	
+	/**
+	 * Return the Max PP of the capacity
+	 * @return Integer
+	 */
 	public int getMaxPP() {
 		return pp;
 	}
 
+	/**
+	 * Return the Category of the capacity
+	 * @return Category
+	 */
 	public Category getCategory() {
 		return category;
 	}
 
+	/**
+	 * Return the Type of the capacity
+	 * @return Type
+	 */
 	public Type getType() {
 		return type;
 	}
 	
+	/**
+	 * Reduce the PP of the capacity
+	 */
 	public void reducePP() {
 		currentPP--;
 	}

@@ -8,6 +8,11 @@ import java.util.ArrayList;
 
 import dut.fr.type.Type;
 
+/**
+ * A class that contains all the Pokemon of the Pokedex
+ * 
+ *
+ */
 public class Pokedex implements Serializable{
 	/**
 	 * 
@@ -65,6 +70,11 @@ public class Pokedex implements Serializable{
 		return onlyInstance;
 	}
 	
+	/**
+	 * Return the Pokedex that has the numPokedex ID
+	 * @param numPokedex the ID of the Pokedex you want
+	 * @return A Pokedex of the Pokedex
+	 */
 	public static Pokemon getPokemon(int numPokedex) {
 		Pokemon p = pokedex.get(numPokedex-1);
 		return p;
@@ -75,6 +85,10 @@ public class Pokedex implements Serializable{
 		return pokedex.toString();
 	}
 	
+	/**
+	 * Return the size of the Pokedex
+	 * @return An integer representing the number of pokemon
+	 */
 	public int getSize() {
 		return pokedex.size();
 	}

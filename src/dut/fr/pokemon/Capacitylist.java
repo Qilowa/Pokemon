@@ -7,6 +7,10 @@ import java.util.ArrayList;
 
 import dut.fr.type.Type;
 
+/**
+ * 
+ * Class containing the Capacity
+ */
 public class Capacitylist {
 	private static final String CSV ="./RessourcesPokemon-20191205/Capacity.csv";
 	private static ArrayList<Capacity> capacity;
@@ -64,7 +68,11 @@ public class Capacitylist {
 	}
 	
 	
-	
+	/**
+	 * Return the capacities that has the same type as types
+	 * @param types Array of type
+	 * @return ArrayList<Capacity>
+	 */
 	public static ArrayList<Capacity> capacitychoice(Type[] types) {
 		ArrayList<Capacity> capacityFinal = new ArrayList<Capacity>();
 		for(int i = 0; i < capacity.size(); i++){
@@ -76,6 +84,7 @@ public class Capacitylist {
 		return capacityFinal;
 		
 	}
+	
 	public static Capacitylist getInstance() {
 		if (onlyInstance == null) {
 			onlyInstance = new Capacitylist();
@@ -83,7 +92,11 @@ public class Capacitylist {
 		return onlyInstance;
 	}
 	
-	
+	/**
+	 * Return a capacity according to the id
+	 * @param id Integer representing the id of a capacity
+	 * @return Capacity
+	 */
 	public static Capacity getCapacity(int id) {
 		Capacity c = capacity.get(id);
 		return c;

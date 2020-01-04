@@ -6,6 +6,10 @@ import dut.fr.fight.AbstractFight;
 import dut.fr.fight.SoloFight;
 import dut.fr.pokemon.PokemonTeam;
 
+/**
+ * Class that implements Ligue
+ *
+ */
 public class AbstractLigue implements Ligue{
 	private final int identifier;
 	private final PokemonTeam team1;
