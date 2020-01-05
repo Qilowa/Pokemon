@@ -87,6 +87,7 @@ public class PokedexPokemon implements Serializable{
 		return weight;
 	}
 	
+
 	/**
 	 * Return the image of the pokemon
 	 * 
@@ -107,7 +108,7 @@ public class PokedexPokemon implements Serializable{
 		}
 		*/
 	}
-	
+
 	@Override
 	public boolean equals(Object o) {
 		if (!(o instanceof PokedexPokemon)) {
