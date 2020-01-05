@@ -123,7 +123,7 @@ public class Menu extends JFrame implements ActionListener{
 					JLabel namepoke = new JLabel("nom: "+a.getName());
 					listimg.add(namepoke);
 					panel.add(namepoke);
-					JLabel heightpoke = new JLabel("taille: "+a.getHeight()+" cm");
+					JLabel heightpoke = new JLabel("taille: "+a.getHeight()+" dm");
 					listimg.add(heightpoke);
 					panel.add(heightpoke);
 					JLabel weightpoke = new JLabel("poids: "+a.getWeight()+" kg");
@@ -163,7 +163,7 @@ public class Menu extends JFrame implements ActionListener{
 					JLabel namepoke = new JLabel("nom: "+a.getName());
 					listimg.add(namepoke);
 					panel.add(namepoke);
-					JLabel heightpoke = new JLabel("taille: "+a.getHeight()+" cm");
+					JLabel heightpoke = new JLabel("taille: "+a.getHeight()+" dm");
 					listimg.add(heightpoke);
 					panel.add(heightpoke);
 					JLabel weightpoke = new JLabel("poids: "+a.getWeight()+" kg");
@@ -233,7 +233,7 @@ public class Menu extends JFrame implements ActionListener{
 							JLabel namepoke = new JLabel("nom: "+a.getName());
 							listimg.add(namepoke);
 							panel.add(namepoke);
-							JLabel heightpoke = new JLabel("taille: "+a.getHeight()+" cm");
+							JLabel heightpoke = new JLabel("taille: "+a.getHeight()+" dm");
 							listimg.add(heightpoke);
 							panel.add(heightpoke);
 							JLabel weightpoke = new JLabel("poids: "+a.getWeight()+" kg");
@@ -261,7 +261,7 @@ public class Menu extends JFrame implements ActionListener{
 			JLabel namepoke = new JLabel("nom: "+a.getName());
 			listimg.add(namepoke);
 			panel.add(namepoke);
-			JLabel heightpoke = new JLabel("taille: "+a.getHeight()+" cm");
+			JLabel heightpoke = new JLabel("taille: "+a.getHeight()+" dm");
 			listimg.add(heightpoke);
 			panel.add(heightpoke);
 			JLabel weightpoke = new JLabel("poids: "+a.getWeight()+" kg");

@@ -1,10 +1,11 @@
 README
 
+Auteurs :Théo MARION et Quentin SINH
 Projet Pokemon réalisé par Théo et Quentin
 
 Démarrer le programme
 
-Avant tous, nous tenons à préciser que notre code et les commentaires sont totalement en anglais.
+Avant tout, nous tenons à préciser que notre code et les commentaires sont totalement en anglais.
 
 Pour démarrer le projet, vous devez démarrer la classe Menu.
 
@@ -13,7 +14,7 @@ Mais nous avons quand même voulu réaliser certaines parties du projet de manière
 
 De plus, nous faisons partie du groupe des alternants, alors nous devions faire le projet jusqu’à l’étape V, mais nous avons fait l’étape VI et l’étape VII.
 
-Nous avons pu impleter une javadoc à tous notre projet.
+Nous avons pu implementer une javadoc à tous notre projet.
 
 
 Choix techniques
