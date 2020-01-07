@@ -18,6 +18,9 @@ public class Capacitylist {
 	
 	private Capacitylist()  {
 		capacity = new ArrayList<Capacity>();
+	}
+	
+	private static void createCapacitylist() {
 		String line;
 		boolean nameField = false;
 		try {
@@ -27,46 +30,14 @@ public class Capacitylist {
 	    		nameField = true;
 	    		continue;
 	    	}
-	    	String[] array = line.split(",");
-	    	if (array.length==7) {
-	    		Integer id = Integer.parseInt(array[0]);
-		    	String name = array[1];
-		    	Type type = Type.valueOf(array[2].toUpperCase());
-		    	Integer power = Integer.parseInt(array[3]);
-		    	Integer pp = Integer.parseInt(array[4]);
-		    	Integer precision = Integer.parseInt(array[5]);
-		    	String category = array[6];
-		        Capacity p = new Capacity(name, type, power,pp, precision,category);
-		        capacity.add(p);
-			}
-	    	if (array.length==6) {
-	    		Integer id = Integer.parseInt(array[0]);
-		    	String name = array[1];
-		    	Type type = Type.valueOf(array[2].toUpperCase());
-		    	Integer power = 0;
-		    	Integer pp = Integer.parseInt(array[3]);
-		    	Integer precision = Integer.parseInt(array[4]);
-		    	String category = array[5];
-		        Capacity p = new Capacity(name, type, power,pp, precision,category);
-		        capacity.add(p);
-			}
-	    	if (array.length==5) {
-	    		Integer id = Integer.parseInt(array[0]);
-		    	String name = array[1];
-		    	Type type = Type.valueOf(array[2].toUpperCase());
-		    	Integer power = 0;
-		    	Integer pp = Integer.parseInt(array[3]);
-		    	Integer precision = 0;
-		    	String category = array[4];
-		        Capacity p = new Capacity(name, type, power,pp, precision,category);
-		        capacity.add(p);
-			}
+	    	Capacity c = Capacity.createCapacity(line);
+	    	capacity.add(c);
 	    }
 		}catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 	}
-	
 	
 	/**
 	 * Return the capacities that has the same type as types
@@ -86,8 +57,9 @@ public class Capacitylist {
 	}
 	
 	public static Capacitylist getInstance() {
-		if (onlyInstance == null) {
+		if (capacity == null) {
 			onlyInstance = new Capacitylist();
+			Capacitylist.createCapacitylist();
 		}
 		return onlyInstance;
 	}

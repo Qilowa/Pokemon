@@ -29,7 +29,7 @@ public class PokedexPokemon implements Serializable{
 	private final int weight;
 	private Type[] types;
 	
-	PokedexPokemon(int numPokedex, String name, String img, int height, int weight, Type type1, Type type2) {
+	private PokedexPokemon(int numPokedex, String name, String img, int height, int weight, Type type1, Type type2) {
 		this.numPokedex = numPokedex;
 		this.pathImage =img;
 		this.name = Objects.requireNonNull(name);
@@ -38,7 +38,7 @@ public class PokedexPokemon implements Serializable{
 		this.types = new Type[] {type1, type2};
 	}
 	
-	public PokedexPokemon(int numPokedex, String name, String img, int height, int weight, Type[] types) {
+	PokedexPokemon(int numPokedex, String name, String img, int height, int weight, Type[] types) {
 		this(numPokedex, name, img, height, weight, types[0], types[1]);
 	}
 	
@@ -130,6 +130,26 @@ public class PokedexPokemon implements Serializable{
 	 */
 	public Type[] getTypes() {
 		return types;
+	}
+	
+	static PokedexPokemon createPokemon(String line) {
+		String[] array = line.split(",", 7);
+		Integer id = Integer.parseInt(array[0]);
+		String name = array[1].toUpperCase();
+		String picture = array[2];
+		Integer height = Integer.parseInt(array[3]);
+		Integer weight = Integer.parseInt(array[4]);
+		Type type1 = Type.valueOf(array[5].toUpperCase());
+		
+		String s = array[6].toUpperCase();
+		Type type2;
+		if (s.isEmpty()) {
+			type2 = null;
+		} else {
+			type2 = Type.valueOf(s);
+		}
+		
+		return new PokedexPokemon(id, name, picture, height, weight, type1, type2);
 	}
 	
 	

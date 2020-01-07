@@ -25,7 +25,7 @@ public class Capacity implements Serializable{
 	private final Type type;
 	private int currentPP;
 	
-	Capacity(String name,Type type,int power,int pp, int accuracy,String category) {
+	private Capacity(String name,Type type,int power,int pp, int accuracy,String category) {
 		this.name=Objects.requireNonNull(name);
 		this.type=type;
 		/*if (type == type.FIGHTING &&(power<15 || power>300 || power%5==1 )) {
@@ -120,6 +120,40 @@ public class Capacity implements Serializable{
 	public void reducePP() {
 		currentPP--;
 	}
-
+	
+	public static Capacity createCapacity(String line) {
+		String[] array = line.split(",");
+    	if (array.length==7) {
+	    	String name = array[1];
+	    	Type type = Type.valueOf(array[2].toUpperCase());
+	    	Integer power = Integer.parseInt(array[3]);
+	    	Integer pp = Integer.parseInt(array[4]);
+	    	Integer precision = Integer.parseInt(array[5]);
+	    	String category = array[6];
+	        Capacity p = new Capacity(name, type, power,pp, precision,category);
+	        return p;
+		}
+    	if (array.length==6) {
+	    	String name = array[1];
+	    	Type type = Type.valueOf(array[2].toUpperCase());
+	    	Integer power = 0;
+	    	Integer pp = Integer.parseInt(array[3]);
+	    	Integer precision = Integer.parseInt(array[4]);
+	    	String category = array[5];
+	        Capacity p = new Capacity(name, type, power,pp, precision,category);
+	        return p;
+		}
+    	if (array.length==5) {
+	    	String name = array[1];
+	    	Type type = Type.valueOf(array[2].toUpperCase());
+	    	Integer power = 0;
+	    	Integer pp = Integer.parseInt(array[3]);
+	    	Integer precision = 0;
+	    	String category = array[4];
+	        Capacity p = new Capacity(name, type, power,pp, precision,category);
+	        return p;
+		}
+    	return null;
+	}
 
 }

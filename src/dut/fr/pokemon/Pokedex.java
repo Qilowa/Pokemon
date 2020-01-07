@@ -37,23 +37,7 @@ public class Pokedex implements Serializable{
 					nameField = true;
 					continue;
 				}
-				String[] array = line.split(",", 7);
-				Integer id = Integer.parseInt(array[0]);
-				String name = array[1].toUpperCase();
-				String picture = array[2];
-				Integer height = Integer.parseInt(array[3]);
-				Integer weight = Integer.parseInt(array[4]);
-				Type type1 = Type.valueOf(array[5].toUpperCase());
-				
-				String s = array[6].toUpperCase();
-				Type type2;
-				if (s.isEmpty()) {
-					type2 = null;
-				} else {
-					type2 = Type.valueOf(s);
-				}
-				
-			    PokedexPokemon p = new PokedexPokemon(id, name, picture, height, weight, type1, type2);
+			    PokedexPokemon p = PokedexPokemon.createPokemon(line);
 			    pokedex.add(p);
 			    // System.out.println(p);
 			    
