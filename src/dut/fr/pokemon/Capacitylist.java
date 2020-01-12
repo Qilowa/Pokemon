@@ -69,7 +69,7 @@ public class Capacitylist {
 	 * @param id Integer representing the id of a capacity
 	 * @return Capacity
 	 */
-	public static Capacity getCapacity(int id) {
+	public Capacity getCapacity(int id) {
 		Capacity c = capacity.get(id);
 		return c;
 	}

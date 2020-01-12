@@ -1,0 +1,8 @@
+CHANGELOG
+
+Consignes après la pré-soutenance 
+
+- Amélioration de nos singletons (la classe Pokedex et la classe Capacitylist)
+
+- Correction des bugs d'encodage car certains caractères n'étaient pas correctement encodés
+

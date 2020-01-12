@@ -1,7 +1,5 @@
 package dut.fr.fight;
 
-import java.io.IOException;
-import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -68,7 +66,7 @@ public class SoloFight extends AbstractFight{
 					}
 					
 				if (attackChoice1 != 0 && attackChoice1 != 1 && attackChoice1 != 2 && attackChoice1 != 3) {
-					System.out.println("Choisissez une attaque adéquate !");
+					System.out.println("Choisissez une attaque adï¿½quate !");
 					continue;
 				}
 				
@@ -158,7 +156,7 @@ public class SoloFight extends AbstractFight{
                         }
                         else {
                         	System.out.println(change);
-                            System.out.println("Choisissez une option adéquate");
+                            System.out.println("Choisissez une option adï¿½quate");
                         }
                 	
                         
@@ -169,7 +167,7 @@ public class SoloFight extends AbstractFight{
 			if (pk2.isKO()) {
 				System.out.println(pk2.getName()+" est KO");
 				if (team2.haveLost()) {
-					System.out.println("Vous avez gagné !");
+					System.out.println("Vous avez gagnï¿½ !");
 					return 1;
 				}
 				pk2 = team2.get(i);

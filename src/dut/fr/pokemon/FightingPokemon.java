@@ -68,8 +68,8 @@ public class FightingPokemon extends PokedexPokemon implements Serializable {
 	 * @param numPokedex id of the pokemon in the pokedex
 	 * @return a new FightingPokemon
 	 */
-	public static FightingPokemon createFightingPokemon(int numPokedex) {
-		PokedexPokemon pokemon = Pokedex.getPokemon(numPokedex);
+	public static FightingPokemon createFightingPokemon(int numPokedex, Pokedex p) {
+		PokedexPokemon pokemon = p.getPokemon(numPokedex);
 		
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(path));

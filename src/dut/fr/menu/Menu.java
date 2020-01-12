@@ -85,7 +85,7 @@ public class Menu extends JFrame implements ActionListener{
 			//creation of the panel
 			System.out.println("Pokedex");
 			Pokedex p = Pokedex.getInstance();
-			PokedexPokemon a =Pokedex.getPokemon(c);
+			PokedexPokemon a =p.getPokemon(c);
 			panel.setPreferredSize(new Dimension(275, 480));
 			panel.setLayout(new FlowLayout());
 			
@@ -103,7 +103,7 @@ public class Menu extends JFrame implements ActionListener{
 			        if (c==0) {
 						c=p.getSize();
 					}
-					PokedexPokemon a =Pokedex.getPokemon(c);
+					PokedexPokemon a =p.getPokemon(c);
 					System.out.println(a);
 					//view of the pokedex information
 			        Image picture;
@@ -143,7 +143,7 @@ public class Menu extends JFrame implements ActionListener{
 			        if (c==p.getSize()+1) { 
 						c=1;
 					}
-					PokedexPokemon a =Pokedex.getPokemon(c);
+					PokedexPokemon a =p.getPokemon(c);
 					//view of the pokedex information
 					System.out.println(a);
 			        Image picture;
@@ -214,7 +214,7 @@ public class Menu extends JFrame implements ActionListener{
 							panel.add(idwrong);
 				            c=1;
 				            }
-				            PokedexPokemon a =Pokedex.getPokemon(c);
+				            PokedexPokemon a =p.getPokemon(c);
 							System.out.println(a);
 					        Image picture;
 							try {

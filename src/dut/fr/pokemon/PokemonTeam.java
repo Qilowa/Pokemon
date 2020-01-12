@@ -104,7 +104,7 @@ public class PokemonTeam implements Serializable{
 		    }
 		    
 		    System.out.println("Vous avez saisi le Pokémon : " + p.getPokemon(pk));
-		    FightingPokemon pokemon = FightingPokemon.createFightingPokemon(pk);
+		    FightingPokemon pokemon = FightingPokemon.createFightingPokemon(pk, p);
 		    System.out.println(pokemon);
 		    ArrayList<Capacity> capacitylist=Capacitylist.capacitychoice(p.getPokemon(pk).getTypes());//pk.gettype()
 			for(int y = 0; y < capacitylist.size(); y++){
@@ -124,7 +124,6 @@ public class PokemonTeam implements Serializable{
 		    }
 		    System.out.println("Vous avez saisi la Capacité : " + capacitylist.get(cp1));
 		    pokemon.addCapacity(capacitylist.get(cp1));
-		    //pokemon.addpacity(capacity[cp1]);
 			
 			int compteur=1;
 		    do {
@@ -144,7 +143,6 @@ public class PokemonTeam implements Serializable{
 					break;
 				}
 		    	int cp = sc.nextInt();
-		    	System.out.println(cp);
 			    if (cp==-1) {
 			    	compteur=5;
 			    	this.add(pokemon);

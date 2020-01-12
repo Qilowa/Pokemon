@@ -30,7 +30,7 @@ public class LeagueFactory {
 		while (i<size) {
 			int r = rand.nextInt(pokedex.getSize());
 			
-			FightingPokemon random = FightingPokemon.createFightingPokemon(r);
+			FightingPokemon random = FightingPokemon.createFightingPokemon(r, pokedex);
 			if (random != null) {
 				ArrayList<Capacity> available = Capacitylist.capacitychoice(random.getTypes());
 				for(int j=0; j<4; j++) {

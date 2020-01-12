@@ -59,7 +59,7 @@ public class Pokedex implements Serializable{
 	 * @param numPokedex the ID of the Pokedex you want
 	 * @return A Pokedex of the Pokedex
 	 */
-	public static PokedexPokemon getPokemon(int numPokedex) {
+	public PokedexPokemon getPokemon(int numPokedex) {
 		PokedexPokemon p = pokedex.get(numPokedex-1);
 		return p;
 	}
