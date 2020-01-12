@@ -17,5 +17,5 @@ Consignes après la pré-soutenance
 	Avant, l'interface Fight possédait seulement une méthode fight. Il n'y avait pas d'intéraction directe entre AbstractFight, SoloFight et Multifight.
 	Ainsi, il y avait duplication de code entre SoloFight et MultiFight.
 	Nous avons pu réduire la duplication de code en délaissant le travail à la classe AbstractFight. Les classes SoloFight et MultiFight sont maintenant présente pour spécifier les
-	différentes actions du deuxième joueur (soit c'est un BOT soit c'est un deuxième joueur en local).
+	différentes actions du deuxième joueur (soit c'est un BOT soit c'est un deuxième joueur en local) grâce au polymorphisme.
 	
