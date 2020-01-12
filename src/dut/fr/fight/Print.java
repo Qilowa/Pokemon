@@ -108,8 +108,7 @@ public class Print {
 	 * Print the choices left when the pokemon is KO
 	 * @param pk the KO Pokemon
 	 */
-	static void printChoiceWhenKO(PokedexPokemon pk) {
-		System.out.println(pk.getName()+" est KO");
+	static void printChoiceWhenKO() {
 		System.out.println("1 : Envoyer un pokemon");
 		System.out.println("2 : Fuir");
 		System.out.println("Que voulez vous faire ?");

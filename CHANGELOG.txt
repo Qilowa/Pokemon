@@ -3,6 +3,19 @@ CHANGELOG
 Consignes après la pré-soutenance 
 
 - Amélioration de nos singletons (la classe Pokedex et la classe Capacitylist)
+	Capacitylist n'était pas correctement organisé. 
+	Le constructeur possédait la création de la liste de capacité grâce au CSV, ce qui n'était pas recommandé. 
+	Nous avons placé la création de la liste dans une autre méthode et ainsi rendu le constructeur et la création private.
+	Le constructeur est présent juste pour initialiser l'ArrayList. 
+	C'est lors de la création du singleton (méthode getInstance) que le constructeur et la méthode de création va être appelé.
+	
+	De même pour Pokedex.
 
 - Correction des bugs d'encodage car certains caractères n'étaient pas correctement encodés
 
+- Optimisation du package dut.fr.fight
+	Avant, l'interface Fight possédait seulement une méthode fight. Il n'y avait pas d'intéraction directe entre AbstractFight, SoloFight et Multifight.
+	Ainsi, il y avait duplication de code entre SoloFight et MultiFight.
+	Nous avons pu réduire la duplication de code en délaissant le travail à la classe AbstractFight. Les classes SoloFight et MultiFight sont maintenant présente pour spécifier les
+	différentes actions du deuxième joueur (soit c'est un BOT soit c'est un deuxième joueur en local).
+	
