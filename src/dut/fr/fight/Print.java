@@ -16,11 +16,12 @@ public class Print {
 	 * Print the menu of Fight
 	 */
 	static void printPanel() {
-		
-		System.out.println("1 : attaquer");
+		System.out.println("----------MENU---------");
+		System.out.println("1 : Attaquer");
 		System.out.println("2 : Changer de pokemon");
 		System.out.println("3 : Fuir");
 		System.out.println("Que voulez vous faire ?");
+		System.out.println("-----------------------");
 	}
 	
 	/**
@@ -31,8 +32,10 @@ public class Print {
 		for (int i=0; i<c.length; i++) {
 			System.out.println((i)+": "+c[i]);
 		}
+		System.out.println("----------------------------");
 		System.out.println("Que voulez vous faire ?");
 		System.out.println("-1 pour retourner en arriere");
+		System.out.println("----------------------------");
 	}
 	
 	/**
@@ -51,7 +54,8 @@ public class Print {
 	 * @param p The Pokemon that is currently fighting
 	 */
 	static void printOnBoard(FightingPokemon p) {
-		System.out.println("on Board : "+p.getName());
+		System.out.println("---------On board----------");
+		System.out.println(p.getName());
 	}
 	
 	private static <T> int getLength(T[] array) {
@@ -69,6 +73,7 @@ public class Print {
 	 * @return An Integer representing the index of the attack that the user chose
 	 */
 	static int getAttackChoice(Scanner sc, FightingPokemon pk) {
+		System.out.println("--------Attack Choice--------");
 		int attackChoice= -1 ;
 		
 		Print.printCapacities(pk.getCapacities());
@@ -109,8 +114,10 @@ public class Print {
 	 * @param pk the KO Pokemon
 	 */
 	static void printChoiceWhenKO() {
+		System.out.println("----------MENU---------");
 		System.out.println("1 : Envoyer un pokemon");
 		System.out.println("2 : Fuir");
 		System.out.println("Que voulez vous faire ?");
+		System.out.println("-----------------------");
 	}
 }

@@ -21,25 +21,25 @@ public interface Fight {
 	
 	/**
 	 * Method that get the ID of the attack
-	 * @param sc
-	 * @param pk
-	 * @return
+	 * @param sc scanner
+	 * @param pk FightingPokemon
+	 * @return to get the attack id
 	 */
 	int getIdAttack(Scanner sc, FightingPokemon pk);
 	
 	/**
 	 * Method that get the ID of the next Pokemon
-	 * @param sc
+	 * @param sc scanner
 	 * @param team the pokemonteam 
-	 * @return
+	 * @return to get new pokemon
 	 */
 	int getNewPokemon(Scanner sc, PokemonTeam team);
 	
 	/**
 	 *Method that get the choice when the pokemon is KO
-	 * @param sc
-	 * @param pk
-	 * @return
+	 * @param sc scanner
+	 * @param pk FightingPokemon
+	 * @return the different choice
 	 */
 	int choiceWhenKO(Scanner sc, FightingPokemon pk);
 }

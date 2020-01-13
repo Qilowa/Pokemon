@@ -66,6 +66,7 @@ public class FightingPokemon extends PokedexPokemon implements Serializable {
 	/**
 	 * Creates a new FightingPokemon
 	 * @param numPokedex id of the pokemon in the pokedex
+	 * @param p the pokedex
 	 * @return a new FightingPokemon
 	 */
 	public static FightingPokemon createFightingPokemon(int numPokedex, Pokedex p) {

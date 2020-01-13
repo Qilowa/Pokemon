@@ -33,7 +33,7 @@ public class Capacity implements Serializable{
 		}*/
 		this.power = power;
 		if (accuracy<0 || accuracy>100) {
-			throw new IllegalArgumentException("precision must be between 0 and 100");
+			throw new IllegalArgumentException("precision doit être entre 0 et 100");
 		}
 		this.accuracy = accuracy;
 		this.pp=pp;

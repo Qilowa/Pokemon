@@ -66,7 +66,11 @@ public class Pokedex implements Serializable{
 	
 	@Override
 	public String toString() {
-		return pokedex.toString();
+		StringBuilder list= new StringBuilder();
+		for(int y = 0; y < pokedex.size(); y++){
+		      list.append(pokedex.get(y)+"\n");
+		    }
+		return list.toString();
 	}
 	
 	/**

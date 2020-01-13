@@ -63,7 +63,7 @@ public abstract class AbstractFight implements Fight, Serializable {
 								continue;
 							}
 						if (attackChoice1 != 0 && attackChoice1 != 1 && attackChoice1 != 2 && attackChoice1 != 3) {
-							System.out.println("Choisissez une attaque ad�quate !");
+							System.out.println("Choisissez une attaque adéquate !");
 							continue;
 						}
 						
@@ -84,7 +84,7 @@ public abstract class AbstractFight implements Fight, Serializable {
 			                	continue;
 			                }
 
-			                System.out.println(pk1.getName()+" est envoye au combat !");
+			                System.out.println(pk1.getName()+" est envoyé au combat !");
 			                break;
 								
 						case 3:
@@ -92,7 +92,7 @@ public abstract class AbstractFight implements Fight, Serializable {
 							System.out.println("Joueur 1 a perdu !");
 							return 2;
 						default:
-							System.out.println("\nChoisir une option adequate");
+							System.out.println("\nChoisir une option adéquate");
 							continue;
 					}
 							
@@ -135,7 +135,7 @@ public abstract class AbstractFight implements Fight, Serializable {
 							System.out.println("Joueur 2 a perdu !");
 							return 1;
 						default:
-							System.out.println("\nChoisir une option adequate");
+							System.out.println("\nChoisir une option adéquate");
 							continue;
 								
 					}

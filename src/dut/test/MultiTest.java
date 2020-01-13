@@ -22,7 +22,7 @@ public class MultiTest {
 		}
 	    else {
 	    	Save.save("tmp/team1.ser", team);
-	    	System.out.println("Team sauvegardé");
+	    	System.out.println("Team sauvegardÃ©");
 	    }
 	    
 	    PokemonTeam teambis= new PokemonTeam();
@@ -35,7 +35,7 @@ public class MultiTest {
 		}
 	    else {
 	    	Save.save("tmp/team2.ser", teambis);
-	    	System.out.println("Team sauvegardé");
+	    	System.out.println("Team sauvegardÃ©");
 	    }
 	    MultiFight f1=new MultiFight(team, teambis);
 	    f1.fight();

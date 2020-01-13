@@ -60,7 +60,7 @@ public class AbstractLeague implements League{
 			return;
 		}
 		
-		System.out.println("Bravo, vous avez gagn� la ligue Pok�mon !");
+		System.out.println("Bravo, vous avez gagné la ligue Pokémon !");
 	}
 
 	@Override

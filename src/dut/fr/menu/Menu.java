@@ -90,7 +90,7 @@ public class Menu extends JFrame implements ActionListener{
 			panel.setLayout(new FlowLayout());
 			
 			//action of the button previous
-			JButton precedent = new JButton("Précédent");
+			JButton precedent = new JButton("PrÃ©cÃ©dent");
 			System.out.println(c);
 			precedent.addActionListener(new ActionListener(){  
 			      public void actionPerformed(ActionEvent ae){  

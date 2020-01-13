@@ -31,10 +31,10 @@ public class LigueTest {
 		}
 	    else {
 	    	Save.save("tmp/team.ser", team);
-	    	System.out.println("Team sauvegardé");
+	    	System.out.println("Team sauvegardÃ©");
 	    }
 	    Scanner sc = new Scanner(System.in);
-	    System.out.println("Choisir votre ligue('défaut'=0 , 'made in DUT 2'=1)");
+	    System.out.println("Choisir votre ligue('dÃ©faut'=0 , 'made in DUT 2'=1)");
 	    int choix = sc.nextInt();
 	    
 	    LeagueFactory f = new LeagueFactory(p);

@@ -37,6 +37,7 @@ public class PokemonTeam implements Serializable{
 	
 	@Override
 	public String toString() {
+		System.out.println("------Votre Ã©quipe------");
 		return array.toString();
 	}
 	
@@ -63,10 +64,10 @@ public class PokemonTeam implements Serializable{
 	public int createTeam(Pokedex p) {
 		//reprendre ou continuer
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Voulez-vous reprendre votre partie ou recommencer une nouvelle ? (0 for resume and 1 for load) :");
+		System.out.println("Voulez-vous reprendre votre partie ou en recommencer une nouvelle ? (0: CrÃ©er, 1: ChargÃ©) :");
 	    int game = sc.nextInt();
 	    while(game!=0 && game!=1) {
-			System.out.println("incorrect réessayer");
+			System.out.println("Incorrect rÃ©essayer");
 		    int cptest = sc.nextInt();
 		    if (cptest==0||cptest==1) {
 		    	game=cptest;
@@ -74,15 +75,15 @@ public class PokemonTeam implements Serializable{
 			}
 	    }
 	    if (game==1) {
-			System.out.println("load");
+			System.out.println("Team ChargÃ©");
 			return 1;
 		}
 	    else {
-		System.out.println("Combien de Pokémon voulez-vous ? (max : 6) ");
+		System.out.println("Combien de PokÃ©mon voulez-vous ? (max : 6) ");
 	    int nb = sc.nextInt();
 	    while(nb > 6 || nb < 1) {
-			System.out.println("incorrect réessayer");
-			System.out.println("Combien de Pokémon voulez-vous ? (max 6) ");
+			System.out.println("Incorrect rÃ©essayer");
+			System.out.println("Combien de PokÃ©mon voulez-vous ? (max 6) ");
 		    int nb1 = sc.nextInt();
 		    if (nb1<=6 && nb1>=1) {
 				nb=nb1;
@@ -92,10 +93,10 @@ public class PokemonTeam implements Serializable{
 		for (int i = 0; i <nb; i++) {
 			while (true) {
 			System.out.println(p);
-		    System.out.println("Choisissez un Pokémon (id) : ");
+		    System.out.println("Choisissez un PokÃ©mon (id) : ");
 		    int pk = sc.nextInt();
 		    while(pk > (p.getSize()) || pk<1) {
-				System.out.println("incorrect réessayer");
+				System.out.println("Incorrect rÃ©essayer");
 			    int cptest = sc.nextInt();
 			    if (cptest < (p.getSize()+1) && cptest > 0) {
 			    	pk=cptest;
@@ -103,7 +104,7 @@ public class PokemonTeam implements Serializable{
 				}
 		    }
 		    
-		    System.out.println("Vous avez saisi le Pokémon : " + p.getPokemon(pk));
+		    System.out.println("Vous avez saisi le PokÃ©mon : " + p.getPokemon(pk));
 		    FightingPokemon pokemon = FightingPokemon.createFightingPokemon(pk, p);
 		    System.out.println(pokemon);
 		    ArrayList<Capacity> capacitylist=Capacitylist.capacitychoice(p.getPokemon(pk).getTypes());//pk.gettype()
@@ -111,18 +112,18 @@ public class PokemonTeam implements Serializable{
 		      System.out.println("id: " + y +" " + capacitylist.get(y));
 		    }
 			
-			System.out.println("Choisissez votre 1ére capacité (id) : ");
+			System.out.println("Choisissez votre 1Ã©re capacitÃ© (id) : ");
 		    int cp1 = sc.nextInt();
 		    while(cp1 > (capacitylist.size()-1) || cp1 <=-1) {
-				System.out.println("incorrect réessayer");
-				System.out.println("Choisissez votre 1ére capacité (id) : ");
+				System.out.println("Incorrect rÃ©essayer");
+				System.out.println("Choisissez votre 1Ã©re capacitÃ© (id) : ");
 			    int cptest = sc.nextInt();
 			    if (cptest < capacitylist.size() && cptest > -1) {
 			    	cp1=cptest;
 					break;
 				}
 		    }
-		    System.out.println("Vous avez saisi la Capacité : " + capacitylist.get(cp1));
+		    System.out.println("Vous avez saisi la CapacitÃ© : " + capacitylist.get(cp1));
 		    pokemon.addCapacity(capacitylist.get(cp1));
 			
 			int compteur=1;
@@ -130,16 +131,16 @@ public class PokemonTeam implements Serializable{
 		    	compteur++;
 		    	switch (compteur) {
 				case 2:
-					System.out.println("Choisissez votre 2ème capacité (id) (-1 pour ne plus en choisir): ");
+					System.out.println("Choisissez votre 2Ã¨me capacitÃ© (id) (-1 pour ne plus en choisir): ");
 					break;
 				case 3:
-					System.out.println("Choisissez votre 3ème capacité (id) (-1 pour ne plus en choisir): ");
+					System.out.println("Choisissez votre 3Ã¨me capacitÃ© (id) (-1 pour ne plus en choisir): ");
 					break;
 				case 4:
-					System.out.println("Choisissez votre 4ème capacité (id) (-1 pour ne plus en choisir): ");
+					System.out.println("Choisissez votre 4Ã¨me capacitÃ© (id) (-1 pour ne plus en choisir): ");
 					break;
 				default:
-					System.out.println("incorrect réessayer");
+					System.out.println("Incorrect rÃ©essayer");
 					break;
 				}
 		    	int cp = sc.nextInt();
@@ -149,8 +150,8 @@ public class PokemonTeam implements Serializable{
 			    	break;
 				}
 		    	while(cp > (capacitylist.size()-1) || cp < -1 || pokemon.getCapacities()[0]==capacitylist.get(cp) || pokemon.getCapacities()[1]==capacitylist.get(cp) || pokemon.getCapacities()[2]==capacitylist.get(cp)) {
-					System.out.println("incorrect réessayer");
-					System.out.println("Choisissez votre capacité (id) (-1 pour ne plus en choisir) : ");
+					System.out.println("Incorrect rÃ©essayer");
+					System.out.println("Choisissez votre capacitÃ© (id) (-1 pour ne plus en choisir) : ");
 				    int cptest = sc.nextInt();
 				    if (cptest < capacitylist.size() && cptest > -1 && pokemon.getCapacities()[0]!=capacitylist.get(cptest) && pokemon.getCapacities()[1]!=capacitylist.get(cptest) && pokemon.getCapacities()[2]!=capacitylist.get(cptest)) {
 				    	cp=cptest;
@@ -166,14 +167,14 @@ public class PokemonTeam implements Serializable{
 			    	this.add(pokemon);
 			    	break;
 				}
-		    	System.out.println("Vous avez saisi la Capacité : " + capacitylist.get(cp));
+		    	System.out.println("Vous avez saisi la CapacitÃ© : " + capacitylist.get(cp));
 			    pokemon.addCapacity(capacitylist.get(cp));
 				if (compteur==4) {
 					this.add(pokemon);
 				    break;
 				}
 			} while (compteur<=4);
-		    System.out.println("Voici vos Capacités\n");
+		    System.out.println("Voici vos CapacitÃ©s\n");
 		    for (int j = 0; j < pokemon.getCapacities().length; j++) {
 				System.out.println(pokemon.getCapacities()[j]);
 			}
@@ -182,7 +183,7 @@ public class PokemonTeam implements Serializable{
 		    
 	    }
 		
-	    System.out.println("Voici vos pokémons : ");
+	    System.out.println("Voici vos pokÃ©mons : ");
 	    System.out.println(array);
 	    return 0;
 	    }
@@ -201,7 +202,7 @@ public class PokemonTeam implements Serializable{
 	 */
 	public boolean haveLost() {
 		if (this.isEmpty()) {
-			throw new IllegalStateException("Please add pokemon to your team");
+			throw new IllegalStateException("Sâ€™il vous plaÃ®t ajouter un PokÃ©mon Ã  votre Ã©quipe");
 		}
 		for (int i=0; i<array.size(); i++) {
 			FightingPokemon p = array.get(i);

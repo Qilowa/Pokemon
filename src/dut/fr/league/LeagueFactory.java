@@ -21,7 +21,7 @@ public class LeagueFactory {
 	
 	private PokemonTeam createRandTeam(int size) {
 		if (size >6 || size < 1) {
-			throw new IllegalArgumentException("Team's size should be between 1 and 6");
+			throw new IllegalArgumentException("La taille de l'équipe doit être entre 1 et 6");
 		}
 		
 		PokemonTeam t = new PokemonTeam();

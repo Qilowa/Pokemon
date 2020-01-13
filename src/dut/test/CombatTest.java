@@ -24,7 +24,7 @@ public class CombatTest {
 		}
 	    else {
 	    	Save.save("tmp/team1.ser", team);
-	    	System.out.println("Team sauvegardé");
+	    	System.out.println("Team sauvegardÃ©");
 	    }
 	    
 	    PokemonTeam teambis= new PokemonTeam();
@@ -37,7 +37,7 @@ public class CombatTest {
 		}
 	    else {
 	    	Save.save("tmp/team2.ser", teambis);
-	    	System.out.println("Team sauvegardé");
+	    	System.out.println("Team sauvegardÃ©");
 	    }
 	    SoloFight f1=new SoloFight(team, teambis);
 	    f1.fight();

@@ -18,4 +18,3 @@ Consignes après la pré-soutenance
 	Ainsi, il y avait duplication de code entre SoloFight et MultiFight.
 	Nous avons pu réduire la duplication de code en délaissant le travail à la classe AbstractFight. Les classes SoloFight et MultiFight sont maintenant présente pour spécifier les
 	différentes actions du deuxième joueur (soit c'est un BOT soit c'est un deuxième joueur en local) grâce au polymorphisme.
-	
