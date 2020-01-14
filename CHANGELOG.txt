@@ -18,3 +18,9 @@ Consignes après la pré-soutenance
 	Ainsi, il y avait duplication de code entre SoloFight et MultiFight.
 	Nous avons pu réduire la duplication de code en délaissant le travail à la classe AbstractFight. Les classes SoloFight et MultiFight sont maintenant présente pour spécifier les
 	différentes actions du deuxième joueur (soit c'est un BOT soit c'est un deuxième joueur en local) grâce au polymorphisme.
+	
+- Ajout de stream
+	Nous avons essayé d'ajouter quelques streams quand nous pouvions. La méthode toString() de Pokedex utilise un stream, ainsi que la méthode private getLength(Capacity[] c) qui
+	permet de compter le nombre de capacité non null dans un tableau.
+	
+	

@@ -1,24 +1,24 @@
 README
 
-Auteurs :Théo MARION et Quentin SINH
-Projet Pokemon réalisé par Théo et Quentin
+Auteurs :ThÃ©o MARION et Quentin SINH
+Projet Pokemon rÃ©alisÃ© par ThÃ©o et Quentin
 
-Démarrer le programme
+Dï¿½marrer le programme
 
-Avant tout, nous tenons à préciser que notre code et les commentaires sont totalement en anglais.
+Avant tout, nous tenons Ã  prÃ©ciser que notre code et les commentaires sont totalement en anglais.
 
-Pour démarrer le projet, vous devez démarrer la classe Menu.
+Pour dÃ©marrer le projet, vous devez dï¿½marrer la classe Menu.
 
-Nous savions que la qualité des graphismes ne rentrera qu’en ligne de compte que si tous les critères sont respectés.
-Mais nous avons quand même voulu réaliser certaines parties du projet de manière graphique. Par exemple, le menu de sélection et le Pokedex sont dans une mise en page graphique.
+Nous savions que la qualitÃ© des graphismes ne rentrera quï¿½en ligne de compte que si tous les critï¿½res sont respectï¿½s.
+Mais nous avons quand mÃªme voulu rÃ©aliser certaines parties du projet de maniÃ¨re graphique. Par exemple, le menu de sÃ©lection et le Pokedex sont dans une mise en page graphique.
 
-De plus, nous faisons partie du groupe des alternants, alors nous devions faire le projet jusqu’à l’étape V, mais nous avons fait l’étape VI et l’étape VII.
+De plus, nous faisons partie du groupe des alternants, alors nous devions faire le projet jusqu'Ã  l'Ã©tape V, mais nous avons fait l'Ã©tape VI et l'Ã©tape VII.
 
-Nous avons pu implementer une javadoc à tous notre projet.
+Nous avons pu implementer une javadoc Ã  tous notre projet.
 
 
 Choix techniques
 
-Nous avons utilisé les fichiers donnés pour charger le pokedex ainsi que les capacités, mais nous avons dû trouver un autre document avec les statistiques de chaque pokemon.
+Nous avons utilisÃ© les fichiers donnÃ©s pour charger le pokedex ainsi que les capacitÃ©s, mais nous avons du trouver un autre document avec les statistiques de chaque pokemon.
 Ces statistiques sont contenues dans la classe Fightingpokemon parce que nous ne voulions pas surcharger la classe Pokemon.
-
+Nous avons utilisÃ© quelques streams (la mÃ©thode toString() de Pokedex et la mÃ©thode getLength(Capacity[] c) de Print qui permet de connaÃ®tre le nombre de capacitÃ© non null dans un tableau).

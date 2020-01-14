@@ -1,5 +1,6 @@
 package dut.fr.fight;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 import dut.fr.pokemon.Capacity;
@@ -58,12 +59,8 @@ public class Print {
 		System.out.println(p.getName());
 	}
 	
-	private static <T> int getLength(T[] array) {
-		int count = 0;
-	    for(T el : array)
-	        if (el != null)
-	            ++count;
-	    return count;
+	private static int getLength(Capacity[] array) {
+		return (int) Arrays.stream(array).filter(s->s != null).count();
 	}
 	
 	/**
